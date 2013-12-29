@@ -3,8 +3,13 @@ PhotoBlog::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'posts#index'
   resources :posts, only: %i[show]
+  controller :session do
+    get '/login' => :new
+    post '/login' => :create
+  end
+  root 'posts#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
