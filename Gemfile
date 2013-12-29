@@ -50,3 +50,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'carrierwave-mongoid'
 gem 'mini_magick'
+
+gem 'bourbon'
+gem 'neat'
+gem 'patterns'

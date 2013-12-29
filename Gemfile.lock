@@ -38,6 +38,9 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    bourbon (3.1.8)
+      sass (>= 3.2.0)
+      thor
     bson (2.0.0)
     bson_ext (1.5.1)
     builder (3.1.4)
@@ -92,6 +95,9 @@ GEM
       connection_pool (~> 1.2)
       optionable (~> 0.2.0)
     multi_json (1.8.2)
+    neat (1.5.0)
+      bourbon (>= 2.1)
+      sass (>= 3.2)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
@@ -99,6 +105,8 @@ GEM
       mini_portile (~> 0.5.0)
     optionable (0.2.0)
     origin (1.1.0)
+    patterns (0.1.6)
+      sass (>= 3.2)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -156,6 +164,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bourbon
   bson_ext
   carrierwave
   carrierwave-mongoid
@@ -165,6 +174,8 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   mongoid!
+  neat
+  patterns
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
   sdoc
