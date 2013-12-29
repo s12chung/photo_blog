@@ -16,3 +16,5 @@
 /tmp
 
 .idea/
+db/photos
+config/s3.yml

@@ -44,3 +44,9 @@ end
 
 gem 'mongoid', github: 'mongoid/mongoid', branch: 'v4.0.0.alpha1'
 gem 'bson_ext'
+
+# Database uploads
+gem 'carrierwave'
+gem 'fog'
+gem 'carrierwave-mongoid'
+gem 'mini_magick'

@@ -3,4 +3,5 @@ class Post
   include Mongoid::Timestamps
 
   field :name
+  mount_uploader :photo, PhotoUploader
 end
