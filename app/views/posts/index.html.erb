@@ -1,7 +1,9 @@
 <section class="posts">
   <% @posts.each do |post| %>
-      <article class="post">
-        <%= image_tag post.photo %>
-      </article>
+      <%= link_to authenticated? ? edit_post_path(post) : post_path(post) do %>
+          <article class="post">
+            <%= image_tag post.photo %>
+          </article>
+      <% end %>
   <% end %>
 </section>
