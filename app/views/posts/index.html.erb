@@ -1,0 +1,7 @@
+<section class="posts">
+  <% @posts.each do |post| %>
+      <article class="post">
+        <%= image_tag post.photo %>
+      </article>
+  <% end %>
+</section>
