@@ -39,6 +39,33 @@ class PhotoUploader < CarrierWave::Uploader::Base
     resize_to_limit(345, 600)
   end
 
+  version :crop_preview do
+    process resize_to_limit: [1400, 99999]
+  end
+
+  version :index, from_version: :crop_preview do
+    process :crop
+  end
+
+  def crop
+    if model.crop_x.present?
+      manipulate! do |img|
+        index_image = MiniMagick::Image.open(img.path)
+        to_crop_image = MiniMagick::Image.open(model.photo_url(:to_crop))
+        ratio_width = index_image['width'] / to_crop_image['width']
+        ratio_height = index_image['height'] / to_crop_image['height']
+
+        x = model.crop_x.to_i * ratio_width
+        y = model.crop_y.to_i * ratio_height
+        w = model.crop_w.to_i * ratio_width
+        h = model.crop_h.to_i * ratio_height
+
+        img.crop("#{w}x#{h}+#{x}+#{y}")
+        img
+      end
+    end
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list

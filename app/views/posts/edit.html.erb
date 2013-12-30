@@ -8,7 +8,7 @@
         var update = function(coords) {
             cached_coords = coords;
             $.each(["x", "y", "w", "h"], function(index, field) {
-                $('#user_crop_' + field).val(coords[field]);
+                $('#post_crop_' + field).val(coords[field]);
             });
 
             $crop_preview.each(function(index, element) {
@@ -50,11 +50,14 @@
 </script>
 
 <div class="preview">
-  <%= image_tag @post.photo, data: { behavior: "crop_preview" } %>
+  <%= image_tag @post.photo_url(:crop_preview), data: { behavior: "crop_preview" } %>
 </div>
 
 <section class="main">
   <%= form_for @post, html: { class: "left", data: { behavior: "crop_form" }} do |f| %>
+      <% Post.crop_attributes.each do |attribute| %>
+          <%= f.hidden_field attribute %>
+      <% end %>
       <p>
         <%= f.label :name %><br />
         <%= f.text_field :name %>
