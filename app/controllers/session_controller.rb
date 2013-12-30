@@ -4,8 +4,9 @@ class SessionController < ApplicationController
   end
 
   def create
-    if params[:user] == "steve" && params[:password] == "secret"
-      cookies[:auth_token] = Session.generate
+    auth_token = Session.authenticate params[:username], params[:password]
+     if auth_token
+      cookies[:auth_token] = auth_token
       redirect_to root_path
     else
       render :new
