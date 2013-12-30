@@ -4,10 +4,17 @@
   <title>PhotoBlog</title>
   <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.3/normalize.min.css" %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+
+  <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
+  <% if authenticated? %>
+      <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/css/jquery.Jcrop.min.css" %>
+      <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/js/jquery.Jcrop.min.js" %>
+  <% end %>
 </head>
-<body>
+<body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
 
 <header class="main">
   <h1>4 Weeks in Kansai</h1>

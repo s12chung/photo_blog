@@ -10,7 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function data_behavior(behavior) {
+    return "[data-behavior~='" + behavior + "']";
+}
+function defined(variable) {
+    return typeof variable != 'undefined';
+}
