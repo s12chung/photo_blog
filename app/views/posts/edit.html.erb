@@ -1,1 +1,7 @@
-edit
+<%= form_for @post do |f| %>
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <%= submit_tag "Update" %>
+<% end %>

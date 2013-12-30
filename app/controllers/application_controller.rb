@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   helper_method :authenticated?
 
   protected
+  def authorize
+    unless authenticated?
+      redirect_to login_path
+    end
+  end
   def authenticated?
     Session.authenticated? cookies[:auth_token]
   end
