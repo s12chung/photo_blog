@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authorize, except: %i[edit update]
+  before_filter :authorize, except: %i[index show]
 
   def index
     @posts = Post.all * 10
