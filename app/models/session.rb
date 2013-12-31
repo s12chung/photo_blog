@@ -1,12 +1,16 @@
 class Session
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ActiveModel::SecurePassword
+  has_secure_password(validations: false)
 
   field :username
-  field :password
+  field :password_digest
   field :auth_token
 
-  validates :username, :password, :auth_token, presence: true
+  validates :username, :auth_token, presence: true
+  validates :password, presence: true, on: :create
+  before_create { raise "Password digest missing on new record" if password_digest.blank? }
 
   after_initialize do
     generate_token
@@ -18,8 +22,8 @@ class Session
 
   class << self
     def authenticate(username, password)
-      session = self.where(username: username, password: password).first
-      if session
+      session = self.where(username: username).first
+      if session && session.authenticate(password)
         session.generate_token
         session.save
         session.auth_token
