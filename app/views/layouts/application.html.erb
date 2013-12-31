@@ -17,6 +17,11 @@
 
 <header class="main">
   <%= link_to root_path do %><h1>4 Weeks in Kansai</h1><% end %>
+  <div class="right">
+    <% if authenticated? && current_page?(controller: "posts", action: "index") %>
+        <%= link_to "", "#read_mode", data: { behavior: "read_mode" } %>
+    <% end %>
+  </div>
 </header>
 
 <%= yield %>

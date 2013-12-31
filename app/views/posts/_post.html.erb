@@ -1,4 +1,4 @@
-<%= link_to authenticated? ? edit_post_path(post) : post_path(post) do %>
+<%= link_to post_path(post), data: { read_url: post_path(post), edit_url: edit_post_path(post) } do %>
     <article class="post">
       <header>
         <div>

@@ -1,6 +1,6 @@
 body[data-controller="posts"] {
   &[data-action="index"] {
-    section.posts {
+    section.post {
       article.post {
         position: relative;
         header {

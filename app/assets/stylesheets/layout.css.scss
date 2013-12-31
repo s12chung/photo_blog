@@ -3,6 +3,10 @@ section.main {
   @include outer-container;
 }
 
+header.main {
+  @include float_left_right_container;
+}
+
 textarea,
 input[type="text"],
 input[type="password"],
