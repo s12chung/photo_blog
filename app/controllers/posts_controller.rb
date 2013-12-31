@@ -20,6 +20,6 @@ class PostsController < ApplicationController
 
   protected
   def post_params
-    params.require(:post).permit(*(%i[title] + Post.crop_attributes))
+    params.require(:post).permit(*(%i[title date] + Post.crop_attributes))
   end
 end

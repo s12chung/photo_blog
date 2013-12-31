@@ -9,6 +9,14 @@ GIT
       origin (~> 1.0)
       tzinfo (~> 0.3.37)
 
+GIT
+  remote: git://github.com/y0ssa/mongoid-sadstory.git
+  revision: 8f7367081772f38c10e8b9e4beec85af8936c2ec
+  ref: 8f7367081772f38c10e8b9e4beec85af8936c2ec
+  specs:
+    mongoid-sadstory (0.0.1)
+      mongoid (~> 4.0.0.alpha1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -176,6 +184,7 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   mongoid!
+  mongoid-sadstory!
   neat
   patterns
   rails (= 4.0.2)

@@ -4,7 +4,7 @@ class Post
 
   field :title
   field :text
-  field :date, type: ActiveSupport::TimeWithZone
+  field :date, type: Date
   field :draft, type: Boolean
 
   mount_uploader :photo, PhotoUploader

@@ -2,52 +2,54 @@
 <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/js/jquery.Jcrop.min.js" %>
 <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js" %>
 <script>
-    $(document).imagesLoaded(function() {
-        var $crop_image = $(data_behavior("crop"));
-        var $crop_preview = $(data_behavior("crop_preview"));
-        var ratio = 14/3;
-        var cached_coords;
+    $(function() {
+        $(document).imagesLoaded(function() {
+            var $crop_image = $(data_behavior("crop"));
+            var $crop_preview = $(data_behavior("crop_preview"));
+            var ratio = 14/3;
+            var cached_coords;
 
-        var update = function(coords) {
-            cached_coords = coords;
-            $.each(["x", "y", "w", "h"], function(index, field) {
-                $('#post_crop_' + field).val(coords[field]);
-            });
-
-            $crop_preview.each(function(index, element) {
-                var $element = $(element);
-                var $parent = $element.parent();
-                var parent_width = $parent.width();
-                var parent_height = $parent.height();
-                $element.css({
-                    width: Math.round(parent_width/coords.w * $crop_image.width()) + 'px',
-                    height: Math.round(parent_height/coords.h * $crop_image.height()) + 'px',
-                    marginLeft: '-' + Math.round(parent_width/coords.w * coords.x) + 'px',
-                    marginTop: '-' + Math.round(parent_height/coords.h * coords.y) + 'px'
+            var update = function(coords) {
+                cached_coords = coords;
+                $.each(["x", "y", "w", "h"], function(index, field) {
+                    $('#post_crop_' + field).val(coords[field]);
                 });
+
+                $crop_preview.each(function(index, element) {
+                    var $element = $(element);
+                    var $parent = $element.parent();
+                    var parent_width = $parent.width();
+                    var parent_height = $parent.height();
+                    $element.css({
+                        width: Math.round(parent_width/coords.w * $crop_image.width()) + 'px',
+                        height: Math.round(parent_height/coords.h * $crop_image.height()) + 'px',
+                        marginLeft: '-' + Math.round(parent_width/coords.w * coords.x) + 'px',
+                        marginTop: '-' + Math.round(parent_height/coords.h * coords.y) + 'px'
+                    });
+                });
+            };
+            var resize_preview = function() {
+                var $parent = $crop_preview.parent();
+                $parent.height($parent.width()/ratio);
+                if (defined(cached_coords)) update(cached_coords);
+            };
+            resize_preview();
+            $(window).resize(resize_preview);
+
+            var jcrop;
+            var crop_image_width = $crop_image.width();
+            $crop_image.Jcrop({
+                aspectRatio: ratio,
+                setSelect: [0, 0, crop_image_width, crop_image_width/ratio],
+                onSelect: update,
+                onChange: update
+            }, function(){
+                jcrop = this;
             });
-        };
-        var resize_preview = function() {
-            var $parent = $crop_preview.parent();
-            $parent.height($parent.width()/ratio);
-            if (defined(cached_coords)) update(cached_coords);
-        };
-        resize_preview();
-        $(window).resize(resize_preview);
 
-        var jcrop;
-        var crop_image_width = $crop_image.width();
-        $crop_image.Jcrop({
-            aspectRatio: ratio,
-            setSelect: [0, 0, crop_image_width, crop_image_width/ratio],
-            onSelect: update,
-            onChange: update
-        }, function(){
-            jcrop = this;
-        });
-
-        $('body').on('submit', data_behavior('crop_form'), function() {
-            jcrop.disable();
+            $('body').on('submit', data_behavior('crop_form'), function() {
+                jcrop.disable();
+            });
         });
     });
 </script>

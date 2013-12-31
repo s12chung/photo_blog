@@ -1,7 +1,10 @@
 <%= link_to authenticated? ? edit_post_path(post) : post_path(post) do %>
     <article class="post">
       <header>
-        <h3><%= post.title %></h3>
+        <div>
+          <div class="date"><%= post.date %></div>
+          <h3><%= post.title %></h3>
+        </div>
       </header>
       <%= image_tag post.photo_url(:index) %>
     </article>

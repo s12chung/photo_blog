@@ -45,6 +45,7 @@ end
 gem 'mongoid', github: 'mongoid/mongoid', branch: 'v4.0.0.alpha1'
 gem 'bson_ext'
 gem 'bcrypt-ruby'
+gem 'mongoid-sadstory', github: 'y0ssa/mongoid-sadstory', ref: '8f7367081772f38c10e8b9e4beec85af8936c2ec'
 
 # Database uploads
 gem 'carrierwave'
