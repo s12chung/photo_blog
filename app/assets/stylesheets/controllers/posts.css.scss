@@ -22,6 +22,10 @@ body[data-controller="posts"] {
 
       .left {
         @include span-columns(8);
+
+        textarea {
+          height: 500px;
+        }
       }
       .right {
         @include span-columns(4);
