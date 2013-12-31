@@ -2,11 +2,17 @@ body[data-controller="posts"] {
   &[data-action="index"] {
     section.posts {
       article.post {
-        height: 300px;
-        overflow: hidden;
+        position: relative;
+        header {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          @include center_container;
+        }
 
         img {
           width: 100%;
+          display: block;
         }
       }
     }

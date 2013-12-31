@@ -2,7 +2,7 @@ class Post
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :name
+  field :title
   field :text
   field :date, type: ActiveSupport::TimeWithZone
   field :draft, type: Boolean
