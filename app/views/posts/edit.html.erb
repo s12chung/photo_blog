@@ -1,3 +1,4 @@
+<% set_title "Edit #{@post.title}" %>
 <script>
     $(function() {
         $(document).imagesLoaded(function() {
@@ -77,5 +78,7 @@
 
   <div class="right">
     <%= image_tag @post.photo_url(:to_crop), data: { behavior: "crop" } %>
+
+    <%= link_to "Preview Post", post_path(@post), target: "_blank", class: "preview_link" %>
   </div>
 </section>

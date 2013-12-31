@@ -35,6 +35,11 @@ body[data-controller="posts"] {
       }
       .right {
         @include span-columns(4);
+
+        .preview_link {
+          display: block;
+          margin-top: 20px;
+        }
       }
     }
   }
