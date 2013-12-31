@@ -2,3 +2,11 @@ header.main,
 section.main {
   @include outer-container;
 }
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="email"] {
+  width: 100%;
+}

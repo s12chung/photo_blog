@@ -3,6 +3,9 @@ class Post
   include Mongoid::Timestamps
 
   field :name
+  field :text
+  field :date, type: ActiveSupport::TimeWithZone
+  field :draft, type: Boolean
 
   mount_uploader :photo, PhotoUploader
   CROP_ATTRIBUTES = %w[x y w h].map { |attribute| "crop_#{attribute}".to_sym }
