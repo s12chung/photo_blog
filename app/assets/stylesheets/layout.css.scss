@@ -3,8 +3,35 @@ section.main {
   @include outer-container;
 }
 
+header.invisible {
+  $transition: 400ms ease 0s;
+  transition: background-color $transition;
+  .right {
+    transition: opacity $transition;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    .right {
+      opacity: 1;
+    }
+  }
+
+  .right {
+    opacity: 0;
+  }
+}
+
 header.main {
   @include float_left_right_container;
+
+  .logo {
+    width: 50px;
+  }
+  .right {
+    margin-top: 30px;
+    @include horizontal_spacer_container(20px);
+  }
 }
 
 textarea,

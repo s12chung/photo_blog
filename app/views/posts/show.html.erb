@@ -1,1 +1,7 @@
-<%= set_title @post.title %>
+<% content_for :header do %>
+    <%= render "layouts/invisible_header" %>
+<% end %>
+
+<section class="main">
+  <h2><%= set_title @post.title %></h2>
+</section>

@@ -18,6 +18,14 @@ body[data-controller="posts"] {
     }
   }
 
+  &[data-action="show"] {
+    header.invisible {
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
   &[data-action="edit"] {
     .preview {
       width: 100%;
