@@ -35,7 +35,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
     process :to_crop
   end
   def to_crop
-    # 600 x 600 referenced in posts/edit.html.erb
     resize_to_limit(345, 600)
   end
 
@@ -55,10 +54,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
         ratio_width = index_image['width'] / to_crop_image['width']
         ratio_height = index_image['height'] / to_crop_image['height']
 
-        x = model.crop_x.to_i * ratio_width
-        y = model.crop_y.to_i * ratio_height
-        w = model.crop_w.to_i * ratio_width
-        h = model.crop_h.to_i * ratio_height
+        x = model.crop_x * ratio_width
+        y = model.crop_y * ratio_height
+        w = model.crop_w * ratio_width
+        h = model.crop_h * ratio_height
 
         img.crop("#{w}x#{h}+#{x}+#{y}")
         img
