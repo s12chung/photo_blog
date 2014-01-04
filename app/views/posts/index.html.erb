@@ -1,13 +1,4 @@
 <% set_title %>
-
-<header class="main">
-  <%= link_to root_path do %><h1><%= title_default %></h1><% end %>
-  <div class="right">
-    <% if authenticated? %>
-        <%= link_to "", "#read_mode", data: { behavior: "read_mode" } %>
-    <% end %>
-  </div>
-</header>
 <section class="post" data-behavior="read_mode_container">
   <%= render @posts %>
 </section>
