@@ -9,6 +9,7 @@
           <div class="content" data-behavior="summary">
             <div><%= @post.date %></div>
             <h2><%= set_title @post.title %></h2>
+            <%= @post.summary_html %>
           </div>
         </div>
       </div>
@@ -17,7 +18,7 @@
   <%= direction_arrow :right %>
 
   <div class="inner">
-    <%= image_tag @post.photo_url, class: "photo" %>
+    <%= image_tag @post.photo_url(:crop_preview), class: "photo" %>
   </div>
 </div>
 

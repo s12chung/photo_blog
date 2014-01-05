@@ -13,6 +13,7 @@ class Post
   CROP_ATTRIBUTES.each do |attribute|
     field attribute, type: BigDecimal
   end
+  SUMMARY_CUTOFF = "[\u2026]"
 
   after_update do
     unless (changed & self.class.crop_attributes.map(&:to_s)).empty?
@@ -28,7 +29,29 @@ class Post
     coords
   end
 
+  def markdown=(markdown)
+    if markdown.include? "\""
+      raise("You have quotes!")
+    end
+    markdown = markdown.clone
+    markdown.gsub!("...", "\u2026")
+    markdown.gsub!(" - ", "\u2014")
+    super markdown
+  end
+
+
+  def clean_markdown
+    markdown.sub(SUMMARY_CUTOFF, "")
+  end
   def markdown_html
+    process_markdown clean_markdown
+  end
+  def summary_html
+    process_markdown markdown.split(SUMMARY_CUTOFF).first + "\u2026"
+  end
+
+  protected
+  def process_markdown(markdown)
     markdown_options = %w/autolink no_intra_emphasis/
     renderer_options = %w/hard_wrap/
     renderer = Redcarpet::Markdown.new(
