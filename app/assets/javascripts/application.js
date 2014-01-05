@@ -12,10 +12,15 @@
 //
 //= require jquery_ujs
 //= require turbolinks
+//= require_self
 //= require_tree .
 
 function data_behavior(behavior) {
     return "[data-behavior~='" + behavior + "']";
+}
+function load_behavior(f) {
+    $(f);
+    addEventListener('page:load', f);
 }
 function defined(variable) {
     return typeof variable != 'undefined';

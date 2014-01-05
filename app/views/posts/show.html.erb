@@ -2,7 +2,9 @@
     <%= render "layouts/invisible_header" %>
 <% end %>
 
-<div class="photo_box">
+<div class="photo_box" data-behavior="photo_box">
+  <%= direction_arrow :left %>
+  <%= direction_arrow :right %>
   <div class="inner">
     <%= image_tag @post.photo_url, class: "photo" %>
   </div>
