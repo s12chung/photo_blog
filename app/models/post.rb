@@ -3,7 +3,7 @@ class Post
   include Mongoid::Timestamps
 
   field :title
-  field :text
+  field :markdown
   field :date, type: Date
   field :draft, type: Boolean
 
@@ -26,6 +26,15 @@ class Post
       coords[crop_type] = self.send("crop_#{crop_type}").to_f
     end
     coords
+  end
+
+  def markdown_html
+    markdown_options = %w/autolink no_intra_emphasis/
+    renderer_options = %w/hard_wrap/
+    renderer = Redcarpet::Markdown.new(
+        Redcarpet::Render::HTML.new(Hash[renderer_options.map {|o| [o.to_sym, true]}]),
+        Hash[markdown_options.map {|o| [o.to_sym, true]}])
+    renderer.render(markdown).html_safe
   end
 
   class << self

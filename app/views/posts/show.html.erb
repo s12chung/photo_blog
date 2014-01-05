@@ -11,5 +11,12 @@
 </div>
 
 <section class="main">
-  <h2><%= set_title @post.title %></h2>
+  <div class="left">
+    <%= @post.markdown_html %>
+  </div>
+  <div class="right">
+    <div><%= @post.date %></div>
+    <h2><%= set_title @post.title %></h2>
+    <%= if authenticated?; link_to "Edit", edit_post_path(@post) end %>
+  </div>
 </section>

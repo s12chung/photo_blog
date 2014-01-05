@@ -79,6 +79,16 @@ body[data-controller="posts"] {
         }
       }
     }
+
+    section.main {
+      .left {
+        @include span-columns(7);
+      }
+      .right {
+        @include shift(1);
+        @include span-columns(3);
+      }
+    }
   }
 
   &[data-action="edit"] {
