@@ -29,5 +29,6 @@ PhotoBlog::Application.configure do
     s3_config = YAML.load_file('./config/s3.yml').symbolize_keys
     config.fog_credentials = { provider: 'AWS' }.merge(s3_config[:credentials])
     config.fog_directory = s3_config[:s3_bucket]
+    config.fog_public = false
   end
 end

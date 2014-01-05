@@ -30,6 +30,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  def fog_public; false end
+
   # Create different versions of your uploaded files:
   version :to_crop do
     process :to_crop
