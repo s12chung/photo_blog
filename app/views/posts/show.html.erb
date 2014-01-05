@@ -3,9 +3,12 @@
 <% end %>
 
 <div class="photo_box" data-behavior="photo_box">
-  <div class="summary" data-behavior="toggle_summary">
+  <div class="summary">
+    <%= direction_arrow :left %>
+    <%= direction_arrow :right %>
+
     <div class="container">
-      <%= link_to "#scroll_to", data: { behavior: "scroll_to summary_content", scroll_to: "section.main" }, class: "content" do %>
+      <%= link_to "#scroll_to", data: { behavior: "scroll_to", scroll_to: "section.main" }, class: "content" do %>
           <div><%= @post.date %></div>
           <h2><%= set_title @post.title %></h2>
           <div>
@@ -14,9 +17,6 @@
       <% end %>
     </div>
   </div>
-
-  <%= direction_arrow :left %>
-  <%= direction_arrow :right %>
 
   <div class="inner">
     <%= image_tag @post.photo_url(:crop_preview), class: "photo" %>
