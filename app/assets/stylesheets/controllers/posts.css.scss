@@ -35,6 +35,7 @@ body[data-controller="posts"] {
         opacity: 0;
         position: absolute;
         height: 100%;
+        width: 20%;
         @include clearfix;
 
         &:hover {
@@ -53,7 +54,6 @@ body[data-controller="posts"] {
       $outter_margin: 10px;
       .left {
         left: 0;
-        width: 20%;
         img {
           float: left;
           padding-left: $outter_margin;
@@ -61,7 +61,6 @@ body[data-controller="posts"] {
       }
       .right {
         right: 0;
-        width: 80%;
         img {
           float: right;
           padding-right: $outter_margin;
@@ -76,6 +75,30 @@ body[data-controller="posts"] {
 
         .photo {
           height: 100%;
+        }
+      }
+
+      .summary {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: opacity $transition_speed;
+
+        .container {
+          @include outer-container;
+          height: 100%;
+
+          .grid {
+            position: relative;
+            height: 100%;
+
+            .content {
+              position: absolute;
+              left: 0;
+              top: 60%;
+              @include backgrounded;
+            }
+          }
         }
       }
     }

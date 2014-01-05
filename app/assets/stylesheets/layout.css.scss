@@ -9,10 +9,9 @@ header.invisible {
   top: 0;
   width: 100%;
 
-  $transition: 400ms ease 0s;
-  transition: background-color $transition;
+  transition: background-color $transition_speed;
   .right {
-    transition: opacity $transition;
+    transition: opacity $transition_speed;
   }
 
   &:hover {
