@@ -53,15 +53,13 @@ class PhotoUploader < CarrierWave::Uploader::Base
       manipulate! do |img|
         index_image = MiniMagick::Image.open(img.path)
         to_crop_image = MiniMagick::Image.open(model.photo_url(:to_crop))
-        ratio_width = index_image['width'] / to_crop_image['width']
-        ratio_height = index_image['height'] / to_crop_image['height']
 
-        x = model.crop_x * ratio_width
-        y = model.crop_y * ratio_height
-        w = model.crop_w * ratio_width
-        h = model.crop_h * ratio_height
+        crop_values = {}
+        model.class.crop_types.each do |crop_type|
+          crop_values[crop_type] = (model.send("crop_#{crop_type}")/to_crop_image['width']) * index_image['width']
+        end
 
-        img.crop("#{w}x#{h}+#{x}+#{y}")
+        img.crop("#{crop_values[:w]}x#{crop_values[:h]}+#{crop_values[:x]}+#{crop_values[:y]}")
         img
       end
     end
