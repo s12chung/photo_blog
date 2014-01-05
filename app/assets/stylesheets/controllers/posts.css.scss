@@ -83,7 +83,7 @@ body[data-controller="posts"] {
         position: absolute;
         width: 100%;
         height: 100%;
-        transition: opacity $transition_speed;
+
         &:hover {
           cursor: pointer;
         }

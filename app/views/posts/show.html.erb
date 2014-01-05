@@ -5,7 +5,7 @@
 <div class="photo_box" data-behavior="photo_box">
   <div class="summary" data-behavior="toggle_summary">
     <div class="container">
-      <%= link_to "#scroll_to", data: { behavior: "scroll_to", scroll_to: "section.main" }, class: "content" do %>
+      <%= link_to "#scroll_to", data: { behavior: "scroll_to summary_content", scroll_to: "section.main" }, class: "content" do %>
           <div><%= @post.date %></div>
           <h2><%= set_title @post.title %></h2>
           <div>
