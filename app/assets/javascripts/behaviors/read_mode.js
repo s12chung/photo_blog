@@ -1,24 +1,30 @@
 load_behavior(function() {
-    var read_text = "Read";
-    var edit_text = "Edit";
+    var read_text = "Reading";
+    var edit_text = "Editing";
     var $read_mode = $(data_behavior('read_mode'));
+    var COOKIE_KEY = 'read';
 
-    function set_links(is_reading) {
+    function set_links(read) {
         $(data_behavior('read_mode_container')).find('a').each(function(index, element) {
             var $element = $(element);
-            $element.prop('href', $element.data((is_reading ? 'read' : 'edit') + '-url'));
+            $element.prop('href', $element.data((read ? 'read' : 'edit') + '-url'));
         });
+    }
+    function set_read_state(read) {
+        $read_mode.html(read ? read_text : edit_text);
+        set_links(read);
     }
 
     if ($read_mode.length > 0) {
-        set_links(false);
-        $read_mode.html(read_text);
+        var is_reading = $.cookie(COOKIE_KEY);
+        set_read_state(defined(is_reading) ? (is_reading === 'true') : false);
         $read_mode.click(function(e) {
             e.preventDefault();
             var $this = $(this);
-            var is_reading = $this.html() === read_text;
-            $this.html(is_reading ? edit_text : edit_text);
-            set_links(is_reading);
+            var read = $this.html() === read_text;
+            read = !read;
+            $.cookie(COOKIE_KEY, read);
+            set_read_state(read);
         });
     }
 });
