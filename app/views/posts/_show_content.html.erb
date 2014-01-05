@@ -1,0 +1,8 @@
+<section class="main">
+  <div class="left">
+    <%= @post.markdown_html %>
+  </div>
+  <div class="right">
+    <%= if authenticated?; link_to "Edit", edit_post_path(@post) end %>
+  </div>
+</section>

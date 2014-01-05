@@ -58,3 +58,4 @@ gem 'neat'
 gem 'patterns'
 
 gem 'redcarpet'
+gem 'useragent'

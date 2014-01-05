@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :authenticated?
+  helper_method :user_agent
 
   protected
   def authorize
@@ -13,4 +14,6 @@ class ApplicationController < ActionController::Base
   def authenticated?
     Session.authenticated? cookies[:auth_token]
   end
+
+  def user_agent; @user_agent ||= UserAgent.parse(request.env["HTTP_USER_AGENT"]) end
 end

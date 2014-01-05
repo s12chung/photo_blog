@@ -2,32 +2,8 @@
     <%= render "layouts/invisible_header" %>
 <% end %>
 
-<div class="photo_box" data-behavior="photo_box">
-  <div class="summary">
-    <%= direction_arrow :left %>
-    <%= direction_arrow :right %>
-
-    <div class="container">
-      <%= link_to "#scroll_to", data: { behavior: "scroll_to", scroll_to: "section.main" }, class: "content" do %>
-          <div><%= @post.date %></div>
-          <h2><%= set_title @post.title %></h2>
-          <div>
-            <%= @post.summary_html %>
-          </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="inner">
-    <%= image_tag @post.photo_url(:crop_preview), class: "photo" %>
-  </div>
-</div>
-
-<section class="main">
-  <div class="left">
-    <%= @post.markdown_html %>
-  </div>
-  <div class="right">
-    <%= if authenticated?; link_to "Edit", edit_post_path(@post) end %>
-  </div>
-</section>
+<% if user_agent.mobile? %>
+<% else %>
+    <%= render "photo_box" %>
+    <%= render "show_content" %>
+<% end %>
