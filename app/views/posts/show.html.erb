@@ -2,6 +2,12 @@
     <%= render "layouts/invisible_header" %>
 <% end %>
 
+<div class="photo_box">
+  <div class="inner">
+    <%= image_tag @post.photo_url, class: "photo" %>
+  </div>
+</div>
+
 <section class="main">
   <h2><%= set_title @post.title %></h2>
 </section>

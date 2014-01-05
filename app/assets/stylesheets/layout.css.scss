@@ -4,6 +4,10 @@ section.main {
 }
 
 header.invisible {
+  position: absolute;
+  top: 0;
+  width: 100%;
+
   $transition: 400ms ease 0s;
   transition: background-color $transition;
   .right {
