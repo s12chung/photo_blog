@@ -21,12 +21,8 @@ class Post
     end
   end
 
-  def coords
-    coords = {}
-    CROP_TYPES.each do |crop_type|
-      coords[crop_type] = self.send("crop_#{crop_type}").to_f
-    end
-    coords
+  def has_text?
+    markdown.strip.split(self.class::SUMMARY_CUTOFF).size == 2
   end
 
   def markdown=(markdown)
@@ -37,27 +33,6 @@ class Post
     markdown.gsub!("...", "\u2026")
     markdown.gsub!(" - ", "\u2014")
     super markdown
-  end
-
-
-  def clean_markdown
-    markdown.sub(SUMMARY_CUTOFF, "")
-  end
-  def markdown_html
-    process_markdown clean_markdown
-  end
-  def summary_html
-    process_markdown markdown.split(SUMMARY_CUTOFF).first + "\u2026"
-  end
-
-  protected
-  def process_markdown(markdown)
-    markdown_options = %w/autolink no_intra_emphasis/
-    renderer_options = %w/hard_wrap/
-    renderer = Redcarpet::Markdown.new(
-        Redcarpet::Render::HTML.new(Hash[renderer_options.map {|o| [o.to_sym, true]}]),
-        Hash[markdown_options.map {|o| [o.to_sym, true]}])
-    renderer.render(markdown).html_safe
   end
 
   class << self

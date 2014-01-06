@@ -4,13 +4,7 @@
     <%= direction_arrow :right %>
 
     <div class="container">
-      <%= link_to "#scroll_to", data: { behavior: "scroll_to", scroll_to: "section.main" }, class: "content" do %>
-          <div><%= @post.date %></div>
-          <h2><%= set_title @post.title %></h2>
-          <div>
-            <%= @post.summary_html %>
-          </div>
-      <% end %>
+      <%= render "summary_content", post: @post %>
     </div>
   </div>
 

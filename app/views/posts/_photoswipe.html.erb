@@ -1,0 +1,22 @@
+<script>
+    $(function(){
+        var photoswipe = Code.PhotoSwipe.attach(<%= ([@post.to_photoswipe] * 10).to_json.html_safe %>,
+                {
+                    captionAndToolbarFlipPosition: true,
+                    getImageSource: function(obj){
+                        return obj.photo;
+                    },
+                    getImageCaption: function(obj) {
+                        var div = document.createElement('div');
+                        div.innerHTML = obj.caption;
+                        return div;
+                    },
+                    getToolbar: function() {
+                        return "";
+                    }
+                });
+        photoswipe.show(0);
+    });
+</script>
+
+<% set_title @post.title %>

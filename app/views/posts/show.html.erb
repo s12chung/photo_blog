@@ -2,7 +2,8 @@
     <%= render "layouts/invisible_header" %>
 <% end %>
 
-<% if user_agent.mobile? %>
+<% if !user_agent.mobile? %>
+    <%= render "photoswipe" %>
 <% else %>
     <%= render "photo_box" %>
     <%= render "show_content" %>

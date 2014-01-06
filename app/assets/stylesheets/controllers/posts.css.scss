@@ -94,23 +94,22 @@ body[data-controller="posts"] {
         .container {
           @include outer-container;
           height: 100%;
+        }
+      }
+    }
 
-          .content {
-            position: absolute;
+    .summary_content {
+      position: absolute;
+      bottom: 100px;
+      @include backgrounded;
 
-            padding: 20px;
-            padding-left: 10000px;
-            margin-left: -10000px;
-            max-width: 10624px;
-
-            bottom: 50px;
-            @include backgrounded;
-
-            transition: background-color $transition_speed;
-            &:hover {
-              background-color: rgba(0, 0, 0, 0.5);
-            }
-          }
+      .read_more {
+        display: inline-block;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.3);
+        transition: background-color $transition_speed;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.7);
         }
       }
     }

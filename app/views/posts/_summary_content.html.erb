@@ -1,0 +1,10 @@
+<div class="summary_content">
+  <div><%= post.date %></div>
+  <h2><%= set_title post.title %></h2>
+  <div>
+    <%= post.summary_html %>
+  </div>
+  <% if post.has_text? %>
+      <%= link_to "Read More", "#show_content", data: { behavior: "scroll_to", scroll_to: "section.main" }, class: "read_more" %>
+  <% end %>
+</div>

@@ -57,5 +57,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'patterns'
 
+gem 'easy_presenter'
+
 gem 'redcarpet'
 gem 'useragent'
