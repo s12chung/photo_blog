@@ -22,9 +22,12 @@ class Post
   end
 
   def has_text?
-    markdown.strip.split(self.class::SUMMARY_CUTOFF).size == 2
+    attributes[:markdown].strip.split(self.class::SUMMARY_CUTOFF).size == 2
   end
 
+  def markdown
+    super.sub(self.class::SUMMARY_CUTOFF, "")
+  end
   def markdown=(markdown)
     if markdown.include? "\""
       raise("You have quotes!")

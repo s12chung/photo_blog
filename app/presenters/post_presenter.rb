@@ -7,14 +7,11 @@ module PostPresenter
     coords
   end
 
-  def clean_markdown
-    markdown.sub(self.class::SUMMARY_CUTOFF, "")
-  end
   def markdown_html
-    process_markdown clean_markdown
+    self.class.process_markdown markdown
   end
   def summary_html
-    process_markdown markdown.split(self.class::SUMMARY_CUTOFF).first + "\u2026"
+    self.class.process_markdown attributes[:markdown].split(self.class::SUMMARY_CUTOFF).first + "\u2026"
   end
 
   def to_photoswipe
@@ -25,12 +22,14 @@ module PostPresenter
   end
 
   protected
-  def process_markdown(markdown)
-    markdown_options = %w/autolink no_intra_emphasis/
-    renderer_options = %w/hard_wrap/
-    renderer = Redcarpet::Markdown.new(
-        Redcarpet::Render::HTML.new(Hash[renderer_options.map {|o| [o.to_sym, true]}]),
-        Hash[markdown_options.map {|o| [o.to_sym, true]}])
-    renderer.render(markdown).html_safe
+  module ClassMethods
+    def process_markdown(markdown)
+      markdown_options = %w/autolink no_intra_emphasis/
+      renderer_options = %w/hard_wrap/
+      renderer = Redcarpet::Markdown.new(
+          Redcarpet::Render::HTML.new(Hash[renderer_options.map {|o| [o.to_sym, true]}]),
+          Hash[markdown_options.map {|o| [o.to_sym, true]}])
+      renderer.render(markdown).html_safe
+    end
   end
 end
