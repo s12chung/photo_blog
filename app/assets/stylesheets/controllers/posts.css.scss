@@ -19,6 +19,19 @@ body[data-controller="posts"] {
   }
 
   &[data-action="show"] {
+    .summary_content {
+      @include backgrounded;
+
+      .read_more {
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.3);
+        transition: background-color $transition_speed;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+
     .photo_box {
       width: 100%;
       position: relative;
@@ -94,23 +107,18 @@ body[data-controller="posts"] {
         .container {
           @include outer-container;
           height: 100%;
+
+          .summary_content {
+            position: absolute;
+            bottom: 100px;
+          }
         }
       }
     }
 
-    .summary_content {
-      position: absolute;
-      bottom: 100px;
-      @include backgrounded;
-
-      .read_more {
-        display: inline-block;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.3);
-        transition: background-color $transition_speed;
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.7);
-        }
+    .ps-caption {
+      .summary_content {
+        padding-bottom: 50px;
       }
     }
 

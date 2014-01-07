@@ -3,6 +3,8 @@
         var photoswipe = Code.PhotoSwipe.attach(<%= ([@post.to_photoswipe] * 10).to_json.html_safe %>,
                 {
                     captionAndToolbarFlipPosition: true,
+                    captionAndToolbarAutoHideDelay: 0,
+                    captionAndToolbarOpacity: 1,
                     getImageSource: function(obj){
                         return obj.photo;
                     },
