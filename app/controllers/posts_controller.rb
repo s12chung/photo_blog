@@ -1,11 +1,14 @@
 class PostsController < ApplicationController
-  before_filter :authorize, except: %i[index show]
+  before_filter :authorize, except: %i[index show show_content]
 
   def index
     @posts = Post.all * 10
   end
 
   def show
+    @post = Post.find(params[:id])
+  end
+  def show_content
     @post = Post.find(params[:id])
   end
 

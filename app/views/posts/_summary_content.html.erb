@@ -8,7 +8,16 @@
   </div>
   <div>
     <% if post.has_text? %>
-        <%= link_to "Read More", "#show_content", data: { behavior: "scroll_to", scroll_to: "section.main" }, class: "read_more" %>
+        <%
+           text = "Read More"
+           klass = "read_more"
+        %>
+
+        <% if !user_agent.mobile? %>
+            <%= link_to text, show_content_post_path, data: { behavior: "show_popup" }, class: klass %>
+        <% else %>
+            <%= link_to text, "#show_content", data: { behavior: "scroll_to", scroll_to: "section.main" }, class: klass %>
+        <% end %>
     <% end %>
   </div>
 </div>

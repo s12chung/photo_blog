@@ -121,6 +121,34 @@ body[data-controller="posts"] {
         padding-bottom: 50px;
       }
     }
+    .popup {
+      position: absolute;
+      z-index: 2001;
+      height: 100%;
+      width: 100%;
+      background-color: white;
+
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity $transition_speed;
+
+      &.visible {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .close_link {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+        .close_x {
+          width: 30px;
+          height: 30px;
+          opacity: 0.3;
+        }
+      }
+    }
 
     section.main {
       .left {
