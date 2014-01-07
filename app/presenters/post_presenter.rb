@@ -16,8 +16,10 @@ module PostPresenter
 
   def to_photoswipe
     {
+        title: title,
         photo: photo_url(:to_crop),
-        caption: render("summary_content", post: self)
+        caption: render("summary_content", post: self),
+        path: post_path(self)
     }
   end
 

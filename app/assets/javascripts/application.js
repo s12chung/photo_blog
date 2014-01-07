@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery_ujs
-//= require turbolinks
 //= require_self
 //= require_tree .
 
@@ -23,5 +22,5 @@ function load_behavior(f) {
     addEventListener('page:load', f);
 }
 function defined(variable) {
-    return typeof variable != 'undefined';
+    return typeof variable != 'undefined' && variable != null;
 }

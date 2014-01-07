@@ -4,6 +4,7 @@
 
 <script>
     $(function(){
+        var last_index = 0;
         var photoswipe = Code.PhotoSwipe.attach(<%= ([@post.to_photoswipe] * 10).to_json.html_safe %>,
                 {
                     captionAndToolbarFlipPosition: true,
@@ -21,7 +22,15 @@
                         return "";
                     }
                 });
-        photoswipe.show(0);
+        photoswipe.show(last_index);
+        photoswipe.addEventHandler(Code.PhotoSwipe.EventTypes.onDisplayImage, function(e) {
+            if (last_index != e.index) {
+                var image = photoswipe.getCurrentImage();
+                $('title').html(image.title);
+                history.pushState(e.index, image.title, image.path);
+                last_index = e.index;
+            }
+        });
     });
 </script>
 <% set_title @post.title %>
