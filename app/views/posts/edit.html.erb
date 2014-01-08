@@ -38,7 +38,7 @@
             var crop_image_width = $crop_image.width();
             $crop_image.Jcrop({
                 aspectRatio: ratio,
-                setSelect: [cached_coords.x, cached_coords.y, crop_image_width, crop_image_width/ratio],
+                setSelect: [cached_coords.x, cached_coords.y, cached_coords.x + crop_image_width, cached_coords.y + crop_image_width/ratio],
                 onSelect: update,
                 onChange: update
             }, function(){
