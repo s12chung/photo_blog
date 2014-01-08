@@ -31,30 +31,28 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   def fog_public
-    versions.size == 0
+    !!version_name
   end
 
   # Create different versions of your uploaded files:
-  version :to_crop do
-    process :to_crop
-  end
-  def to_crop
-    resize_to_limit(345, 600)
-  end
-
   version :crop_preview do
     process resize_to_limit: [1400, 99999]
   end
-
-  version :index, from_version: :crop_preview do
+  version :to_crop, from_version: :crop_preview do
+    process resize_to_limit: [345, 600]
+  end
+  version :index do
     process :crop
+    version :gray do
+      process :convert_to_grayscale
+    end
   end
 
   def crop
     if model.crop_x.present?
       manipulate! do |img|
         index_image = MiniMagick::Image.open(img.path)
-        to_crop_image = MiniMagick::Image.open(model.photo_url(:to_crop))
+        to_crop_image = MiniMagick::Image.open(model.photo.versions[:to_crop].path)
 
         crop_values = {}
         model.class.crop_types.each do |crop_type|
@@ -64,6 +62,15 @@ class PhotoUploader < CarrierWave::Uploader::Base
         img.crop("#{crop_values[:w]}x#{crop_values[:h]}+#{crop_values[:x]}+#{crop_values[:y]}")
         img
       end
+    end
+  end
+
+  def convert_to_grayscale
+    manipulate! do |img|
+      img.colorspace("Gray")
+      img.brightness_contrast("+20x-50")
+      img = yield(img) if block_given?
+      img
     end
   end
 
