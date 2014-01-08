@@ -44,7 +44,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   version :index do
     process :crop
     version :gray do
-      process :convert_to_grayscale
+      process :convert_to_gray
     end
   end
 
@@ -65,7 +65,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
     end
   end
 
-  def convert_to_grayscale
+  def convert_to_gray
     manipulate! do |img|
       img.colorspace("Gray")
       img.brightness_contrast("+20x-50")
