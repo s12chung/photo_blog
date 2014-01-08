@@ -1,3 +1,4 @@
+$max-width: 1140px;
 @import 'bourbon';
 @import 'neat';
 @import 'patterns';
@@ -7,6 +8,9 @@ $background_ink: white;
 $semibold: 600;
 
 $transition_speed: 400ms ease 0s;
+
+$huge: 56px;
+$read: 28px;
 
 @mixin base {
   font-size: 16px;

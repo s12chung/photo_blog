@@ -159,7 +159,8 @@ body[data-controller="posts"] {
 
     section.main {
       .left {
-        @include span-columns(7);
+        font-size: $read;
+        @include span-columns(8);
       }
       .right {
         @include shift(1);
