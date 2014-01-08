@@ -2,3 +2,9 @@
 <section class="post" data-behavior="read_mode_container">
   <%= render @posts %>
 </section>
+<script>
+    $('article.post').flowtype({
+        minFont   : 12,
+        maxFont   : 30
+    });
+</script>

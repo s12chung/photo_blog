@@ -1,3 +1,7 @@
+html {
+  @include base;
+}
+
 header.main,
 section.main {
   @include outer-container;
