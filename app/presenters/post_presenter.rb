@@ -7,11 +7,14 @@ module PostPresenter
     coords
   end
 
+  def clean_markdown
+    markdown.sub(self.class::SUMMARY_CUTOFF, "")
+  end
   def markdown_html
-    self.class.process_markdown markdown
+    self.class.process_markdown clean_markdown
   end
   def summary_html
-    self.class.process_markdown attributes[:markdown].split(self.class::SUMMARY_CUTOFF).first + "\u2026"
+    self.class.process_markdown markdown.split(self.class::SUMMARY_CUTOFF).first + "\u2026"
   end
 
   def to_photoswipe
