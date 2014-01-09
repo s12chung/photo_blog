@@ -51,12 +51,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def crop
     if model.crop_x.present?
       manipulate! do |img|
-        index_image = MiniMagick::Image.open(img.path)
         to_crop_image = MiniMagick::Image.open(model.photo.versions[:to_crop].url)
 
         crop_values = {}
         model.class.crop_types.each do |crop_type|
-          crop_values[crop_type] = (model.send("crop_#{crop_type}")/to_crop_image['width']) * index_image['width']
+          crop_values[crop_type] = (model.send("crop_#{crop_type}")/to_crop_image['width']) * img['width']
         end
 
         img.crop("#{crop_values[:w]}x#{crop_values[:h]}+#{crop_values[:x]}+#{crop_values[:y]}")
@@ -67,10 +66,21 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   def convert_to_gray
     manipulate! do |img|
-      img.colorspace("Gray")
-      img.brightness_contrast("+20x-50")
-      img = yield(img) if block_given?
-      img
+      background_dir = File.join(*%W[#{Rails.root} app assets images background_negative.png])
+      background = MiniMagick::Image.open(background_dir)
+      background.combine_options do |c|
+        c.size "#{img['width']}x#{img['height']}"
+        c.tile background_dir
+      end
+      background
+
+      #img.colorspace("Gray")
+      #img.brightness_contrast("+20x-50")
+      #img = img.composite(background) do |c|
+      #  c.compose "ColorDodge"
+      #end
+      #img = yield(img) if block_given?
+      #img
     end
   end
 
