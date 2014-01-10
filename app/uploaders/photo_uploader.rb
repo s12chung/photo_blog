@@ -66,21 +66,17 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   def convert_to_gray
     manipulate! do |img|
-      background_dir = File.join(*%W[#{Rails.root} app assets images background_negative.png])
-      background = MiniMagick::Image.open(background_dir)
+      background = MiniMagick::Image.open(File.join(*%W[#{Rails.root} app assets images background_negative.png]))
       background.combine_options do |c|
         c.size "#{img['width']}x#{img['height']}"
-        c.tile background_dir
+        c.tile background.path
       end
-      background
 
-      #img.colorspace("Gray")
-      #img.brightness_contrast("+20x-50")
-      #img = img.composite(background) do |c|
-      #  c.compose "ColorDodge"
-      #end
-      #img = yield(img) if block_given?
-      #img
+      img.colorspace("Gray")
+      img.brightness_contrast("0x-50")
+      img.composite(background) do |c|
+        c.compose "ColorDodge"
+      end
     end
   end
 
