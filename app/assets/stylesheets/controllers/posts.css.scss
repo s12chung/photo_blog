@@ -24,7 +24,7 @@ body[data-controller="posts"] {
 
           &.color {
             opacity: 0;
-            transition: opacity $transition_speed;
+            transition: opacity 2000ms ease;
           }
         }
 
