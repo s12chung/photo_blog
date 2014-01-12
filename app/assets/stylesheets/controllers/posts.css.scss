@@ -28,13 +28,14 @@ body[data-controller="posts"] {
   &[data-action="show"] {
     .summary_content {
       @include backgrounded;
-
       .read_more {
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.3);
+        padding: 5px 20px;
+        display: inline-block;
+        $grey: 50;
+        background-color: rgba($grey, $grey, $grey, 0.5);
         transition: background-color $transition_speed;
         &:hover {
-          background-color: rgba(0, 0, 0, 0.7);
+          background-color: rgba($grey, $grey, $grey, 0.8);
         }
       }
     }
@@ -42,6 +43,11 @@ body[data-controller="posts"] {
     .photo_box {
       width: 100%;
       position: relative;
+      font-size: $read;
+
+      * {
+        margin: 0;
+      }
 
       &:hover {
         .left,
