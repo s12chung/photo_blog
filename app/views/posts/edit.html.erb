@@ -53,7 +53,7 @@
 </script>
 
 <div class="preview">
-  <%= image_tag @post.photo.crop_preview.url, data: { behavior: "crop_preview" } %>
+  <%= image_tag @post.photo.crop_preview, data: { behavior: "crop_preview" } %>
 </div>
 
 <section class="main">
@@ -77,7 +77,7 @@
   <% end %>
 
   <div class="right">
-    <%= image_tag @post.photo.to_crop.url, data: { behavior: "crop" } %>
+    <%= image_tag @post.photo.to_crop, data: { behavior: "crop" } %>
 
     <%= link_to "Preview", post_path(@post), class: "preview_link" %>
   </div>

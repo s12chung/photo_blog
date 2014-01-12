@@ -51,7 +51,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def crop
     if model.crop_x.present?
       manipulate! do |img|
-        to_crop_image = MiniMagick::Image.open(model.photo.versions[:to_crop].url)
+        to_crop_image = MiniMagick::Image.open(model.photo.versions[:to_crop].path)
 
         crop_values = {}
         model.class.crop_types.each do |crop_type|

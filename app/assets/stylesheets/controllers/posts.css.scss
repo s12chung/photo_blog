@@ -3,11 +3,32 @@ body[data-controller="posts"] {
     section.post {
       article.post {
         @include backgrounded;
-
         position: relative;
-        header {
+
+        &:hover {
+          .color {
+            opacity: 1;
+          }
+        }
+
+        header,
+        img.color {
           position: absolute;
           width: 100%;
+          top: 0;
+        }
+
+        img {
+          width: 100%;
+          display: block;
+
+          &.color {
+            opacity: 0;
+            transition: opacity $transition_speed;
+          }
+        }
+
+        header {
           height: 100%;
           @include center_container;
 
@@ -15,11 +36,6 @@ body[data-controller="posts"] {
             font-size: 2em;
             margin: 0;
           }
-        }
-
-        img {
-          width: 100%;
-          display: block;
         }
       }
     }

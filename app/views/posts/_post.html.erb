@@ -1,11 +1,13 @@
 <%= link_to post_path(post), data: { read_url: post_path(post), edit_url: edit_post_path(post) } do %>
     <article class="post">
+      <%= image_tag post.photo.index.gray %>
+      <%= image_tag post.photo.index, class: "color" %>
+
       <header>
         <div>
           <div class="date"><%= post.date %></div>
           <h3><%= post.title %></h3>
         </div>
       </header>
-      <%= image_tag post.photo.index.gray.url %>
     </article>
 <% end %>
