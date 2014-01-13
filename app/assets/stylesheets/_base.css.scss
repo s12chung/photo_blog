@@ -34,6 +34,12 @@ $read: 28px;
   p {
     margin: 40px 0;
   }
+
+  .huge {
+    font-size: $huge;
+    font-style: italic;
+    line-height: 1.2;
+  }
 }
 
 @mixin text_shadow {

@@ -45,6 +45,7 @@ body[data-controller="posts"] {
     .summary_content {
       @include backgrounded;
       line-height: 1.2;
+      max-width: 750px;
 
       h2 {
         display: inline;

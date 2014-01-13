@@ -11,10 +11,10 @@ module PostPresenter
     markdown.sub(self.class::SUMMARY_CUTOFF, "")
   end
   def markdown_html
-    self.class.process_markdown clean_markdown
+    html
   end
   def summary_html
-    self.class.process_markdown markdown.split(self.class::SUMMARY_CUTOFF).first + "\u2026"
+    html false
   end
 
   def to_photoswipe
@@ -27,6 +27,25 @@ module PostPresenter
   end
 
   protected
+  def html(full=true)
+    partition = markdown.partition self.class::SUMMARY_CUTOFF
+    content = partition.first
+
+    if !full && partition[1] == "[\u2026]"
+      content.chomp!(".")
+      content += "\u2026"
+    end
+    if partition.last.first == "\r"
+      content = content_tag :p, content, class: "huge"
+    end
+
+    if full
+      content += partition.last
+    end
+
+    self.class.process_markdown content
+  end
+
   module ClassMethods
     def process_markdown(markdown)
       markdown_options = %w/autolink no_intra_emphasis/
