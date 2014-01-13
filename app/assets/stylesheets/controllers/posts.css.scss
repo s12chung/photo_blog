@@ -44,7 +44,20 @@ body[data-controller="posts"] {
   &[data-action="show"] {
     .summary_content {
       @include backgrounded;
+      line-height: 1.2;
+
+      h2 {
+        display: inline;
+        font-size: $read + 10px;
+      }
+
+      .html {
+        font-style: italic;
+      }
+
       .read_more {
+        margin-top: 10px;
+        font-style: italic;
         padding: 5px 20px;
         display: inline-block;
         $grey: 50;

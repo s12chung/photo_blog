@@ -1,8 +1,7 @@
 <div class="summary_content">
   <div>
-    <div><%= l post.date %></div>
-    <h2><%= set_title post.title %></h2>
-    <div>
+    <%= l post.date %><h2>&mdash; <%= set_title post.title %></h2>
+    <div class="html">
       <%= post.summary_html %>
     </div>
   </div>
