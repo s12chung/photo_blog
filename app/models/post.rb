@@ -21,7 +21,7 @@ class Post
     end
   end
 
-  def has_text?
+  def has_content?
     !!markdown.index(/\r\n/)
   end
 

@@ -2,14 +2,14 @@
   <div>
     <%= l post.date %>
     <h2><%= set_title post.title %></h2>
-    <% unless post.has_text? %>
+    <% unless post.has_content? %>
         <div class="html">
           <%= post.markdown_html %>
         </div>
     <% end %>
   </div>
   <div>
-    <% if post.has_text? %>
+    <% if post.has_content? %>
         <%
            text = "Read Story"
            klass = "read_story"

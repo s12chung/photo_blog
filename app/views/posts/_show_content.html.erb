@@ -1,6 +1,10 @@
 <section class="main">
   <div class="left">
-    <%= @post.markdown_html %>
+    <% if @post.has_content? %>
+        <div class="content">
+          <%= @post.markdown_html %>
+        </div>
+    <% end %>
   </div>
   <div class="right">
     <%= if authenticated?; link_to "Edit", edit_post_path(@post) end %>
