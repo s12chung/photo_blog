@@ -13,7 +13,6 @@ class Post
   CROP_ATTRIBUTES.each do |attribute|
     field attribute, type: BigDecimal
   end
-  SUMMARY_CUTOFF = /\[\u2026?\]/
 
   after_update do
     unless (changed & self.class.crop_attributes.map(&:to_s)).empty?
@@ -22,7 +21,7 @@ class Post
   end
 
   def has_text?
-    markdown.strip.split(self.class::SUMMARY_CUTOFF).size == 2
+    !!markdown.index(/\r\n/)
   end
 
   def markdown=(markdown)

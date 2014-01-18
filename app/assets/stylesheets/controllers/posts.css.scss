@@ -48,15 +48,14 @@ body[data-controller="posts"] {
       max-width: 750px;
 
       h2 {
-        display: inline;
-        font-size: $read + 10px;
+        font-size: $read + 30px;
       }
 
       .html {
         font-style: italic;
       }
 
-      .read_more {
+      .read_story {
         margin-top: 10px;
         font-style: italic;
         padding: 5px 20px;

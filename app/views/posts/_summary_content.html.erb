@@ -1,15 +1,18 @@
 <div class="summary_content">
   <div>
-    <%= l post.date %><h2>&mdash;<%= set_title post.title %></h2>
-    <div class="html">
-      <%= post.summary_html %>
-    </div>
+    <%= l post.date %>
+    <h2><%= set_title post.title %></h2>
+    <% unless post.has_text? %>
+        <div class="html">
+          <%= post.markdown_html %>
+        </div>
+    <% end %>
   </div>
   <div>
     <% if post.has_text? %>
         <%
-           text = "Read More"
-           klass = "read_more"
+           text = "Read Story"
+           klass = "read_story"
         %>
 
         <% if user_agent.mobile? %>
