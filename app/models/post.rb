@@ -1,11 +1,13 @@
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Geospatial
 
   field :title
   field :markdown
   field :date, type: Date
   field :draft, type: Boolean
+  field :location, type: Point
 
   mount_uploader :photo, PhotoUploader
   CROP_TYPES = %i[x y w h]
