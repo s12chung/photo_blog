@@ -38,8 +38,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
   version :crop_preview do
     process resize_to_limit: [1400, 99999]
   end
+
+  TO_CROP_WIDTH = 345
   version :to_crop, from_version: :crop_preview do
-    process resize_to_limit: [345, 600]
+    process resize_to_limit: [TO_CROP_WIDTH, 600]
   end
   version :index do
     process :crop
@@ -49,18 +51,22 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   def crop
-    if model.crop_x.present?
-      manipulate! do |img|
-        to_crop_image = MiniMagick::Image.open(model.photo.versions[:to_crop].path)
+    unless model.crop_x
+      model.crop_x = model.crop_y = 0
+      model.crop_w = TO_CROP_WIDTH
+      model.crop_h = (TO_CROP_WIDTH/Post::RATIO).to_f
+    end
 
-        crop_values = {}
-        model.class.crop_types.each do |crop_type|
-          crop_values[crop_type] = (model.send("crop_#{crop_type}")/to_crop_image['width']) * img['width']
-        end
+    manipulate! do |img|
+      to_crop_image = MiniMagick::Image.open(model.photo.versions[:to_crop].path)
 
-        img.crop("#{crop_values[:w]}x#{crop_values[:h]}+#{crop_values[:x]}+#{crop_values[:y]}")
-        img
+      crop_values = {}
+      model.class.crop_types.each do |crop_type|
+        crop_values[crop_type] = (model.send("crop_#{crop_type}")/to_crop_image['width']) * img['width']
       end
+
+      img.crop("#{crop_values[:w]}x#{crop_values[:h]}+#{crop_values[:x]}+#{crop_values[:y]}")
+      img
     end
   end
 

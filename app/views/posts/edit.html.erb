@@ -4,7 +4,7 @@
         $(document).imagesLoaded(function() {
             var $crop_image = $(data_behavior("crop"));
             var $crop_preview = $(data_behavior("crop_preview"));
-            var ratio = 14/3;
+            var ratio = <%= Post::RATIO %>;
             var cached_coords = <%= @post.coords.to_json.html_safe %>;
 
             var update = function(coords) {
