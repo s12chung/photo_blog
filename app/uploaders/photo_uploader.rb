@@ -58,7 +58,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
     end
 
     manipulate! do |img|
-      to_crop_image = MiniMagick::Image.open(model.photo.to_crop.path)
+      to_crop_image = MiniMagick::Image.open(model.photo.to_crop.url)
 
       crop_values = {}
       model.class.crop_types.each do |crop_type|
