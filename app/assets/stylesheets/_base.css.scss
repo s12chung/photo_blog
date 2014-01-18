@@ -4,6 +4,7 @@ $max-width: 1140px;
 @import 'patterns';
 
 $ink: #333;
+$ink_red: #B83000;
 $background_ink: white;
 $semibold: 600;
 
@@ -28,7 +29,11 @@ $read: 28px;
 
   a {
     text-decoration: none;
-    color: $ink;
+    color: $ink_red;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   p {
