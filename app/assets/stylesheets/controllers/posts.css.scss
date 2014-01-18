@@ -48,6 +48,8 @@ body[data-controller="posts"] {
       max-width: 750px;
 
       h2 {
+        line-height: 1;
+        margin-bottom: 2px;
         font-size: $read + 30px;
       }
 
@@ -152,7 +154,7 @@ body[data-controller="posts"] {
 
           .summary_content {
             position: absolute;
-            bottom: 100px;
+            bottom: 120px;
           }
         }
       }
