@@ -45,12 +45,11 @@ body[data-controller="posts"] {
   &[data-action="show"] {
     .summary_content {
       @include backgrounded;
-      line-height: 1.2;
+      line-height: 1;
       max-width: 750px;
 
       h2 {
-        line-height: 1;
-        margin-bottom: 0.03em;
+        margin-bottom: 0.2em;
         font-size: $heading;
       }
 
