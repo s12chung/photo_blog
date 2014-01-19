@@ -5,7 +5,8 @@ body[data-controller="posts"] {
         @include backgrounded;
         position: relative;
 
-        &:hover {
+        &:hover,
+        &:active {
           .color {
             opacity: 1;
           }
