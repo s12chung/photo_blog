@@ -165,7 +165,7 @@ body[data-controller="posts"] {
       z-index: 2001;
       height: 100%;
       width: 100%;
-      background-color: white;
+      @include paper_background;
 
       visibility: hidden;
       opacity: 0;
