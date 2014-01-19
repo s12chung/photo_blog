@@ -17,6 +17,8 @@ $huge: 2.7em;
 $p_margin: 1.3em;
 $p_huge_margin: 0.5em;
 
+$outter_margin: 10px;
+
 @mixin base {
   font-size: $read;
   line-height: 1.5;

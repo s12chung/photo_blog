@@ -49,7 +49,7 @@ body[data-controller="posts"] {
 
       h2 {
         line-height: 1;
-        margin-bottom: 2px;
+        margin-bottom: 0.03em;
         font-size: $heading;
       }
 
@@ -58,9 +58,9 @@ body[data-controller="posts"] {
       }
 
       .read_story {
-        margin-top: 10px;
+        margin-top: 0.3;
         font-style: italic;
-        padding: 5px 20px;
+        padding: 0.16em 0.66em;
         display: inline-block;
         $grey: 50;
         background-color: rgba($grey, $grey, $grey, 0.5);
@@ -109,7 +109,6 @@ body[data-controller="posts"] {
           }
         }
       }
-      $outter_margin: 10px;
       .left {
         left: 0;
         width: 20%;
@@ -153,7 +152,7 @@ body[data-controller="posts"] {
 
           .summary_content {
             position: absolute;
-            bottom: 120px;
+            bottom: 15vh;
           }
         }
       }
@@ -161,7 +160,7 @@ body[data-controller="posts"] {
 
     .ps-caption {
       .summary_content {
-        padding-bottom: 50px;
+        padding-bottom: 1.6em;
       }
     }
     .popup {
@@ -194,7 +193,7 @@ body[data-controller="posts"] {
     }
 
     section.main {
-      margin-top: 25px;
+      margin-top: 1em;
 
       .left {
         @include span-columns(8);
