@@ -181,12 +181,14 @@ body[data-controller="posts"] {
 
       .close_link {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        $distance_from_corner: 20px;
+        top: $distance_from_corner;
+        right: $distance_from_corner;
 
         .close_x {
-          width: 30px;
-          height: 30px;
+          $close_x_size: 30px;
+          width: $close_x_size;
+          height: $close_x_size;
           opacity: 0.3;
         }
       }
@@ -211,13 +213,13 @@ body[data-controller="posts"] {
       overflow: hidden;
     }
     section.main {
-      margin-top: 30px;
+      margin-top: 1em;
 
       .left {
         @include span-columns(8);
 
         textarea {
-          height: 500px;
+          height: 15em;
         }
       }
       .right {
@@ -225,7 +227,7 @@ body[data-controller="posts"] {
 
         .preview_link {
           display: block;
-          margin-top: 20px;
+          margin-top: 0.6em;
         }
       }
     }
