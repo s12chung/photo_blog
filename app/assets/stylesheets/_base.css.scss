@@ -10,8 +10,9 @@ $semibold: 600;
 
 $transition_speed: 400ms ease 0s;
 
-$huge: 80px;
 $read: 30px;
+$heading: 2em;
+$huge: 2.7em;
 
 @mixin base {
   font-size: $read;

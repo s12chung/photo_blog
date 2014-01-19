@@ -1,4 +1,4 @@
-load_behavior(function() {
+$(function() {
     var read_text = "Reading";
     var edit_text = "Editing";
     var $read_mode = $(data_behavior('read_mode'));

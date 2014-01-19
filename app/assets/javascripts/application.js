@@ -17,10 +17,13 @@
 function data_behavior(behavior) {
     return "[data-behavior~='" + behavior + "']";
 }
-function load_behavior(f) {
-    $(f);
-    addEventListener('page:load', f);
-}
 function defined(variable) {
     return typeof variable != 'undefined' && variable != null;
 }
+
+$(function() {
+    $('body').flowtype({
+        minFont   : 12,
+        maxFont   : 30
+    });
+});

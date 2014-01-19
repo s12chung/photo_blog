@@ -1,4 +1,4 @@
-load_behavior(function() {
+$(function() {
     $(data_behavior("scroll_to")).click(function(e) {
         e.preventDefault();
         e.stopPropagation();
