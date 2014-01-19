@@ -14,6 +14,9 @@ $read: 30px;
 $heading: 2em;
 $huge: 2.7em;
 
+$p_margin: 1.3em;
+$p_huge_margin: 0.5em;
+
 @mixin base {
   font-size: $read;
   line-height: 1.5;
@@ -38,13 +41,14 @@ $huge: 2.7em;
   }
 
   p {
-    margin: 40px 0;
-  }
+    margin: $p_margin 0;
 
-  .huge {
-    font-size: $huge;
-    font-style: italic;
-    line-height: 1.2;
+    &.huge {
+      font-size: $huge;
+      font-style: italic;
+      line-height: 1.2;
+      margin: $p_huge_margin 0;
+    }
   }
 }
 
