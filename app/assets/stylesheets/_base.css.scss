@@ -38,7 +38,7 @@ $outter_margin: 10px;
     color: $ink_red;
 
     &:hover {
-      border-bottom: 1px dotted $ink_red;
+      text-decoration: underline;
     }
   }
 
@@ -46,10 +46,6 @@ $outter_margin: 10px;
     transition: opacity $transition_speed;
     &:hover {
       opacity: 0.7;
-    }
-
-    a:hover {
-      border: 0;
     }
   }
 

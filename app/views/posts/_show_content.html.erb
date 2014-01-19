@@ -6,6 +6,7 @@
             <%= @post.markdown_html %>
           </div>
       <% end %>
+      <%= render "layouts/disqus" %>
     </div>
     <div class="right">
       <%= if authenticated?; link_to "Edit", edit_post_path(@post) end %>
