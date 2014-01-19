@@ -10,7 +10,7 @@ $semibold: 600;
 
 $transition_speed: 400ms ease 0s;
 
-$huge: 60px;
+$huge: 80px;
 $read: 30px;
 
 @mixin base {
@@ -32,7 +32,7 @@ $read: 30px;
     color: $ink_red;
 
     &:hover {
-      text-decoration: underline;
+      border-bottom: 1px dotted $ink_red;
     }
   }
 

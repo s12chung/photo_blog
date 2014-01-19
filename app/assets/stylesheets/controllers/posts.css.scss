@@ -195,6 +195,8 @@ body[data-controller="posts"] {
     }
 
     section.main {
+      margin-top: 25px;
+
       .left {
         font-size: $read;
         @include span-columns(8);
