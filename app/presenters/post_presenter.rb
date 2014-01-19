@@ -8,7 +8,14 @@ module PostPresenter
   end
 
   def markdown_html
-    self.class.process_markdown markdown
+    partition = markdown.partition(/\r\n/)
+    first_paragraph = partition.first
+    content = if first_paragraph.scan(".?!").count <= 2
+                content_tag(:p, first_paragraph, class: "huge") + partition.last
+              else
+                markdown
+              end
+    self.class.process_markdown content
   end
 
   def to_photoswipe
