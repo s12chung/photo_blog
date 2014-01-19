@@ -1,12 +1,14 @@
-<section class="main">
-  <div class="left">
-    <% if @post.has_content? %>
-        <div class="content">
-          <%= @post.markdown_html %>
-        </div>
-    <% end %>
-  </div>
-  <div class="right">
-    <%= if authenticated?; link_to "Edit", edit_post_path(@post) end %>
-  </div>
-</section>
+<div class="container_outer">
+  <section class="main">
+    <div class="left">
+      <% if @post.has_content? %>
+          <div class="content">
+            <%= @post.markdown_html %>
+          </div>
+      <% end %>
+    </div>
+    <div class="right">
+      <%= if authenticated?; link_to "Edit", edit_post_path(@post) end %>
+    </div>
+  </section>
+</div>

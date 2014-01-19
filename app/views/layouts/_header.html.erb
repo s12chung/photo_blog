@@ -1,10 +1,12 @@
-<header class="main">
-  <h1><%= link_to image_tag("logo.svg", class: "logo"), root_path %></h1>
-  <div class="right">
-    <% if authenticated? && action_name == "index" %>
-        <%= link_to "", "#read_mode", data: { behavior: "read_mode" } %>
-    <% end %>
-    <%= link_to "Map" %>
-    <%= link_to "About" %>
-  </div>
-</header>
+<div class="container_outer">
+  <header class="main">
+    <h1><%= link_to image_tag("logo.svg", class: "logo"), root_path %></h1>
+    <div class="right">
+      <% if authenticated? && action_name == "index" %>
+          <%= link_to "", "#read_mode", data: { behavior: "read_mode" } %>
+      <% end %>
+      <%= link_to "Map" %>
+      <%= link_to "About" %>
+    </div>
+  </header>
+</div>

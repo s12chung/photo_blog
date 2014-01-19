@@ -3,8 +3,10 @@
     <%= direction_arrow :left %>
     <%= direction_arrow :right %>
 
-    <div class="container">
-      <%= render "summary_content", post: @post %>
+    <div class="container_outer">
+      <div class="container">
+        <%= render "summary_content", post: @post %>
+      </div>
     </div>
   </div>
 
