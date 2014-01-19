@@ -1,5 +1,5 @@
 <header class="main">
-  <%= link_to root_path do %><h1><%= image_tag("logo.svg", class: "logo") %></h1><% end %>
+  <h1><%= link_to image_tag("logo.svg", class: "logo"), root_path %></h1>
   <div class="right">
     <% if authenticated? && action_name == "index" %>
         <%= link_to "", "#read_mode", data: { behavior: "read_mode" } %>

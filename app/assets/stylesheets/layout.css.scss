@@ -34,11 +34,11 @@ header.main {
   @include float_left_right_container;
 
   .logo {
-    width: 50px;
+    width: 1em;
   }
   .right {
-    margin-top: 30px;
-    @include horizontal_spacer_container(20px);
+    margin-top: 1em;
+    @include horizontal_spacer_container(.6em);
   }
 }
 
