@@ -171,6 +171,9 @@ body[data-controller="posts"] {
       opacity: 0;
       transition: opacity $transition_speed;
 
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+
       &.visible {
         visibility: visible;
         opacity: 1;
@@ -183,7 +186,7 @@ body[data-controller="posts"] {
         right: $distance_from_corner;
 
         .close_x {
-          $close_x_size: 30px;
+          $close_x_size: 20px;
           width: $close_x_size;
           height: $close_x_size;
           opacity: 0.3;
