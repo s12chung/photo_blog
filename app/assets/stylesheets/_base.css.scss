@@ -33,6 +33,12 @@ $outter_margin: 10px;
     font-weight: $semibold;
   }
 
+  h2,
+  h3 {
+    font-size: $heading;
+    margin: 0;
+  }
+
   a {
     text-decoration: none;
     color: $ink_red;

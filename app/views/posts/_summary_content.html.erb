@@ -1,25 +1,29 @@
-<div class="summary_content">
-  <div>
-    <%= l post.date %>
-    <h2><%= set_title post.title %></h2>
-    <% unless post.has_content? %>
-        <div class="html">
-          <%= post.markdown_html %>
-        </div>
-    <% end %>
-  </div>
-  <div>
-    <% if post.has_content? %>
-        <%
-           text = "Read Story"
-           klass = "read_story"
-        %>
-
-        <% if user_agent.mobile? %>
-            <%= link_to text, show_content_post_path, data: { behavior: "show_popup" }, class: klass %>
-        <% else %>
-            <%= link_to text, "#show_content", data: { behavior: "scroll_to", scroll_to: "section.main" }, class: klass %>
+<div class="container_outer">
+  <div class="container">
+    <div class="summary_content">
+      <div>
+        <%= l post.date %>
+        <h2><%= set_title post.title %></h2>
+        <% unless post.has_content? %>
+            <div class="html">
+              <%= post.markdown_html %>
+            </div>
         <% end %>
-    <% end %>
+      </div>
+      <div>
+        <% if post.has_content? %>
+            <%
+               text = "Read Story"
+               klass = "read_story"
+            %>
+
+            <% if user_agent.mobile? %>
+                <%= link_to text, show_content_post_path, data: { behavior: "show_popup" }, class: klass %>
+            <% else %>
+                <%= link_to text, "#show_content", data: { behavior: "scroll_to", scroll_to: "section.main" }, class: klass %>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

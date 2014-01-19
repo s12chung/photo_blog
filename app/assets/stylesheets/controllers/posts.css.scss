@@ -32,41 +32,39 @@ body[data-controller="posts"] {
         header {
           height: 100%;
           @include center_container;
-
-          h3 {
-            font-size: $heading;
-            margin: 0;
-          }
         }
       }
     }
   }
 
   &[data-action="show"] {
-    .summary_content {
-      @include backgrounded;
-      line-height: 1;
-      max-width: 750px;
+    .container {
+      @include outer-container;
+      height: 100%;
+      .summary_content {
+        @include backgrounded;
+        line-height: 1;
+        max-width: 750px;
 
-      h2 {
-        margin-bottom: 0.2em;
-        font-size: $heading;
-      }
+        .html {
+          font-style: italic;
+        }
 
-      .html {
-        font-style: italic;
-      }
+        p {
+          margin: 0;
+        }
 
-      .read_story {
-        margin-top: 0.3;
-        font-style: italic;
-        padding: 0.16em 0.66em;
-        display: inline-block;
-        $grey: 50;
-        background-color: rgba($grey, $grey, $grey, 0.5);
-        transition: background-color $transition_speed;
-        &:hover {
-          background-color: rgba($grey, $grey, $grey, 0.8);
+        .read_story {
+          margin-top: 0.3;
+          font-style: italic;
+          padding: 0.16em 0.66em;
+          display: inline-block;
+          $grey: 50;
+          background-color: rgba($grey, $grey, $grey, 0.5);
+          transition: background-color $transition_speed;
+          &:hover {
+            background-color: rgba($grey, $grey, $grey, 0.8);
+          }
         }
       }
     }
@@ -146,21 +144,16 @@ body[data-controller="posts"] {
         transition: opacity $transition_speed;
         opacity: 0;
 
-        .container {
-          @include outer-container;
-          height: 100%;
-
-          .summary_content {
-            position: absolute;
-            bottom: 15vh;
-          }
+        .summary_content {
+          position: absolute;
+          bottom: 15vh;
         }
       }
     }
 
     .ps-caption {
       .summary_content {
-        padding-bottom: 1.6em;
+        padding-bottom: 1em;
       }
     }
     .popup {
