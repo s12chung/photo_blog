@@ -20,7 +20,7 @@ $p_huge_margin: 0.5em;
 $outter_margin: 10px;
 
 @mixin paper_background {
-  background: url("background.png") repeat scroll 0% 0% transparent;
+  background: image-url("background.png") repeat scroll 0% 0% transparent;
 }
 
 @mixin base {
