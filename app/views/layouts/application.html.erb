@@ -28,11 +28,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
-<% unless content_for? :header %>
-    <%= render "layouts/header" %>
-<% else %>
-    <%= yield :header %>
-<% end %>
 <%= yield %>
 
 </body>

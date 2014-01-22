@@ -1,7 +1,3 @@
-<% content_for :header do %>
-    <%= render "layouts/invisible_header" %>
-<% end %>
-
 <% if user_agent.mobile? %>
     <%= render "photoswipe" %>
 <% else %>

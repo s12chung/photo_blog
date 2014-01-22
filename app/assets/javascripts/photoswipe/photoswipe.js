@@ -4510,8 +4510,12 @@
                 return;
             }
 
-            Util.DOM.removeClass(this.previousEl, PhotoSwipe.Toolbar.CssClasses.previousDisabled);
-            Util.DOM.removeClass(this.nextEl, PhotoSwipe.Toolbar.CssClasses.nextDisabled);
+            if (!Util.isNothing(this.previousEl)){
+                Util.DOM.removeClass(this.previousEl, PhotoSwipe.Toolbar.CssClasses.previousDisabled);
+            }
+            if (!Util.isNothing(this.nextEl)){
+                Util.DOM.removeClass(this.nextEl, PhotoSwipe.Toolbar.CssClasses.nextDisabled);
+            }
 
             if (index > 0 && index < this.cache.images.length-1){
                 return;
