@@ -13,8 +13,7 @@
 
   <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" %>
   <% if user_agent.mobile? %>
-      <%= javascript_include_tag "klass.min.js" %>
-      <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/photoswipe/3.0.5/code.photoswipe.min.js" %>
+      <%= javascript_include_tag "photoswipe" %>
   <% else %>
       <%= stylesheet_link_tag "desktop", media: "all" %>
       <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/css/jquery.Jcrop.min.css" %>
@@ -25,7 +24,7 @@
       <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js" %>
       <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js" %>
   <% end %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">

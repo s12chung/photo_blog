@@ -10,21 +10,5 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery_ujs
-//= require_self
-//= require_tree ./lib
-//= require_tree ./behaviors
-
-function data_behavior(behavior) {
-    return "[data-behavior~='" + behavior + "']";
-}
-function defined(variable) {
-    return typeof variable != 'undefined' && variable != null;
-}
-
-$(function() {
-    $('body').flowtype({
-        minFont   : 12,
-        maxFont   : 30
-    });
-});
+//= require photoswipe/klass.min
+//= require photoswipe/photoswipe
