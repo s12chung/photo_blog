@@ -46,10 +46,6 @@ body[data-controller="posts"] {
       width: 100%;
       position: relative;
 
-      * {
-        margin: 0;
-      }
-
       &:hover {
         .left,
         .right {
