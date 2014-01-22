@@ -4,16 +4,18 @@ $(function() {
 
         e.preventDefault();
         var $popup = $(data_behavior('popup'));
-        $popup.addClass('visible');
+        $popup.css({ opacity: 1, visibility: 'visible' });
 
         $(data_behavior('close_x')).click(function(e) {
             photoswipe.addEventHandlers();
 
             e.preventDefault();
-            $popup.removeClass('visible');
+            $popup.css({ opacity: 0 });
 
-            var $close_x = $popup.children().first();
-            $popup.empty().append($close_x);
+            setTimeout(function() {
+                var $close_x = $popup.children().first();
+                $popup.css({ visibility: 'hidden' }).empty().append($close_x);
+            }, 400);
         });
 
         $.get($(this).prop('href'));

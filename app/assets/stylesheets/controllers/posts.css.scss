@@ -92,11 +92,6 @@ body[data-controller="posts"] {
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
 
-      &.visible {
-        visibility: visible;
-        opacity: 1;
-      }
-
       .close_link {
         position: absolute;
         $distance_from_corner: 20px;
