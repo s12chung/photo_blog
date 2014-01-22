@@ -22,9 +22,8 @@ function defined(variable) {
     return typeof variable != 'undefined' && variable != null;
 }
 
-$(function() {
-    $('body').flowtype({
-        minFont   : 12,
-        maxFont   : 30
+function flow_type(options) {
+    $(function() {
+        $('body').flowtype(options);
     });
-});
+}
