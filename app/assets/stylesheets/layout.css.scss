@@ -10,29 +10,6 @@ section.main {
   padding: 0 1em;
 }
 
-header.invisible {
-  position: absolute;
-  z-index: 2000;
-  top: 0;
-  width: 100%;
-
-  transition: background-color $transition_speed;
-  .right {
-    transition: opacity $transition_speed;
-  }
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    .right {
-      opacity: 1;
-    }
-  }
-
-  .right {
-    opacity: 0;
-  }
-}
-
 header.main {
   @include float_left_right_container;
 
@@ -43,12 +20,4 @@ header.main {
     margin-top: 1em;
     @include horizontal_spacer_container(.6em);
   }
-}
-
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="tel"],
-input[type="email"] {
-  width: 100%;
 }

@@ -25,7 +25,6 @@ body[data-controller="posts"] {
 
           &.color {
             opacity: 0;
-            transition: opacity 2000ms ease;
           }
         }
 
@@ -73,88 +72,6 @@ body[data-controller="posts"] {
       }
     }
 
-    .photo_box {
-      width: 100%;
-      position: relative;
-
-      * {
-        margin: 0;
-      }
-
-      &:hover {
-        .left,
-        .right {
-          opacity: 0.3;
-        }
-        .summary {
-          opacity: 1;
-        }
-      }
-
-      .left,
-      .right {
-        opacity: 0;
-        position: absolute;
-        height: 100%;
-        @include clearfix;
-
-        &:hover {
-          opacity: 1;
-        }
-        .container {
-          height: 100%;
-          width: 100%;
-          @include center_container_vertical;
-
-          a {
-            width: 100%;
-          }
-        }
-      }
-      .left {
-        left: 0;
-        width: 20%;
-        img {
-          float: left;
-          padding-left: $outter_margin;
-        }
-      }
-      .right {
-        right: 0;
-        width: 80%;
-        img {
-          float: right;
-          padding-right: $outter_margin;
-        }
-      }
-
-      .inner {
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        @include center_container;
-
-        .photo {
-          max-height: 100%;
-          max-width: 100%;
-        }
-      }
-
-      .summary {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-
-        transition: opacity $transition_speed;
-        opacity: 0;
-
-        .summary_content {
-          position: absolute;
-          bottom: 15vh;
-        }
-      }
-    }
-
     .ps-caption {
       .summary_content {
         padding-bottom: 1em;
@@ -190,44 +107,6 @@ body[data-controller="posts"] {
           width: $close_x_size;
           height: $close_x_size;
           opacity: 0.3;
-        }
-      }
-    }
-
-    section.main {
-      margin-top: 1em;
-
-      .left {
-        @include span-columns(8);
-      }
-      .right {
-        @include shift(1);
-        @include span-columns(3);
-      }
-    }
-  }
-
-  &[data-action="edit"] {
-    .preview {
-      width: 100%;
-      overflow: hidden;
-    }
-    section.main {
-      margin-top: 1em;
-
-      .left {
-        @include span-columns(8);
-
-        textarea {
-          height: 15em;
-        }
-      }
-      .right {
-        @include span-columns(4);
-
-        .preview_link {
-          display: block;
-          margin-top: 0.6em;
         }
       }
     }
