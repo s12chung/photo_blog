@@ -58,3 +58,4 @@ gem 'easy_presenter'
 
 gem 'redcarpet'
 gem 'useragent'
+gem 'rails_12factor'
