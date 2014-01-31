@@ -93,18 +93,35 @@ body[data-controller="posts"] {
         position: fixed;
         top: 0;
         width: 100%;
-        @include clearfix;
+        @include float_left_container;
 
         z-index: 1;
         @include paper_background;
         border-bottom: 1px solid $light;
 
+        text-align: center;
+
+        $close_link_padding: 10px;
+        $close_x_size: 20px;
+        $space_size: $close_link_padding * 2 + $close_x_size;
+
+        .space {
+          width: $space_size;
+          height: $space_size;
+        }
+
+        .title {
+          $adjustment: 2px;
+          margin-top: $adjustment;
+          height: $space_size - $adjustment;
+          width: -webkit-calc(100% - #{$space_size * 2});
+          @include center_container_vertical;
+        }
+
         .close_link {
-          padding: 10px;
-          float: right;
+          padding: $close_link_padding;
 
           .close_x {
-            $close_x_size: 20px;
             width: $close_x_size;
             height: $close_x_size;
             opacity: 0.3;
