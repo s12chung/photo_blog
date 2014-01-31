@@ -4,6 +4,7 @@ $max-width: 1140px;
 @import 'patterns';
 
 $ink: #333;
+$light: #DDD;
 $ink_red: #B83000;
 $background_ink: white;
 $semibold: 600;
@@ -12,10 +13,14 @@ $transition_speed: 400ms ease 0s;
 
 $read: 30px;
 $heading: 2em;
-$huge: 2.2em;
+$huge: 1.8em;
 
-$p_margin: 1.3em;
-$p_huge_margin: 0.5em;
+$p_margin: 1.1em;
+$p_huge_margin: 0.3em;
+
+$huge_desktop: 2.2em;
+$p_margin_desktop: 1.3em;
+$p_huge_margin_desktop: 0.5em;
 
 $outter_margin: 10px;
 

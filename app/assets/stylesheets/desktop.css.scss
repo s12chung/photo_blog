@@ -1,5 +1,16 @@
 @import 'base';
 
+body {
+  p {
+    margin: $p_margin_desktop 0;
+
+    &.huge {
+      font-size: $huge;
+      margin: $p_huge_margin 0;
+    }
+  }
+}
+
 header.invisible {
   position: absolute;
   z-index: 2000;
@@ -125,6 +136,10 @@ body[data-controller="posts"] {
 
       .left {
         @include span-columns(8);
+
+        .content {
+          margin-bottom: 5em;
+        }
       }
       .right {
         @include shift(1);

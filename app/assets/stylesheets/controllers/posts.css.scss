@@ -25,7 +25,7 @@ body[data-controller="posts"] {
 
           &.color {
             opacity: 0;
-            transition: opacity 500ms ease;
+            transition: opacity 250ms ease;
           }
         }
 
@@ -81,29 +81,43 @@ body[data-controller="posts"] {
     .popup {
       position: absolute;
       z-index: 2001;
-      height: 100%;
-      width: 100%;
       @include paper_background;
+      width: 100%;
+      min-height: 100%;
 
       visibility: hidden;
       opacity: 0;
       transition: opacity $transition_speed;
 
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        @include clearfix;
 
-      .close_link {
-        position: absolute;
-        $distance_from_corner: 20px;
-        top: $distance_from_corner;
-        right: $distance_from_corner;
+        z-index: 1;
+        @include paper_background;
+        border-bottom: 1px solid $light;
 
-        .close_x {
-          $close_x_size: 20px;
-          width: $close_x_size;
-          height: $close_x_size;
-          opacity: 0.3;
+        .close_link {
+          padding: 10px;
+          float: right;
+
+          .close_x {
+            $close_x_size: 20px;
+            width: $close_x_size;
+            height: $close_x_size;
+            opacity: 0.3;
+            display: block;
+          }
         }
+      }
+
+      .content {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 40px;
+        margin-bottom: 2em;
       }
     }
   }
