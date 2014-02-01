@@ -137,7 +137,7 @@ body[data-controller="posts"] {
       .left {
         @include span-columns(8);
 
-        .content {
+        .markdown {
           margin-bottom: 5em;
         }
       }
@@ -159,8 +159,11 @@ body[data-controller="posts"] {
       .left {
         @include span-columns(8);
 
-        textarea {
+        .markdown {
           height: 15em;
+        }
+        .footnote {
+          height: 5em;
         }
       }
       .right {

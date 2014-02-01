@@ -4,6 +4,7 @@ class Post
 
   field :title, default: "Post Title"
   field :markdown, default: "A post is just the beginning."
+  field :footnote_text
   field :date, type: Date, default: -> { Date.today }
   field :draft, type: Boolean, default: false
 
@@ -26,13 +27,19 @@ class Post
   end
 
   def markdown=(markdown)
-    if markdown.include? "\""
+    super clean_text(markdown)
+  end
+
+  def footnote_text=(footnote_text)
+    super clean_text(footnote_text)
+  end
+
+  protected
+  def clean_text(text)
+    if text.include? "\""
       raise("You have quotes!")
     end
-    markdown = markdown.clone
-    markdown.gsub!("...", "\u2026")
-    markdown.gsub!(" - ", "\u2014")
-    super markdown
+    text.gsub("...", "\u2026").gsub(" - ", "\u2014")
   end
 
   class << self

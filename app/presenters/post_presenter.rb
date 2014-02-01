@@ -1,4 +1,6 @@
 module PostPresenter
+  BULLET_REGEX = /[-*]\s{0,3}/
+
   def coords
     coords = {}
     self.class::CROP_TYPES.each do |crop_type|
@@ -16,6 +18,16 @@ module PostPresenter
                 markdown
               end
     self.class.process_markdown content
+  end
+
+  def footnotes
+    if footnote_text
+      split = footnote_text.split(/\r\n#{BULLET_REGEX}/)
+      split.first.sub!(BULLET_REGEX, "")
+      split
+    else
+      []
+    end
   end
 
   def to_photoswipe

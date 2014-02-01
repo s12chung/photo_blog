@@ -3,7 +3,21 @@
     <div class="left">
       <% if @post.has_content? %>
           <div class="content">
-            <%= @post.markdown_html %>
+            <div class="markdown">
+              <%= @post.markdown_html %>
+            </div>
+
+            <% unless @post.footnotes.empty? %>
+                <div class="footnotes">
+                  <ol>
+                    <% @post.footnotes.each do |footnote| %>
+                        <li>
+                          <%= footnote %>
+                        </li>
+                    <% end %>
+                  </ol>
+                </div>
+            <% end %>
           </div>
       <% end %>
       <%= render "layouts/disqus" %>
