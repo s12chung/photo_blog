@@ -73,11 +73,32 @@ body[data-controller="posts"] {
       }
     }
 
-    .ps-caption {
-      .summary_content {
-        padding-bottom: 1em;
+    .swipe {
+      height: 100%;
+      ul {
+        @include clean_list;
+
+        .pinch_zoom {
+          width: 100%;
+
+          &,
+          img {
+            -webkit-user-drag: none;
+          }
+
+          img {
+            max-height: 100%;
+            max-width: 100%;
+          }
+
+          .center_container {
+            height: 100%;
+            @include center_container;
+          }
+        }
       }
     }
+
     .popup {
       position: absolute;
       z-index: 2001;

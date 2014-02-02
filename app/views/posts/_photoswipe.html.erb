@@ -1,3 +1,4 @@
+<% set_title @post.title %>
 <div class="popup" data-behavior="popup">
   <header>
     <div class="space"></div>
@@ -10,36 +11,16 @@
   <div data-behavior="popup_content" class="popup_content container_outer"></div>
 </div>
 
-<script>
-    $(function(){
-        var last_index = 0;
-        photoswipe = Code.PhotoSwipe.attach(<%= ([@post.to_photoswipe]).to_json.html_safe %>,
-                {
-                    captionAndToolbarFlipPosition: true,
-                    captionAndToolbarAutoHideDelay: 0,
-                    captionAndToolbarOpacity: 1,
-                    backButtonHideEnabled: false,
-                    getImageSource: function(obj){
-                        return obj.photo;
-                    },
-                    getImageCaption: function(obj) {
-                        var div = document.createElement('div');
-                        div.innerHTML = obj.caption;
-                        return div;
-                    },
-                    getToolbar: function() {
-                        return "";
-                    }
-                });
-        photoswipe.show(last_index);
-        photoswipe.addEventHandler(Code.PhotoSwipe.EventTypes.onDisplayImage, function(e) {
-            if (last_index != e.index) {
-                var image = photoswipe.getCurrentImage();
-                $('title').html(image.title);
-                history.pushState(e.index, image.title, image.path);
-                last_index = e.index;
-            }
-        });
-    });
-</script>
-<% set_title @post.title %>
+<div data-behavior="swipe" class="swipe">
+  <ul>
+    <% Post.all.each do |post| %>
+        <li>
+          <div data-behavior="pinch_zoom" class="pinch_zoom">
+            <div class="center_container">
+              <%= image_tag post.photo.to_crop %>
+            </div>
+          </div>
+        </li>
+    <% end %>
+  </ul>
+</div>

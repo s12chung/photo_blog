@@ -1,14 +1,11 @@
 $(function() {
     $('body').on('click', data_behavior('show_popup'), function(e) {
-        photoswipe.removeEventHandlers();
-
         e.preventDefault();
         var $popup = $(data_behavior('popup'));
         $popup.css({ opacity: 1, visibility: 'visible' });
 
         $(data_behavior('close_x')).click(function(e) {
             $('body').scrollTop(0);
-            photoswipe.addEventHandlers();
 
             e.preventDefault();
             $popup.css({ opacity: 0 });
