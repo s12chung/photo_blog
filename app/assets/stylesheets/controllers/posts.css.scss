@@ -131,9 +131,7 @@ body[data-controller="posts"] {
       }
 
       .popup_content {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        margin-top: 40px;
+        padding-top: 40px;
         margin-bottom: 2em;
       }
     }
