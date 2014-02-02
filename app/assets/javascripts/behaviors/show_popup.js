@@ -14,7 +14,7 @@ $(function() {
 
             setTimeout(function() {
                 var $close_x = $popup.children().first();
-                $popup.css({ visibility: 'hidden' }).empty().append($close_x);
+                $popup.css({ visibility: 'hidden' });
             }, 400);
         });
 
