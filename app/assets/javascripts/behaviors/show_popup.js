@@ -21,6 +21,7 @@ $(function() {
 
         $(data_behavior('popup_content')).empty();
         Behavior.toggle_popup_spinner();
+        $('body').scrollTop(0);
 
         $.get($(this).prop('href'));
     });
