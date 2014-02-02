@@ -8,9 +8,9 @@
         <ol>
           <% @post.footnotes.each_with_index do |footnote, index| %>
               <% index = index + 1 %>
-              <li>
+              <li id="<%= "footnote_#{index}" %>">
                 <%= footnote %>
-                <%= link_to raw("&#8617;"), "#footnote_reference", id: "footnote_#{index}",
+                <%= link_to raw("&#8617;"), "#footnote_reference",
                             data: { behavior: "scroll_to", scroll_to: "#footnote_reference_#{index}", offset: -5 } %>
               </li>
           <% end %>
