@@ -27,3 +27,4 @@ function flow_type(options) {
         $('body').flowtype(options);
     });
 }
+Behavior = {};

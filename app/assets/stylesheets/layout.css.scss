@@ -1,5 +1,7 @@
 body {
   @include base;
+
+  @include spinner-balls;
 }
 
 header.main,

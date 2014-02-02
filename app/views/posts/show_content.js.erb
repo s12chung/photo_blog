@@ -1,4 +1,5 @@
 $(function() {
+    Behavior.toggle_popup_spinner();
     $(data_behavior('popup_title')).html('<%= j @post.title %>');
     $(data_behavior('popup_content')).html('<%= j render("content") %>');
 });

@@ -7,6 +7,7 @@ $(function() {
         $popup.css({ opacity: 1, visibility: 'visible' });
 
         $(data_behavior('close_x')).click(function(e) {
+            $('body').scrollTop(0);
             photoswipe.addEventHandlers();
 
             e.preventDefault();
@@ -18,6 +19,12 @@ $(function() {
             }, 400);
         });
 
+        $(data_behavior('popup_content')).empty();
+        Behavior.toggle_popup_spinner();
+
         $.get($(this).prop('href'));
     });
 });
+Behavior.toggle_popup_spinner = function() {
+  $(data_behavior('popup_spinner')).toggle();
+};

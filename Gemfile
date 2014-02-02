@@ -55,6 +55,8 @@ gem 'mini_magick'
 gem 'bourbon'
 gem 'neat'
 gem 'patterns'
+gem 'compass-rails'
+gem 'animation'
 
 gem 'easy_presenter'
 
