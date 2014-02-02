@@ -1,4 +1,4 @@
 $(function() {
     $(data_behavior('popup_title')).html('<%= j @post.title %>');
-    $(data_behavior('popup_content')).html('<%= j @post.markdown_html %>');
+    $(data_behavior('popup_content')).html('<%= j render("content") %>');
 });

@@ -4,7 +4,7 @@ $max-width: 1140px;
 @import 'patterns';
 
 $ink: #231F20;
-$light: #85868A;
+$light: #DDD;
 $ink_red: #9E4130;
 $background_ink: white;
 $semibold: 600;
@@ -23,6 +23,8 @@ $p_margin_desktop: 1.3em;
 $p_huge_margin_desktop: 0.5em;
 
 $outter_margin: 10px;
+
+@mixin phone { @media only screen and (max-device-width: 767px) { @content; } }
 
 @mixin paper_background {
   background: image-url("background.png") repeat scroll 0% 0% transparent;

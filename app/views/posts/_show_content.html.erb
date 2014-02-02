@@ -2,26 +2,7 @@
   <section class="main">
     <div class="left">
       <% if @post.has_content? %>
-          <div class="content">
-            <div class="markdown">
-              <%= @post.markdown_html %>
-            </div>
-
-            <% unless @post.footnotes.empty? %>
-                <div class="footnotes">
-                  <ol>
-                    <% @post.footnotes.each_with_index do |footnote, index| %>
-                        <% index = index + 1 %>
-                        <li>
-                          <%= footnote %>
-                          <%= link_to raw("&#8617;"), "#footnote_reference", id: "footnote_#{index}",
-                                      data: { behavior: "scroll_to", scroll_to: "#footnote_reference_#{index}" } %>
-                        </li>
-                    <% end %>
-                  </ol>
-                </div>
-            <% end %>
-          </div>
+        <%= render "content" %>
       <% end %>
       <%= render "layouts/disqus" %>
     </div>

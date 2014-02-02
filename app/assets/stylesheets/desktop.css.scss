@@ -136,9 +136,15 @@ body[data-controller="posts"] {
 
       .left {
         @include span-columns(8);
+        .content {
+          .markdown {
+            margin-bottom: 5em;
+          }
 
-        .markdown {
-          margin-bottom: 5em;
+          .footnotes {
+            margin-bottom: 3em;
+            padding-left: 1em;
+          }
         }
       }
       .right {

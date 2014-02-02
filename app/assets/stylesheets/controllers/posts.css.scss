@@ -130,7 +130,7 @@ body[data-controller="posts"] {
         }
       }
 
-      .content {
+      .popup_content {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         margin-top: 40px;
@@ -144,7 +144,13 @@ body[data-controller="posts"] {
         margin-top: 4em;
         padding-top: 0.7em;
         padding-left: 1em;
-        margin-bottom: 3em;
+
+        @include phone {
+          padding-left: 0;
+          ol {
+            padding-left: 1em;
+          }
+        }
 
         ol {
           margin: 0;

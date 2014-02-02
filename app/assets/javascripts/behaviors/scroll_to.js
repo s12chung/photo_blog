@@ -1,7 +1,11 @@
 $(function() {
-    $(data_behavior("scroll_to")).click(function(e) {
+    $('body').on('click', data_behavior('scroll_to'), function(e) {
         e.preventDefault();
         e.stopPropagation();
-        $.scrollTo($(this).data('scroll-to'), 400);
+
+        var $this = $(this);
+        var $scroller = $this.closest(data_behavior("scroller"));
+        $scroller = $scroller.length > 0 ? $scroller : $;
+        $scroller.scrollTo($this.data('scroll-to'), 400);
     });
 });
