@@ -23,7 +23,7 @@ module PostPresenter
     content.split(FOOTNOTE_REGEX).each_with_index do |split, index|
       if index > 0
         content_array << link_to(content_tag(:sup, index), "#footnote", id: "footnote_reference_#{index}",
-                                 data: { behavior: "scroll_to", scroll_to: "#footnote_#{index}" })
+                                 data: { behavior: "scroll_to", scroll_to: "#footnote_#{index}", offset: -5 })
       end
       content_array << split
     end
