@@ -132,7 +132,7 @@ body[data-controller="posts"] {
     }
 
     section.main {
-      margin-top: 1em;
+      padding-top: 1em;
 
       .left {
         @include span-columns(8);
