@@ -46,6 +46,10 @@ body[data-controller="posts"] {
         line-height: 1;
         max-width: 750px;
 
+        .html {
+          font-style: italic;
+        }
+
         h2 {
           margin-bottom: 0.2em;
         }
