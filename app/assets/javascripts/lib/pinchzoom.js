@@ -1,9 +1,9 @@
 /*
 
-  Copyright (c) Manuel Stofer 2013 - rtp.ch - RTP.PinchZoom.js
-  This is free software; you can redistribute it and/or modify it under the terms
-  of the [GNU General Public License](http://www.gnu.org/licenses/gpl-3.0.txt),
-  either version 3 of the License, or (at your option) any later version.
+ Copyright (c) Manuel Stofer 2013 - rtp.ch - RTP.PinchZoom.js
+ This is free software; you can redistribute it and/or modify it under the terms
+ of the [GNU General Public License](http://www.gnu.org/licenses/gpl-3.0.txt),
+ either version 3 of the License, or (at your option) any later version.
 
 */
 
@@ -52,6 +52,15 @@
                 maxZoom: 4,
                 minZoom: 0.5,
                 use2d: true
+            },
+
+            last_display_opacity: 1,
+            handle_display_opacity: function(opacity) {
+                if (!defined(opacity)) opacity = this.zoomFactor <= 1 ? 1 : 0;
+                if (opacity != this.last_display_opacity) {
+                    $(data_behavior('summary_content')).css('opacity', opacity);
+                    this.last_display_opacity = opacity;
+                }
             },
 
             /**
@@ -140,6 +149,7 @@
                 }
 
                 this.animate(this.options.animationDuration, this.options.animationInterval, updateProgress, this.swing);
+                this.handle_display_opacity(zoomFactor === 1 ? 1 : 0);
             },
 
             /**
@@ -467,6 +477,7 @@
                 this.hasInteraction = false;
                 this.sanitize();
                 this.update();
+                this.handle_display_opacity();
             },
 
             /**
