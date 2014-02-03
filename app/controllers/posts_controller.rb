@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_filter :authorize, except: %i[index show show_content]
 
   def index
-    @posts = Post.all * 10
+    @posts = Post.published
   end
 
   def show

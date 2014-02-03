@@ -6,7 +6,9 @@ class Post
   field :markdown, default: "A post is just the beginning."
   field :footnote_text
   field :date, type: Date, default: -> { Date.today }
-  field :draft, type: Boolean, default: false
+  field :published_at, type: DateTime
+  field :published, default: true
+  field :publish_order
 
   mount_uploader :photo, PhotoUploader
   CROP_TYPES = %i[x y w h]
@@ -15,6 +17,8 @@ class Post
     field attribute, type: BigDecimal
   end
   RATIO = Rational(14, 3)
+
+  scope :published, -> { where(published: true).asc(:publish_order) }
 
   after_update do
     unless (changed & self.class.crop_attributes.map(&:to_s)).empty?
@@ -32,6 +36,12 @@ class Post
 
   def footnote_text=(footnote_text)
     super clean_text(footnote_text)
+  end
+
+  def publish!
+    update_attributes(published_at: DateTime.now,
+                      publish_order: self.class.where(published: true).size,
+                      published: true)
   end
 
   protected
