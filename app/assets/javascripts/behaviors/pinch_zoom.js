@@ -1,13 +1,9 @@
-$(function() {
-    var $pinch_zoom = $(data_behavior('pinch_zoom'));
-    $($pinch_zoom).each(function() {
-        new RTP.PinchZoom($(this), {});
-    });
+Behavior.pinch_zoom = function($element) {
+    new RTP.PinchZoom($element, {});
+}
 
-    var resize_pinch_zoom = function() {
-        var window_height = $(window).height();
-        $pinch_zoom.height(window_height);
-    };
-    resize_pinch_zoom();
-    $(window).resize(resize_pinch_zoom);
+$(function() {
+    $(data_behavior('pinch_zoom')).each(function() {
+        Behavior.pinch_zoom($(this));
+    });
 });

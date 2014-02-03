@@ -1,0 +1,5 @@
+var $li = $(data_behavior('swipe')).find('li').eq(<%= @post.publish_order %>);
+$li.html('<%= j render("photoswipe_content")%>');
+
+Behavior.pinch_zoom($li.find(data_behavior('pinch_zoom')));
+Behavior.resize_swipe();

@@ -3,7 +3,7 @@
 @import "compass/css3";
 @import "animation";
 
-@mixin spinner-balls($name: null, $size: 100px, $count: 5, $color: $ink) {
+@mixin spinner-balls($name: null, $size: 100px, $count: 5, $color: white) {
 
   $class: "";
   @if $name { $class: ".#{$name}"; };
@@ -41,7 +41,7 @@ $hrt: floor(360 / $count);
     @if $color == "rainbow" {
       background-color: adjust-hue(#f0f, $i*$hrt);
     } @else {
-      background-color: lighten($color, ($i - 1)*5);
+      background-color: darken($color, ($i - 1)*10);
     }
     @include animation-delay($i*100ms);
   }

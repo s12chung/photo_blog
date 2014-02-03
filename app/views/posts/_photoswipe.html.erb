@@ -9,15 +9,18 @@
   </div>
 </div>
 
-<div data-behavior="swipe" class="swipe">
+<div data-behavior="swipe" data-index="<%= @post.publish_order %>" class="swipe">
   <ul>
-    <li>
-      <div data-behavior="pinch_zoom" class="pinch_zoom">
-        <div class="center_container">
-          <%= image_tag @post.photo.to_crop %>
-        </div>
-      </div>
-      <%= render "summary_content" %>
-    </li>
+    <% Post.published.each do |post| %>
+        <li data-path="<%= post_path post %>">
+          <% if @post.id == post.id %>
+              <%= render "photoswipe_content" %>
+          <% else %>
+              <div class="center_container">
+                <%= render "layouts/spinner" %>
+              </div>
+          <% end %>
+        </li>
+    <% end %>
   </ul>
 </div>
