@@ -4,10 +4,8 @@
     <div class="title"><div data-behavior="popup_title"><%= @post.title %></div></div>
     <%= link_to image_tag("close_x.svg", class: "close_x"), "#close_x", data: { behavior: "close_x" }, class: "close_link" %>
   </header>
-  <div data-behavior="popup_content" class="popup_content container_outer">
-    <div style="display: none;">
-      <%= render "content" %>
-    </div>
+  <div data-behavior="popup_content" class="popup_content container_outer" style="display: none;">
+    <%= render "content" %>
   </div>
 </div>
 
