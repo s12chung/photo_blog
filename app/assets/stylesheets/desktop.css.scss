@@ -63,71 +63,66 @@ body[data-controller="posts"] {
         .right {
           opacity: 0.3;
         }
-        .summary {
+        .ui .summary_content {
           opacity: 1;
         }
       }
-
-      .left,
-      .right {
-        opacity: 0;
-        position: absolute;
-        height: 100%;
-        @include clearfix;
-
-        &:hover {
-          opacity: 1;
-        }
-        .container {
+      .ui {
+        .left,
+        .right {
+          opacity: 0;
+          position: absolute;
           height: 100%;
-          width: 100%;
-          @include center_container_vertical;
+          @include clearfix;
 
-          a {
+          &:hover {
+            opacity: 1;
+          }
+          .container {
+            height: 100%;
             width: 100%;
+            @include center_container_vertical;
+
+            a {
+              width: 100%;
+            }
           }
         }
-      }
-      .left {
-        left: 0;
-        width: 20%;
-        img {
-          float: left;
-          padding-left: $outter_margin;
+        .left {
+          left: 0;
+          width: 20%;
+          img {
+            float: left;
+            padding-left: $outter_margin;
+          }
         }
-      }
-      .right {
-        right: 0;
-        width: 80%;
-        img {
-          float: right;
-          padding-right: $outter_margin;
+        .right {
+          right: 0;
+          width: 80%;
+          img {
+            float: right;
+            padding-right: $outter_margin;
+          }
+        }
+
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        .summary_content {
+          opacity: 0;
         }
       }
 
-      .inner {
+      .photo {
         width: 100%;
         height: 100%;
         background-color: black;
         @include center_container;
 
-        .photo {
+        img {
           max-height: 100%;
           max-width: 100%;
-        }
-      }
-
-      .summary {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-
-        transition: opacity $transition_speed;
-        opacity: 0;
-
-        .summary_content {
-          position: absolute;
-          bottom: 15vh;
         }
       }
     }

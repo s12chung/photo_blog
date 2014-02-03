@@ -5,22 +5,22 @@
     <div class="title"><div data-behavior="popup_title"></div></div>
     <%= link_to image_tag("close_x.svg", class: "close_x"), "#close_x", data: { behavior: "close_x" }, class: "close_link" %>
   </header>
-  <div data-behavior="popup_spinner" class="spinner_container" style="display: none;">
-    <%= render "layouts/spinner" %>
+  <div data-behavior="popup_content" class="popup_content container_outer">
+    <div style="display: none;">
+      <%= render "content" %>
+    </div>
   </div>
-  <div data-behavior="popup_content" class="popup_content container_outer"></div>
 </div>
 
 <div data-behavior="swipe" class="swipe">
   <ul>
-    <% Post.all.each do |post| %>
-        <li>
-          <div data-behavior="pinch_zoom" class="pinch_zoom">
-            <div class="center_container">
-              <%= image_tag post.photo.to_crop %>
-            </div>
-          </div>
-        </li>
-    <% end %>
+    <li>
+      <div data-behavior="pinch_zoom" class="pinch_zoom">
+        <div class="center_container">
+          <%= image_tag @post.photo.to_crop %>
+        </div>
+      </div>
+      <%= render "summary_content" %>
+    </li>
   </ul>
 </div>

@@ -41,15 +41,6 @@ module PostPresenter
                  end
   end
 
-  def to_photoswipe
-    {
-        title: title,
-        photo: photo.to_crop.url,
-        caption: render("summary_content", post: self),
-        path: post_path(self)
-    }
-  end
-
   protected
   module ClassMethods
     def process_markdown(markdown)

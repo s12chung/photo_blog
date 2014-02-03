@@ -46,6 +46,11 @@ body[data-controller="posts"] {
         line-height: 1;
         max-width: 750px;
 
+        position: absolute;
+        bottom: 15vh;
+
+        transition: opacity $transition_speed;
+
         .html {
           font-style: italic;
         }
@@ -77,6 +82,7 @@ body[data-controller="posts"] {
       height: 100%;
       ul {
         @include clean_list;
+        background-color: black;
 
         .pinch_zoom {
           width: 100%;

@@ -4,5 +4,17 @@
     <%= render "photoswipe" %>
 <% else %>
     <%= render "photo_box" %>
-    <%= render "show_content" %>
+    <div class="container_outer">
+      <section class="main">
+        <div class="left">
+          <% if @post.has_content? %>
+              <%= render "content" %>
+          <% end %>
+          <%= render "layouts/disqus" %>
+        </div>
+        <div class="right">
+          <%= if authenticated?; link_to "Edit", edit_post_path(@post) end %>
+        </div>
+      </section>
+    </div>
 <% end %>
