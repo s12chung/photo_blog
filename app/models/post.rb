@@ -1,11 +1,14 @@
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Geospatial
 
   field :title, default: "Post Title"
   field :markdown, default: "A post is just the beginning."
   field :footnote_text
+  field :location, type: Point
   field :date, type: Date, default: -> { Date.today }
+  
   field :published_at, type: DateTime
   field :published, default: true
   field :publish_order
