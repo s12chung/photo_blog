@@ -146,6 +146,11 @@ body[data-controller="posts"] {
       .right {
         @include shift(1);
         @include span-columns(3);
+
+        .post_map {
+          height: 300px;
+          width: 100%;
+        }
       }
     }
   }

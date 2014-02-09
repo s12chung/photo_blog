@@ -3,6 +3,18 @@
 <% if user_agent.mobile? %>
     <%= render "photoswipe" %>
 <% else %>
+    <script type="text/javascript">
+        $(function() {
+            new Maplace({
+                locations: [{
+                    lat: <%= @post.location.x %>,
+                    lon: <%= @post.location.y %>,
+                    zoom: 8
+                }]
+            }).Load();
+        });
+    </script>
+
     <%= render "photo_box" %>
     <div class="container_outer">
       <section class="main">
@@ -14,6 +26,8 @@
         </div>
         <div class="right">
           <%= if authenticated?; link_to "Edit", edit_post_path(@post) end %>
+
+          <div id="gmap" class="post_map"></div>
         </div>
       </section>
     </div>
