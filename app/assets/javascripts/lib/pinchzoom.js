@@ -135,6 +135,13 @@
                 this.end();
             },
 
+            handleSingleTap: function(event) {
+                if (this.hasInteraction) {
+                    return;
+                }
+                this.handle_display_show(!this.last_display_opacity);
+            },
+
             /**
              * Event handler for 'doubletap'
              * @param event
@@ -565,6 +572,7 @@
             var interaction = null,
                 fingers = 0,
                 lastTouchStart = null,
+                singleTapTimer = null,
                 startTouches = null,
 
                 setInteraction = function (newInteraction, event) {
@@ -632,6 +640,7 @@
 
                 detectDoubleTap = function (event) {
                     var time = (new Date()).getTime();
+                    clearTimeout(singleTapTimer);
 
                     if (fingers > 1) {
                         lastTouchStart = null;
@@ -649,6 +658,11 @@
                                 target.handleDragEnd(event);
                                 break;
                         }
+                    }
+                    else if (fingers === 1) {
+                        singleTapTimer = setTimeout(function() {
+                            target.handleSingleTap(event);
+                        }, 355);
                     }
 
                     if (fingers === 1) {
