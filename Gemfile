@@ -63,6 +63,7 @@ gem 'compass-rails'
 gem 'animation'
 
 gem 'easy_presenter'
+gem 'dom_routes'
 
 gem 'redcarpet'
 gem 'useragent'

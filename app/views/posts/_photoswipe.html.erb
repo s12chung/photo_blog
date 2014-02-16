@@ -4,14 +4,12 @@
     <div class="title"><div data-behavior="popup_title"><%= @post.title %></div></div>
     <%= link_to image_tag("close_x.svg", class: "close_x"), "#close_x", data: { behavior: "close_x" }, class: "close_link" %>
   </header>
-  <div class="popup_content container_outer" data-behavior="popup_content">
-    <%= render "content" %>
-  </div>
+  <div class="popup_content container_outer" data-behavior="popup_content"></div>
 </div>
 
 <div data-behavior="swipe" data-index="<%= @post.publish_order %>" class="swipe">
   <ul>
-    <% Post.published.each do |post| %>
+    <% @posts.each do |post| %>
         <% data = { path: post_path(post) } %>
         <% if @post.id == post.id; data.merge(loaded: true) end %>
         <%= content_tag :li, data: data do %>

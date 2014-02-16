@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @posts = Post.published
   end
   def show_content
     @post = Post.find(params[:id])

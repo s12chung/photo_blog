@@ -29,8 +29,8 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+<body data-controller="<%= js_route.controller_path %>" data-action="<%= js_route.action %>">
 <%= yield %>
-
+<%= execute_js_routes %>
 </body>
 </html>
