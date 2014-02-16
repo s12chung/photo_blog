@@ -9,8 +9,9 @@ $(function() {
     var $swipe = $(data_behavior('swipe'));
     if ($swipe.length > 0) new Swipe($swipe[0], {
         startSlide: parseInt($swipe.data('index')),
-        callback: function(index, element) {
-            $.get($(element).data('path') + ".js")
+        callback: function(index, li) {
+            $.get($(li).data('path') + ".js");
+            clearTimeout(singleTapTimer);
         }
     });
     Behavior.resize_swipe();

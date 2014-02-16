@@ -9,6 +9,7 @@
 
 
 /*global jQuery, console, define, setTimeout, window*/
+singleTapTimer = null;
 (function () {
     'use strict';
     var definePinchZoom = function ($) {
@@ -572,7 +573,6 @@
             var interaction = null,
                 fingers = 0,
                 lastTouchStart = null,
-                singleTapTimer = null,
                 startTouches = null,
 
                 setInteraction = function (newInteraction, event) {
@@ -678,7 +678,6 @@
             });
 
             el.addEventListener('touchmove', function (event) {
-
                 if (firstMove) {
                     updateInteraction(event);
                     if (interaction) {
