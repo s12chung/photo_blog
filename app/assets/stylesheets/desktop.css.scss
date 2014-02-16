@@ -110,6 +110,7 @@ body[data-controller="posts"] {
         height: 100%;
 
         .summary_content {
+          transition: opacity $transition_speed;
           opacity: 0;
         }
       }

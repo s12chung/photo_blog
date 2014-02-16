@@ -1,21 +1,14 @@
 $(function() {
     var $popup = $(data_behavior('popup'));
-    var $popup_content = $(data_behavior('popup_content'));
+    $popup.children().hide();
 
     $('body').on('click', data_behavior('show_popup'), function(e) {
         e.preventDefault();
-        $popup_content.show();
-        $popup.css({ opacity: 1, visibility: 'visible' });
+        $popup.fade_show();
 
         $(data_behavior('close_x')).click(function(e) {
             e.preventDefault();
-            $popup.css({ opacity: 0 });
-
-            setTimeout(function() {
-                var $close_x = $popup.children().first();
-                $popup.css({ visibility: 'hidden' });
-                $popup_content.hide();
-            }, 400);
+            $popup.fade_hide();
         });
     });
 });

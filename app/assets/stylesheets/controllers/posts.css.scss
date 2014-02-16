@@ -37,41 +37,43 @@ body[data-controller="posts"] {
   }
 
   &[data-action="show"] {
-    .container {
-      @include outer-container;
-      height: 100%;
-      .summary_content {
-        @include backgrounded;
-        line-height: 1;
-        max-width: 750px;
+    .summary_content_container {
+      transition: opacity $transition_speed;
 
-        position: absolute;
-        bottom: 15vh;
+      .container {
+        @include outer-container;
+        height: 100%;
+        .summary_content {
+          @include backgrounded;
+          line-height: 1;
+          max-width: 750px;
 
-        transition: opacity $transition_speed;
+          position: absolute;
+          bottom: 15vh;
 
-        .html {
-          font-style: italic;
-        }
+          .html {
+            font-style: italic;
+          }
 
-        h2 {
-          margin-bottom: 0.2em;
-        }
+          h2 {
+            margin-bottom: 0.2em;
+          }
 
-        p {
-          margin: 0;
-        }
+          p {
+            margin: 0;
+          }
 
-        .read_story {
-          margin-top: 0.3;
-          font-style: italic;
-          padding: 0.16em 0.66em;
-          display: inline-block;
-          $grey: 50;
-          background-color: rgba($grey, $grey, $grey, 0.5);
-          transition: background-color $transition_speed;
-          &:hover {
-            background-color: rgba($grey, $grey, $grey, 0.8);
+          .read_story {
+            margin-top: 0.3;
+            font-style: italic;
+            padding: 0.16em 0.66em;
+            display: inline-block;
+            $grey: 50;
+            background-color: rgba($grey, $grey, $grey, 0.5);
+            transition: background-color $transition_speed;
+            &:hover {
+              background-color: rgba($grey, $grey, $grey, 0.8);
+            }
           }
         }
       }
