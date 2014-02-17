@@ -488,6 +488,7 @@ singleTapTimer = null;
             },
 
             end: function () {
+                clearTimeout(singleTapTimer);
                 this.hasInteraction = false;
                 this.sanitize();
                 this.update();
