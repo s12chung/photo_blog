@@ -51,14 +51,15 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   def crop
-    unless model.crop_x
-      model.crop_x = model.crop_y = 0
-      model.crop_w = TO_CROP_WIDTH
-      model.crop_h = (TO_CROP_WIDTH/Post::RATIO).to_f
-    end
-
     manipulate! do |img|
-      to_crop_image = MiniMagick::Image.open(model.photo.to_crop.url)
+      if model.crop_x
+        to_crop_image = MiniMagick::Image.open(model.photo.to_crop.url)
+      else
+        model.crop_x = model.crop_y = 0
+        model.crop_w = img['width']
+        model.crop_h = (model.crop_w/Post::RATIO).to_f
+        to_crop_image = img
+      end
 
       crop_values = {}
       model.class.crop_types.each do |crop_type|
