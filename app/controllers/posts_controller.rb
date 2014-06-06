@@ -7,7 +7,14 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @posts = Post.published
+
+    unless user_agent.mobile?
+      @published_posts_size = Post.published.size
+      @post_hash = {
+          left: Post.where(publish_order: (@post.publish_order - 1) % @published_posts_size).first,
+          right: Post.where(publish_order: (@post.publish_order + 1) % @published_posts_size).first
+      }
+    end
   end
   def show_content
     @post = Post.find(params[:id])

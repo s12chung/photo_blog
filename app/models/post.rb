@@ -10,8 +10,8 @@ class Post
   field :date, type: Date, default: -> { Date.today }
   
   field :published_at, type: DateTime
-  field :published, default: true
-  field :publish_order
+  field :published, default: false
+  field :publish_order, type: Integer
 
   mount_uploader :photo, PhotoUploader
   CROP_TYPES = %i[x y w h]
@@ -43,7 +43,7 @@ class Post
 
   def publish!
     update_attributes(published_at: DateTime.now,
-                      publish_order: self.class.where(published: true).size,
+                      publish_order: self.class.published.size,
                       published: true)
   end
 
