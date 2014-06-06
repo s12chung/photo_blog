@@ -131,26 +131,14 @@ body[data-controller="posts"] {
     section.main {
       padding-top: 1em;
 
-      .left {
-        @include span-columns(8);
-        .content {
-          .markdown {
-            margin-bottom: 5em;
-          }
-
-          .footnotes {
-            margin-bottom: 3em;
-            padding-left: 1em;
-          }
+      .content {
+        .markdown {
+          margin-bottom: 5em;
         }
-      }
-      .right {
-        @include shift(1);
-        @include span-columns(3);
 
-        .post_map {
-          height: 300px;
-          width: 100%;
+        .footnotes {
+          margin-bottom: 3em;
+          padding-left: 1em;
         }
       }
     }
