@@ -86,6 +86,7 @@
       <%= image_tag @post.photo.to_crop, data: { behavior: "crop" } %>
 
       <%= link_to "Preview", post_path(@post), class: "preview_link" %>
+      <%= link_to @post.published ? "Unpublish" : "Publish", toggle_publish_post_path(@post), method: :patch %>
     </div>
   </section>
 </div>

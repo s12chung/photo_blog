@@ -21,12 +21,18 @@ class PostsController < ApplicationController
   end
 
   def edit
-    show
+    @post = Post.find(params[:id])
   end
 
   def update
     post = Post.find(params[:id])
     post.update_attributes post_params
+    redirect_to edit_post_path post
+  end
+
+  def toggle_publish
+    post = Post.find(params[:id])
+    post.toggle_publish!
     redirect_to edit_post_path post
   end
 

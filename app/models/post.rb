@@ -8,7 +8,7 @@ class Post
   field :footnote_text
   field :location, type: Point, default: -> { Mongoid::Geospatial::Point.new(0,0) }
   field :date, type: Date, default: -> { Date.today }
-  
+
   field :published_at, type: DateTime
   field :published, default: false
   field :publish_order, type: Integer
@@ -41,10 +41,16 @@ class Post
     super clean_text(footnote_text)
   end
 
-  def publish!
-    update_attributes(published_at: DateTime.now,
-                      publish_order: self.class.published.size,
-                      published: true)
+  def toggle_publish!
+    if published
+      update_attributes(published_at: nil,
+                        publish_order: nil,
+                        published: false)
+    else
+      update_attributes(published_at: DateTime.now,
+                        publish_order: self.class.published.size,
+                        published: true)
+    end
   end
 
   protected
