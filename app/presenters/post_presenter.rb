@@ -32,13 +32,13 @@ module PostPresenter
   end
 
   def footnotes
-    @footnotes ||= if footnote_text
-                   split = footnote_text.split(/\r\n#{BULLET_REGEX}/)
-                   split.first.sub!(BULLET_REGEX, "")
-                   split
-                 else
-                   []
-                 end
+    @footnotes ||= if footnote_text.empty?
+                     []
+                   else
+                     split = footnote_text.split(/\r\n#{BULLET_REGEX}/)
+                     split.first.sub!(BULLET_REGEX, "")
+                     split
+                   end
   end
 
   protected
