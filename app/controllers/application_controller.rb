@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   helper_method :authenticated?
   helper_method :user_agent
 
+  def markdown
+    @markdown = Markdown.where(key: params[:key]).first
+  end
+
   protected
   def authorize
     unless authenticated?

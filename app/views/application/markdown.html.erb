@@ -1,0 +1,9 @@
+<%= render "layouts/header" %>
+
+<div class="container_outer">
+  <section class="main">
+    <h2><%= set_title @markdown.key.to_s.humanize %></h2>
+
+    <%= @markdown.html %>
+  </section>
+</div>

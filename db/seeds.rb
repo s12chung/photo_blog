@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Session.create(username: "admin", password: "secret")
+Markdown.create(key: :about)

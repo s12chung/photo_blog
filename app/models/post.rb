@@ -3,6 +3,8 @@ class Post
   include Mongoid::Timestamps
   include Mongoid::Geospatial
 
+  include HasMarkdown
+
   field :title, default: "Post Title"
   field :markdown, default: "A post is just the beginning."
   field :footnote_text

@@ -1,0 +1,16 @@
+class MarkdownsController < ApplicationController
+  before_filter :authorize, except: %i[show]
+
+  def edit
+  end
+
+  def update
+    @markdown.update_attributes update_params
+    redirect_to edit_markdown_path(@markdown)
+  end
+
+  protected
+  def update_params
+    params.require(:markdown).permit(:markdown)
+  end
+end

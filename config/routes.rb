@@ -12,6 +12,9 @@ PhotoBlog::Application.routes.draw do
     get '/login' => :new
     post '/login' => :create
   end
+  controller :application do
+    get '/:key' => :markdown
+  end
   root 'posts#index'
 
 

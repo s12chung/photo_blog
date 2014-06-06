@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.update_attributes post_params
+    post.update_attributes update_params
     redirect_to edit_post_path post
   end
 
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   end
 
   protected
-  def post_params
+  def update_params
     params.require(:post).permit(*(%i[title date markdown footnote_text] + Post.crop_attributes))
   end
 end
