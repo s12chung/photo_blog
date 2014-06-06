@@ -3,10 +3,12 @@ $max-width: 760px;
 @import 'neat';
 @import 'patterns';
 
-$ink: #231F20;
+$ink: #302a2c;
 $light: #DDD;
 $ink_red: #9E4130;
 $background_ink: white;
+
+$normal: 400;
 $semibold: 600;
 
 $transition_speed: 400ms ease 0s;
@@ -34,6 +36,7 @@ $outter_margin: 10px;
   font-size: $read;
   line-height: 1.5;
   font-family: 'arno-pro', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", "Times New Roman", Times, serif;
+  font-weight: $normal;
 
   color: $ink;
   @include paper_background;
@@ -41,7 +44,14 @@ $outter_margin: 10px;
   h1,
   h2,
   h3 {
-    font-weight: $semibold;
+    font-weight: $normal;
+  }
+
+  h1 {
+    transition: opacity $transition_speed;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   h2,
@@ -59,11 +69,8 @@ $outter_margin: 10px;
     }
   }
 
-  h1 {
-    transition: opacity $transition_speed;
-    &:hover {
-      opacity: 0.7;
-    }
+  strong {
+    font-weight: $semibold;
   }
 
   p {
