@@ -8,12 +8,13 @@ PhotoBlog::Application.routes.draw do
       patch :toggle_publish
     end
   end
+  resources :markdowns, only: %i[edit update]
   controller :session do
     get '/login' => :new
     post '/login' => :create
   end
   controller :application do
-    get '/:key' => :markdown
+    get '/:key' => :markdown, as: :root_markdown
   end
   root 'posts#index'
 

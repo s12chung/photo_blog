@@ -2,8 +2,11 @@
 
 <div class="container_outer">
   <section class="main">
-    <h2><%= set_title @markdown.key.to_s.humanize %></h2>
+    <% if authenticated? %>
+        <%= link_to "Edit", edit_markdown_path(@markdown) %>
+    <% end %>
 
+    <h2><%= set_title @markdown.key.to_s.humanize %></h2>
     <%= @markdown.html %>
   </section>
 </div>

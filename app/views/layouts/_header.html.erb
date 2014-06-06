@@ -5,7 +5,7 @@
       <% if authenticated? && action_name == "index" %>
           <%= link_to "", "#read_mode", data: { behavior: "read_mode" } %>
       <% end %>
-      <%= link_to "About" %>
+      <%= link_to "About", root_markdown_path(:about) %>
     </div>
   </header>
 </div>

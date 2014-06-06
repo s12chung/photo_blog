@@ -1,0 +1,10 @@
+<div class="container_outer">
+  <section class="main">
+    <h2><%= set_title "Edit #{@markdown.key}" %></h2>
+
+    <%= form_for @markdown do |f| %>
+        <%= f.text_area :markdown %>
+        <%= f.submit %>
+    <% end %>
+  </section>
+</div>
