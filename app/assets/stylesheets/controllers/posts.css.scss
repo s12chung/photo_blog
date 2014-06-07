@@ -46,7 +46,7 @@ body[data-controller="posts"] {
         .summary_content {
           @include backgrounded;
           line-height: 1;
-          max-width: 750px;
+          max-width: 760px;
 
           position: absolute;
           bottom: 15vh;
@@ -55,8 +55,9 @@ body[data-controller="posts"] {
             font-style: italic;
           }
 
-          h2 {
-            margin-bottom: 0.2em;
+          .place {
+            font-size: $small;
+            margin-bottom: 1em;
           }
 
           p {

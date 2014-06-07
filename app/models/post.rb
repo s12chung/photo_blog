@@ -8,7 +8,9 @@ class Post
   field :title, default: "Post Title"
   field :markdown, default: "A post is just the beginning."
   field :footnote_text
-  field :location, type: Point, default: -> { Mongoid::Geospatial::Point.new(0,0) }
+  field :place
+  field :address
+  field :position, type: Point, default: -> { Mongoid::Geospatial::Point.new(0,0) }
   field :date, type: Date, default: -> { Date.today }
 
   field :published_at, type: DateTime
@@ -48,6 +50,9 @@ class Post
       update_attributes(published_at: nil,
                         publish_order: nil,
                         published: false)
+      self.class.published.each_with_index do |post, index|
+        post.update_attribute :publish_order, index
+      end
     else
       update_attributes(published_at: DateTime.now,
                         publish_order: self.class.published.size,

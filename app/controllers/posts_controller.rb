@@ -38,6 +38,6 @@ class PostsController < ApplicationController
 
   protected
   def update_params
-    params.require(:post).permit(*(%i[title date markdown footnote_text] + Post.crop_attributes))
+    params.require(:post).permit(*(%i[title date place address markdown footnote_text] + Post.crop_attributes))
   end
 end
