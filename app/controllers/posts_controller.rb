@@ -8,7 +8,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
 
-    unless user_agent.mobile?
+    if user_agent.mobile?
+      index
+    else
       @published_posts_size = Post.published.size
       @post_hash = {
           left: @post.adjacent(-1),
