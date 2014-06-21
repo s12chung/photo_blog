@@ -2,6 +2,10 @@ module PostPresenter
   FOOTNOTE_REGEX = /\[\|\]/
   BULLET_REGEX = /[-*]\s{0,3}/
 
+  def localized_date
+    l date, locale: locale
+  end
+
   def coords
     coords = {}
     self.class::CROP_TYPES.each do |crop_type|

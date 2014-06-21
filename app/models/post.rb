@@ -68,6 +68,10 @@ class Post
     end
   end
 
+  def locale
+    address.match(/japan/i) ? :jp : :kr
+  end
+
   protected
   def clean_text(text)
     if text.include? "\""

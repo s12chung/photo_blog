@@ -1,0 +1,4 @@
+kr:
+  date:
+    formats:
+      default: "%-m월%e일"

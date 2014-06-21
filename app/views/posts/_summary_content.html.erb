@@ -2,7 +2,7 @@
   <div class="container">
     <div class="summary_content">
       <div>
-        <%= l @post.date %>
+        <%= @post.localized_date %>
         <h2><%= set_title @post.title %></h2>
         <div class="place">
           <%= @post.place %>, <%= @post.address %>

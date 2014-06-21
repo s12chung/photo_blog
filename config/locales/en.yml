@@ -22,4 +22,4 @@
 en:
   date:
     formats:
-      default: "%-m月%e日"
+      default: "%-m.%e"

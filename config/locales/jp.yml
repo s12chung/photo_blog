@@ -1,0 +1,4 @@
+jp:
+  date:
+    formats:
+      default: "%-m月%e日"
