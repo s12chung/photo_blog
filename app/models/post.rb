@@ -60,6 +60,14 @@ class Post
     end
   end
 
+  def adjacent(change=1)
+    if publish_order
+      self.class.where(publish_order: (publish_order + change) % Post.published.size).first
+    else
+      nil
+    end
+  end
+
   protected
   def clean_text(text)
     if text.include? "\""

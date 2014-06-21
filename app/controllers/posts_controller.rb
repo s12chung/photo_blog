@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_filter :authorize, except: %i[index show show_content]
 
   def index
-    @posts = Post.published
+    @posts = authenticated? ? Post.all : Post.published
   end
 
   def show
@@ -11,8 +11,8 @@ class PostsController < ApplicationController
     unless user_agent.mobile?
       @published_posts_size = Post.published.size
       @post_hash = {
-          left: Post.where(publish_order: (@post.publish_order - 1) % @published_posts_size).first,
-          right: Post.where(publish_order: (@post.publish_order + 1) % @published_posts_size).first
+          left: @post.adjacent(-1),
+          right: @post.adjacent
       }
     end
   end
