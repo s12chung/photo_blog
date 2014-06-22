@@ -5,7 +5,7 @@
         <%= @post.localized_date %>
         <h2><%= set_title @post.title %></h2>
         <div class="place">
-          <%= @post.place %>, <%= @post.address %>
+          <%= @post.place %> - <%= @post.address %>
         </div>
         <% unless @post.has_content? %>
             <div class="html">
