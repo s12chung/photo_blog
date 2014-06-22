@@ -39,9 +39,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
     process resize_to_limit: [1400, 99999]
   end
 
-  TO_CROP_WIDTH = 345
   version :to_crop, from_version: :crop_preview do
-    process resize_to_limit: [TO_CROP_WIDTH, 600]
+    process resize_to_limit: [Post::TO_CROP_WIDTH, 600]
   end
   version :index do
     process :crop
