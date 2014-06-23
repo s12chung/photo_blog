@@ -10,7 +10,7 @@
               <% index = index + 1 %>
               <li id="<%= "footnote_#{index}" %>">
                 <%= footnote %>
-                <%= link_to raw("&#8617;"), "#footnote_reference",
+                <%= link_to raw("&#8617;"), "#footnote_reference_#{index}",
                             data: { behavior: "scroll_to", scroll_to: "#footnote_reference_#{index}", offset: -5 } %>
               </li>
           <% end %>
