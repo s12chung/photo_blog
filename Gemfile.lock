@@ -89,7 +89,7 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
-    jcontroller (1.0.3)
+    jcontroller (1.0.5)
       rails (>= 4.0)
       request_store
     jquery-rails (3.1.0)
