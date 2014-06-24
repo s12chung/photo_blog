@@ -71,3 +71,4 @@ gem 'redcarpet'
 gem 'useragent'
 
 gem 'mongoid_geospatial'
+gem 'mongoid_slug'

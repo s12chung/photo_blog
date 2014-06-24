@@ -2,6 +2,7 @@ class Post
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Geospatial
+  include Mongoid::Slug
 
   include HasMarkdown
 
@@ -16,6 +17,10 @@ class Post
   field :published_at, type: DateTime
   field :published, default: false
   field :publish_order, type: Integer
+
+  slug :title do |post|
+    post.slug_builder.to_url(replace_whitespace_with: "_")
+  end
 
   CROP_TYPES = %i[x y w h]
   CROP_ATTRIBUTES = CROP_TYPES.map { |coord| "crop_#{coord}".to_sym }
