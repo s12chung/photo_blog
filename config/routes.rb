@@ -3,7 +3,7 @@ PhotoBlog::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :posts, only: %i[show edit update] do
+  resources :posts, only: %i[show edit update], path: "" do
     member do
       patch :toggle_publish
     end
