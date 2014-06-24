@@ -1,12 +1,12 @@
-<%= render "layouts/header" %>
+<script>flow_type({ minFont: 12, maxFont: 30});</script>
 
+<%= render "layouts/header" %>
+<% set_title @markdown.key.to_s.humanize %>
 <div class="container_outer">
   <section class="main">
     <% if authenticated? %>
         <%= link_to "Edit", edit_markdown_path(@markdown) %>
     <% end %>
-
-    <h2><%= set_title @markdown.key.to_s.humanize %></h2>
     <%= @markdown.html %>
   </section>
 </div>
