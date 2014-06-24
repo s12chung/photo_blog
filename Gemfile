@@ -45,6 +45,8 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'quiet_assets'
+
 gem 'mongoid'
 gem 'bson_ext'
 gem 'bcrypt-ruby'
@@ -63,7 +65,7 @@ gem 'compass-rails'
 gem 'animation'
 
 gem 'easy_presenter'
-gem 'dom_routes'
+gem 'jcontroller'
 
 gem 'redcarpet'
 gem 'useragent'

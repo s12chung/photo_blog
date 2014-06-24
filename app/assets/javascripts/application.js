@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery_ujs
-//= require dom_routes
+//= require jcontroller
 //= require_self
 //= require_tree ./lib
 //= require_tree ./behaviors
