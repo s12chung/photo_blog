@@ -28,7 +28,7 @@ header.main {
   @include float_left_right_container;
 
   .right {
-    margin-top: 1em;
+    margin-top: 0.95em;
     @include horizontal_spacer_container(.6em);
   }
 }
