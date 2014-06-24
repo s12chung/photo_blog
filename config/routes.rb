@@ -3,18 +3,17 @@ PhotoBlog::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :posts, only: %i[show edit update], path: "" do
-    member do
-      patch :toggle_publish
-    end
-  end
   resources :markdowns, only: %i[edit update]
   controller :session do
     get '/login' => :new
     post '/login' => :create
   end
-  controller :application do
-    get '/:key' => :markdown, as: :root_markdown
+
+  get '/:key' => 'application#markdown', as: :root_markdown, constraints: Markdown::PagesConstraint
+  resources :posts, only: %i[show edit update], path: "" do
+    member do
+      patch :toggle_publish
+    end
   end
   root 'posts#index'
 
