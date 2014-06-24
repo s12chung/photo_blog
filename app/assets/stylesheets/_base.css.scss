@@ -8,6 +8,8 @@ $light: #DDD;
 $ink_red: #9E4130;
 $background_ink: white;
 
+$serif: 'arno-pro', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", "Times New Roman", Times, serif;
+$sans-serif: "museo-sans", Futura, "Trebuchet MS", Arial, sans-serif;
 $normal: 400;
 $semibold: 600;
 
@@ -36,7 +38,7 @@ $outter_margin: 10px;
 @mixin base {
   font-size: $read;
   line-height: 1.5;
-  font-family: 'arno-pro', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", "Times New Roman", Times, serif;
+  font-family: $serif;
   font-weight: $normal;
 
   color: $ink;
@@ -53,6 +55,11 @@ $outter_margin: 10px;
     &:hover {
       opacity: 0.7;
     }
+  }
+
+  h1 {
+    font-size: 1.7em;
+    margin: .4em 0;
   }
 
   h2,

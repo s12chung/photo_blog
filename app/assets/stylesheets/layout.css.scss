@@ -4,7 +4,6 @@ body {
   @include spinner-balls;
 }
 
-header.main,
 section.main {
   @include outer-container;
 }
@@ -13,11 +12,21 @@ section.main {
 }
 
 header.main {
+  font-family: $sans-serif;
+  font-weight: 300;
+
+  h1 {
+    font-weight: 700;
+    a {
+      color: $ink;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
   @include float_left_right_container;
 
-  .logo {
-    width: 1em;
-  }
   .right {
     margin-top: 1em;
     @include horizontal_spacer_container(.6em);

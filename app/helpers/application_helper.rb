@@ -1,6 +1,6 @@
 module ApplicationHelper
   def title_default
-    "A Traveller's Mind"
+    "Travel Captions"
   end
   def set_title(title=title_default)
     if title
