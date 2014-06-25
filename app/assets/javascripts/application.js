@@ -11,11 +11,11 @@
 // about supported directives.
 //
 //= require jquery_ujs
-//= require dom_routes
+//= require jcontroller
 //= require_self
 //= require_tree ./lib
 //= require_tree ./behaviors
-//= require_tree ./routes
+//= require_tree ./jcontrollers
 
 function data_behavior(behavior) {
     return "[data-behavior~='" + behavior + "']";

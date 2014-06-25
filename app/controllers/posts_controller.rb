@@ -24,6 +24,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    js params: { ratio: Post::RATIO, cached_coords: @post.coords }
   end
 
   def update
