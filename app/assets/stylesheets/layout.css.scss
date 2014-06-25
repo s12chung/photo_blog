@@ -11,19 +11,20 @@ section.main {
   padding: 0 1em;
 }
 
+h1 {
+  font-family: $sans-serif;
+  font-weight: 700;
+
+  a {
+    color: $ink;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
 header.main {
   font-family: $sans-serif;
   font-weight: 300;
-
-  h1 {
-    font-weight: 700;
-    a {
-      color: $ink;
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
 
   @include float_left_right_container;
 

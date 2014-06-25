@@ -37,6 +37,22 @@ body[data-controller="posts"] {
   }
 
   &[data-action="show"] {
+    h1 {
+      font-size: 1.3em;
+      letter-spacing: -0.2em;
+
+      position: absolute;
+      top: 0.1em;
+      left: 0.5em;
+      z-index: 1;
+
+      opacity: 0.5;
+      &:hover {
+        opacity: 0.3;
+      }
+      @include backgrounded;
+    }
+
     .summary_content_container {
       transition: opacity $transition_speed;
 
