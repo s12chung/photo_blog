@@ -7,10 +7,20 @@ Behavior.resize_swipe = function() {
 $(function() {
     var $swipe = $(data_behavior('swipe'));
     if ($swipe.length > 0) {
+        var swipe_states = [parseInt($swipe.data('index'))];
+        var programmatic_state_change = false;
+
         swipe = new Swipe($swipe[0], {
             startSlide: parseInt($swipe.data('index')),
             callback: function (index, li) {
                 var $li = $(li);
+
+                if (location.pathname != $li.data('path')) {
+                    programmatic_state_change = true;
+                    History.pushState(({ change: index - swipe_states.shift() }), $li.data('title'), $li.data('path'));
+                    programmatic_state_change = false;
+                }
+                swipe_states.push(index);
                 if (!defined($li.data('loaded'))) {
                     $.ajax($li.data('path'), { dataType: 'script' });
                 }
@@ -26,5 +36,18 @@ $(function() {
 
         Behavior.resize_swipe();
         $(window).resize(Behavior.resize_swipe);
+
+        History.Adapter.bind(window, 'statechange', function() {
+            if (!programmatic_state_change) {
+                programmatic_state_change = false;
+                var change = History.getState().data.change;
+                if (change === -1) {
+                    swipe.prev();
+                }
+                else if (change === 1) {
+                    swipe.next();
+                }
+            }
+        });
     }
 });

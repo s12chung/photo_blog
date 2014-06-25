@@ -10,8 +10,9 @@
 <div data-behavior="swipe" data-index="<%= @post.publish_order %>" class="swipe">
   <ul>
     <% @posts.each do |post| %>
-        <% data = { path: post_path(post) } %>
+        <% data = { path: post_path(post), title: post.title } %>
         <% if @post.id == post.id; data.merge(loaded: true) end %>
+
         <%= content_tag :li, data: data do %>
             <% if @post.id == post.id %>
                 <%= render "photoswipe_content" %>

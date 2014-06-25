@@ -16,6 +16,7 @@
 
   <% if user_agent.mobile? %>
       <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/swipe/2.0/swipe.min.js" %>
+      <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/history.js/1.8/native.history.min.js" %>
   <% else %>
       <%= stylesheet_link_tag "desktop", media: "all" %>
       <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/css/jquery.Jcrop.min.css" %>
