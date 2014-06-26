@@ -23,6 +23,9 @@ function data_behavior(behavior) {
 function defined(variable) {
     return typeof variable != 'undefined' && variable != null;
 }
+function blank(variable) {
+    return !defined(variable);
+}
 
 function flow_type(options) {
     $(function() {

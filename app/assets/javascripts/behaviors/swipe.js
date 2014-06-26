@@ -33,6 +33,12 @@ $(function() {
                 clearTimeout(singleTapTimer);
             }
         });
+        swipe.li = function(index) {
+            if (blank(index)) {
+                index = swipe.getPos();
+            }
+            return $(data_behavior('swipe')).find('li').eq(index);
+        };
 
         Behavior.resize_swipe();
         $(window).resize(Behavior.resize_swipe);

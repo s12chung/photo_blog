@@ -65,7 +65,7 @@ Jcontroller.create('posts', {
     },
     js: {
         show: function(params) {
-            var $li = $(data_behavior('swipe')).find('li').eq(params.post_index);
+            var $li = swipe.li(params.post_index);
             $li.html(params.photoswipe_content);
             $li.data('loaded', true);
 
