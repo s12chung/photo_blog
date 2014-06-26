@@ -48,7 +48,7 @@ body[data-controller="posts"] {
 
       opacity: 0.5;
       &:hover {
-        opacity: 0.3;
+        opacity: 1;
       }
       @include backgrounded;
     }
