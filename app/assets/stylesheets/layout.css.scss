@@ -33,3 +33,11 @@ header.main {
     @include horizontal_spacer_container(.6em);
   }
 }
+
+
+.hiding {
+  opacity: 0;
+}
+.hidden {
+  visibility: 'hidden';
+}
