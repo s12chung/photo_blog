@@ -21,14 +21,14 @@ $(function() {
                     programmatic_state_change = false;
                 }
                 swipe_states.push(index);
-                if (!defined($li.data('loaded'))) {
-                    $.ajax($li.data('path'), { dataType: 'script' });
-                }
-                else {
+                if ($li.data('loaded') === true) {
                     $li.find(data_behavior('summary_content_container')).css({ opacity: 0, display: 'hidden' });
                     setTimeout(function () {
                         $li.find(data_behavior('summary_content_container')).fade_show();
                     }, 100);
+                }
+                else {
+                    $.ajax($li.data('path'), { dataType: 'script' });
                 }
                 clearTimeout(singleTapTimer);
             }

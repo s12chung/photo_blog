@@ -64,5 +64,12 @@ module PostPresenter
                      split.first.sub!(BULLET_REGEX, "")
                      split
                    end
+
+    @footnotes.each_with_index.map do |footnote, index|
+      index = index + 1
+      content_tag :li, id: "footnote_#{index}" do
+        footnote.html_safe + link_to(raw("&#8617;"), "#footnote_reference_#{index}", data: { behavior: "scroll_to", offset: -5 })
+      end
+    end.join.html_safe
   end
 end

@@ -13,11 +13,9 @@
 <div data-behavior="swipe" data-index="<%= @post.publish_order %>" class="swipe">
   <ul>
     <% @posts.each do |post| %>
-        <% data = { path: post_path(post), title: post.title } %>
-        <% if @post.id == post.id; data.merge(loaded: true) end %>
-
-        <%= content_tag :li, data: data do %>
-            <% if @post.id == post.id %>
+        <% loaded = @post.id == post.id %>
+        <%= content_tag :li, data: { path: post_path(post), title: post.title, loaded: loaded }  do %>
+            <% if loaded %>
                 <%= render "photoswipe_content" %>
             <% else %>
                 <div class="center_container">
