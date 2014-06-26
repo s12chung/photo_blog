@@ -5,7 +5,7 @@
 <% else %>
     <%= render "photo_box" %>
     <div class="container_outer">
-      <section class="main">
+      <section id="main_content" class="main">
         <% if @post.has_content? %>
             <%= render "content" %>
         <% end %>

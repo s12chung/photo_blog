@@ -6,6 +6,6 @@ $(function() {
         var offset = $this.data('offset');
         var options = { offset: { top: defined(offset) ? offset : 0 } };
         if (is_mobile) options.offset.top += -40;
-        $.scrollTo($this.data('scroll-to'), 400, options);
+        $.scrollTo($this.attr('href'), 400, options);
     });
 });
