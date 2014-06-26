@@ -63,13 +63,19 @@ body[data-controller="posts"] {
         .right {
           opacity: 0.3;
         }
-        .ui .summary_content {
-          opacity: 1;
+        .ui {
+          .summary_content {
+            opacity: 1;
+          }
+          .comment_box {
+            opacity: 0.5;
+          }
         }
       }
       .ui {
         .left,
         .right {
+          z-index: 1;
           opacity: 0;
           position: absolute;
           height: 100%;
@@ -109,7 +115,9 @@ body[data-controller="posts"] {
         width: 100%;
         height: 100%;
 
-        .summary_content {
+        .summary_content,
+        .comment_box {
+          z-index: 2;
           transition: opacity $transition_speed;
           opacity: 0;
         }

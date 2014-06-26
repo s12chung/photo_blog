@@ -60,13 +60,15 @@ body[data-controller="posts"] {
       .container {
         @include outer-container;
         height: 100%;
+
+        $bottom_offset: 15vh;
         .summary_content {
           @include backgrounded;
           line-height: 1;
-          max-width: 760px;
+          max-width: $max-width;
 
           position: absolute;
-          bottom: 15vh;
+          bottom: $bottom_offset;
 
           .html {
             font-style: italic;
@@ -91,6 +93,25 @@ body[data-controller="posts"] {
             transition: background-color $transition_speed;
             &:hover {
               background-color: rgba($grey, $grey, $grey, 0.8);
+            }
+          }
+        }
+
+        .comment_container {
+          height: 100vh;
+          position: relative;
+
+          .comment_box {
+            position: absolute;
+            right: 0;
+            bottom: $bottom_offset;
+
+            $comment_dimensions: 1.5em;
+            width: $comment_dimensions;
+            height: $comment_dimensions;
+
+            &:hover {
+              opacity: 1;
             }
           }
         }
