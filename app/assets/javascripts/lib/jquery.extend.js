@@ -4,15 +4,15 @@
         $this.show();
         $this.children().show();
         setTimeout(function() {
-            $this.removeClass('hiding hidden');
+            $this.css({ opacity: 1, visibility: 'visible' });
         }, 0);
     };
 
     $.fn.fade_hide = function() {
         var $this = $(this);
-        $this.addClass('hiding');
+        $this.css({ opacity: 0 });
         setTimeout(function() {
-            $this.addClass('hidden');
+            $this.css({ visibility: 'hidden' });
             $this.hide();
             $this.children().hide();
         }, 400);
