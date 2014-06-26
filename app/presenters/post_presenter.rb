@@ -6,6 +6,27 @@ module PostPresenter
     l date, locale: locale
   end
 
+  def snippet
+    unless has_content?
+      content_tag :div, class: "html" do
+        markdown_html
+      end
+    end
+  end
+  def read_story
+    if has_content?
+      content_tag :div do
+        link_to "Read Story", "#main_content",
+                data: { behavior: user_agent.mobile? ? "show_popup" : "scroll_to" }, class: "read_story"
+      end
+    end
+  end
+
+  def comment_box
+    link_to image_tag("comment.svg", class: "comment_box"), "#comments",
+            data: { behavior: user_agent.mobile? ? "show_comment" : "scroll_to" }
+  end
+
   def coords
     coords = {}
     self.class::CROP_TYPES.each do |crop_type|

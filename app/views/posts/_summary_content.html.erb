@@ -4,38 +4,14 @@
       <div>
         <%= @post.localized_date %>
         <h2><%= set_title @post.title %></h2>
-        <div class="place">
-          <%= @post.place %> - <%= @post.address %>
-        </div>
-        <% unless @post.has_content? %>
-            <div class="html">
-              <%= @post.markdown_html %>
-            </div>
-        <% end %>
+        <div class="place"><%= @post.place %> - <%= @post.address %></div>
+        <%= @post.snippet %>
       </div>
-      <% if @post.has_content? %>
-          <div>
-            <%
-               text = "Read Story"
-               klass = "read_story"
-            %>
-
-            <% if user_agent.mobile? %>
-                <%= link_to text, "#main_content", data: { behavior: "show_popup" }, class: klass %>
-            <% else %>
-                <%= link_to text, "#main_content", data: { behavior: "scroll_to" }, class: klass %>
-            <% end %>
-          </div>
-      <% end %>
+      <%= @post.read_story %>
     </div>
 
     <div class="comment_container">
-      <% image = image_tag "comment.svg", class: "comment_box" %>
-      <% if user_agent.mobile? %>
-          <%= link_to image, "#comments", data: { behavior: "show_comment" }, class: klass %>
-      <% else %>
-          <%= link_to image, "#comments", data: { behavior: "scroll_to" }, class: klass %>
-      <% end %>
+        <%= @post.comment_box %>
     </div>
   </div>
 </div>
