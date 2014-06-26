@@ -20,7 +20,6 @@ $(function() {
     });
     $body.on('click', data_behavior('show_comment'), function(e) {
         e.preventDefault();
-        show_popup(swipe.li().data('title'), $(data_behavior('comment_content')));
-        $popup.find(data_behavior('comment_content')).show();
+        show_popup(swipe.li().data('title'), comments_content);
     });
 });

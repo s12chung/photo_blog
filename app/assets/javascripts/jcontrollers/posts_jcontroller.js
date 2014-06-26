@@ -8,6 +8,7 @@ Jcontroller.create('posts', {
             if (is_mobile) {
                 popup_contents = new Array(params.posts_size);
                 popup_contents[params.post_index] = params.popup_content;
+                comments_content = params.comments_content
             }
         },
         edit: function(params) {
