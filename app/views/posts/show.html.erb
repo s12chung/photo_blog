@@ -8,8 +8,9 @@
       <section id="main_content" class="main">
         <% if @post.has_content? %>
             <%= render "content" %>
+        <% else %>
+            <%= render "layouts/comments" %>
         <% end %>
-        <%= render "layouts/disqus" %>
       </section>
     </div>
 <% end %>
