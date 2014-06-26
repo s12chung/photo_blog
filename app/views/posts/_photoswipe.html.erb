@@ -6,6 +6,9 @@
   </header>
   <div class="popup_content container_outer" data-behavior="popup_content"></div>
 </div>
+<div data-behavior="comment_content" style="display: none;">
+  <%= render "layouts/comments" %>
+</div>
 
 <div data-behavior="swipe" data-index="<%= @post.publish_order %>" class="swipe">
   <ul>
