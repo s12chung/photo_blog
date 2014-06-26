@@ -3,10 +3,6 @@ module ApplicationHelper
     "Travel Captions"
   end
 
-  def title_short
-    "TC"
-  end
-
   def set_title(title=title_default)
     if title
       content_for :title, "#{title}"
