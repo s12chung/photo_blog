@@ -66,6 +66,7 @@ body[data-controller="posts"] {
           @include backgrounded;
           line-height: 1;
           max-width: $max-width;
+          margin-right: $comment_dimensions + 0.5em + $outter_padding;
 
           position: absolute;
           bottom: $bottom_offset;
@@ -104,7 +105,6 @@ body[data-controller="posts"] {
           bottom: $bottom_offset;
           margin-bottom: -0.5em;
 
-          $comment_dimensions: 1.5em;
           width: $comment_dimensions;
           height: $comment_dimensions;
         }

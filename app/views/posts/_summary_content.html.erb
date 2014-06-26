@@ -1,17 +1,16 @@
 <div class="container_outer summary_content_container" data-behavior="summary_content_container">
   <div class="container">
-    <div class="summary_content">
-      <div>
-        <%= @post.localized_date %>
-        <h2><%= set_title @post.title %></h2>
-        <div class="place"><%= @post.place %> - <%= @post.address %></div>
-        <%= @post.snippet %>
+    <div class="space">
+      <div class="summary_content">
+        <div>
+          <%= @post.localized_date %>
+          <h2><%= set_title @post.title %></h2>
+          <div class="place"><%= @post.place %> - <%= @post.address %></div>
+          <%= @post.snippet %>
+        </div>
+        <%= @post.read_story %>
       </div>
-      <%= @post.read_story %>
-    </div>
-
-    <div class="comment_container">
-        <%= @post.comment_box %>
+      <%= @post.comment_box %>
     </div>
   </div>
 </div>

@@ -119,22 +119,26 @@ body[data-controller="posts"] {
         width: 100%;
         height: 100%;
 
+        .space {
+          height: 100vh;
+          position: relative;
+        }
+
+        .summary_content {
+          margin-right: $comment_dimensions + 0.5em;
+        }
+
         .summary_content,
         .comment_box {
           z-index: 2;
           transition: opacity $transition_speed;
           opacity: 0;
         }
-        .comment_container {
-          height: 100vh;
-          position: relative;
 
-          .comment_box {
-            right: 0;
-
-            &:hover {
-              opacity: 1;
-            }
+        .comment_box {
+          right: 0;
+          &:hover {
+            opacity: 1;
           }
         }
       }
