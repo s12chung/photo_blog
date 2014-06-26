@@ -54,6 +54,10 @@ body[data-controller="posts"] {
   }
 
   &[data-action="show"] {
+    h1 {
+      position: fixed;
+    }
+
     .photo_box {
       width: 100%;
       position: relative;

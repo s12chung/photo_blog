@@ -38,7 +38,7 @@ body[data-controller="posts"] {
 
   &[data-action="show"] {
     h1 {
-      position: fixed;
+      position: absolute;
       top: 0.1em;
       left: 0.5em;
       z-index: 1;
