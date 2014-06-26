@@ -1,5 +1,5 @@
-$max-width: 760px;
 @import 'bourbon';
+$max-width: em(760, 30);
 @import 'neat';
 @import 'patterns';
 

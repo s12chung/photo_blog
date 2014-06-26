@@ -13,8 +13,8 @@
             </div>
         <% end %>
       </div>
-      <div>
-        <% if @post.has_content? %>
+      <% if @post.has_content? %>
+          <div>
             <%
                text = "Read Story"
                klass = "read_story"
@@ -25,8 +25,8 @@
             <% else %>
                 <%= link_to text, "#main_content", data: { behavior: "scroll_to" }, class: klass %>
             <% end %>
-        <% end %>
-      </div>
+          </div>
+      <% end %>
     </div>
 
     <div class="comment_container">
