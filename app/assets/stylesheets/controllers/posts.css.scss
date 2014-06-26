@@ -97,23 +97,15 @@ body[data-controller="posts"] {
           }
         }
 
-        .comment_container {
-          height: 100vh;
-          position: relative;
+        .comment_box {
+          position: absolute;
+          right: 1em;
+          bottom: $bottom_offset;
+          margin-bottom: -0.5em;
 
-          .comment_box {
-            position: absolute;
-            right: 0;
-            bottom: $bottom_offset;
-
-            $comment_dimensions: 1.5em;
-            width: $comment_dimensions;
-            height: $comment_dimensions;
-
-            &:hover {
-              opacity: 1;
-            }
-          }
+          $comment_dimensions: 1.5em;
+          width: $comment_dimensions;
+          height: $comment_dimensions;
         }
       }
     }

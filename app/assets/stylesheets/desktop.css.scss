@@ -121,6 +121,18 @@ body[data-controller="posts"] {
           transition: opacity $transition_speed;
           opacity: 0;
         }
+        .comment_container {
+          height: 100vh;
+          position: relative;
+
+          .comment_box {
+            right: 0;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
       }
 
       .photo {
