@@ -5,28 +5,6 @@ module PostPresenter
   def localized_date
     l date, locale: locale
   end
-
-  def snippet
-    unless has_content?
-      content_tag :div, class: "html" do
-        markdown_html
-      end
-    end
-  end
-  def read_story
-    if has_content?
-      content_tag :div do
-        link_to "Read Story", "#main_content",
-                data: { behavior: user_agent.mobile? ? "show_popup" : "scroll_to" }, class: "read_story"
-      end
-    end
-  end
-
-  def comment_box
-    link_to image_tag("comment.svg", class: "comment_box"), "#comments",
-            data: { behavior: user_agent.mobile? ? "show_comment" : "scroll_to" }
-  end
-
   def coords
     coords = {}
     self.class::CROP_TYPES.each do |crop_type|
@@ -35,6 +13,21 @@ module PostPresenter
     coords
   end
 
+  def read_story
+    if has_content?
+      content_tag :div do
+        link_to "Read Story", "#main_content",
+                data: { behavior: user_agent.mobile? ? "show_popup" : "scroll_to" }, class: "read_story"
+      end
+    end
+  end
+  def snippet
+    unless has_content?
+      content_tag :div, class: "html" do
+        markdown_html
+      end
+    end
+  end
   def markdown_html
     partition = markdown.partition(/\r\n/)
     first_paragraph = partition.first
@@ -55,7 +48,6 @@ module PostPresenter
     end
     self.class.process_markdown content_array.join("")
   end
-
   def footnotes
     @footnotes ||= if footnote_text.empty?
                      []
@@ -71,5 +63,9 @@ module PostPresenter
         footnote.html_safe + link_to(raw("&#8617;"), "#footnote_reference_#{index}", data: { behavior: "scroll_to", offset: -5 })
       end
     end.join.html_safe
+  end
+  def comment_box
+    link_to image_tag("comment.svg", class: "comment_box"), "#comments",
+            data: { behavior: user_agent.mobile? ? "show_comment" : "scroll_to" }
   end
 end
