@@ -52,7 +52,7 @@ module ApplicationHelper
     data.each do |type, value|
       type = "#{namespace}#{type}"
       if value.class == Hash
-        if type == "og:image"
+        if type == "og:image" && value[:url]
           tags << tag(:meta, property: type, content: value[:url])
         end
         tags += open_graph_data_to_tags(value, "#{type}:")
