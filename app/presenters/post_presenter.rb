@@ -12,6 +12,33 @@ module PostPresenter
     end
     coords
   end
+  def to_facebook
+    image = MiniMagick::Image.open(photo.url)
+    {
+        og: {
+            type: :article,
+            description: has_content? ? description : markdown,
+            image: {
+                url: photo.url,
+                secure_url: photo.url,
+                type: "image/jpeg",
+                width: image['width'],
+                height: image['height']
+            }
+        },
+        article: {
+            published_time: published_at.try(:iso8601),
+            modified_time: updated_at.iso8601,
+            author: root_markdown_url(:about),
+            tag: tags_array
+        }
+    }
+  end
+  def tags_array
+    if tags
+      tags.split(",").map {|tag| tag.strip }
+    end
+  end
 
   def read_story
     if has_content?

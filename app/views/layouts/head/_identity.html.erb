@@ -1,0 +1,7 @@
+<title><%= title %></title>
+
+<% if content_for? :identity %>
+    <%= yield :identity %>
+<% else %>
+    <%= open_graph_tags %>
+<% end %>

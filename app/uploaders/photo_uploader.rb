@@ -61,7 +61,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
       end
 
       crop_values = {}
-      model.class.crop_types.each do |crop_type|
+      model.class::CROP_TYPES.each do |crop_type|
         crop_values[crop_type] = (model.send("crop_#{crop_type}")/to_crop_image['width']) * img['width']
       end
 

@@ -7,34 +7,36 @@ class Post
   include HasMarkdown
 
   field :title, default: "Post Title"
-  field :markdown, default: "A post is just the beginning."
-  field :footnote_text
+  field :description
+  field :tags
+  field :date, type: Date, default: -> { Date.today }
   field :place
   field :address
   field :position, type: Point, default: -> { Mongoid::Geospatial::Point.new(0,0) }
-  field :date, type: Date, default: -> { Date.today }
 
-  field :published_at, type: DateTime
+  field :markdown, default: "A post is just the beginning."
+  field :footnote_text
+
+  field :published_at, type: ActiveSupport::TimeWithZone
   field :published, default: false
   field :publish_order, type: Integer
 
-  slug :title do |post|
-    post.slug_builder.to_url(replace_whitespace_with: "_")
-  end
-
   CROP_TYPES = %i[x y w h]
   CROP_ATTRIBUTES = CROP_TYPES.map { |coord| "crop_#{coord}".to_sym }
-  CROP_ATTRIBUTES.each do |attribute|
-    field attribute, type: BigDecimal
-  end
+  CROP_ATTRIBUTES.each { |attribute| field attribute, type: BigDecimal }
   RATIO = Rational(14, 3)
   TO_CROP_WIDTH = 345
   mount_uploader :photo, PhotoUploader
 
+  slug :title do |post|
+    post.slug_builder.to_url(replace_whitespace_with: "_")
+  end
+  TEXT_FIELDS = %i[title description tags place address]
+
   scope :published, -> { where(published: true).asc(:publish_order) }
 
   after_update do
-    unless (changed & self.class.crop_attributes.map(&:to_s)).empty?
+    unless (changed & self.class::CROP_ATTRIBUTES.map(&:to_s)).empty?
       photo.recreate_versions!(:index)
     end
   end
@@ -60,7 +62,7 @@ class Post
         post.update_attribute :publish_order, index
       end
     else
-      update_attributes(published_at: DateTime.now,
+      update_attributes(published_at: Time.zone.now,
                         publish_order: self.class.published.size,
                         published: true)
     end
@@ -84,14 +86,5 @@ class Post
       raise("You have quotes!")
     end
     text.gsub("...", "\u2026").gsub(" - ", "\u2014")
-  end
-
-  class << self
-    def crop_types
-      CROP_TYPES
-    end
-    def crop_attributes
-      CROP_ATTRIBUTES
-    end
   end
 end

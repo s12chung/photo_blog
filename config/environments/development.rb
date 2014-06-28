@@ -30,4 +30,10 @@ PhotoBlog::Application.configure do
     config.fog_credentials = { provider: 'AWS' }.merge(s3_config[:credentials])
     config.fog_directory = s3_config[:s3_bucket]
   end
+
+  YAML.load_file('./config/omniauth.yml').each do |provider, values|
+    values.each do |type, value|
+      ENV["#{provider}_#{type}".upcase] = value.to_s
+    end
+  end
 end

@@ -17,5 +17,6 @@
 
 .idea/
 db/photos
-config/s3.yml
 dump/*
+config/s3.yml
+config/omniauth.yml

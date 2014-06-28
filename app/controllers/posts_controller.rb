@@ -41,6 +41,6 @@ class PostsController < ApplicationController
 
   protected
   def update_params
-    params.require(:post).permit(*(%i[title date place address markdown footnote_text] + Post.crop_attributes))
+    params.require(:post).permit(*(Post::TEXT_FIELDS + %i[date markdown footnote_text] + Post::CROP_ATTRIBUTES))
   end
 end
