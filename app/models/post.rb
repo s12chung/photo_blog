@@ -36,7 +36,7 @@ class Post
   scope :published, -> { where(published: true).asc(:publish_order) }
 
   after_update do
-    unless (changed & self.class::CROP_ATTRIBUTES.map(&:to_s)).empty?
+    if crop_changed?
       photo.recreate_versions!(:index)
     end
   end
@@ -78,6 +78,10 @@ class Post
 
   def locale
     address.match(/japan/i) ? :jp : :kr
+  end
+
+  def crop_changed?
+    !(changed & self.class::CROP_ATTRIBUTES.map(&:to_s)).empty?
   end
 
   protected

@@ -52,7 +52,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def crop
     manipulate! do |img|
       if model.crop_x
-        to_crop_image = MiniMagick::Image.open(model.photo.to_crop.url)
+        to_crop_image = MiniMagick::Image.open(model.photo.to_crop.send(model.crop_changed? ? :url : :path))
       else
         model.crop_x = model.crop_y = 0
         model.crop_w = img['width']
