@@ -19,7 +19,7 @@ module PostPresenter
             type: :article,
             description: has_content? ? description : markdown,
             image: {
-                url: photo.url,
+                url: photo.url.http_url,
                 secure_url: photo.url,
                 type: "image/jpeg",
                 width: image['width'],

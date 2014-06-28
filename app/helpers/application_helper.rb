@@ -42,7 +42,7 @@ module ApplicationHelper
             title: title,
             description: description,
             url: request.original_url,
-            image: asset_url("logo.png"),
+            image: asset_url("logo.png").http_url,
         }
     }
   end
