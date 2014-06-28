@@ -1,7 +1,7 @@
 <%= link_to post_path(post), data: { read_url: post_path(post), edit_url: edit_post_path(post) } do %>
     <article class="post">
-      <%= image_tag post.photo.index.gray %>
-      <%= image_tag post.photo.index, class: "color" %>
+      <%= image_tag post.photo.index.gray.desktop %>
+      <%= image_tag post.photo.index.desktop, class: "color" %>
 
       <header>
         <div>

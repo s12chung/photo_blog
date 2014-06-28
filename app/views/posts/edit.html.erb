@@ -1,7 +1,7 @@
 <% set_title "Edit #{@post.title}" %>
 
 <div class="preview">
-  <%= image_tag @post.photo.crop_preview, data: { behavior: "crop_preview" } %>
+  <%= image_tag @post.photo.desktop, data: { behavior: "crop_preview" } %>
 </div>
 
 <div class="container_outer">

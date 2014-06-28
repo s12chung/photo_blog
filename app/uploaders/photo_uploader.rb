@@ -34,19 +34,31 @@ class PhotoUploader < CarrierWave::Uploader::Base
     !!version_name
   end
 
-  # Create different versions of your uploaded files:
-  version :crop_preview do
-    process resize_to_limit: [1400, 99999]
+  def self.platform_sizes
+    version :desktop do
+      process resize_to_limit: [2880, 2880]
+    end
+    version :tablet, from_version: :desktop do
+      process resize_to_limit: [2048, 2048]
+    end
+    version :phone, from_version: :tablet do
+      process resize_to_limit: [1136, 1136]
+    end
   end
 
-  version :to_crop, from_version: :crop_preview do
+  platform_sizes
+
+  version :to_crop, from_version: :phone do
     process resize_to_limit: [Post::TO_CROP_WIDTH, 600]
   end
-  version :index do
+  version :index, from_version: :desktop do
     process :crop
     version :gray do
       process :convert_to_gray
+      platform_sizes
     end
+
+    platform_sizes
   end
 
   def crop
@@ -97,5 +109,4 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end
