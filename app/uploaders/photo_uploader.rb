@@ -81,6 +81,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
     end
     @dimensions
   end
+  def picturefill_src
+    "#{url} #{dimensions['width']}w"
+  end
 
   platform_sizes
 
