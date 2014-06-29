@@ -13,16 +13,17 @@ module PostPresenter
     coords
   end
   def to_facebook
+    image = photo.retina
     {
         og: {
             type: :article,
             description: has_content? ? description : markdown,
             image: {
-                url: photo.url.http_url,
-                secure_url: photo.url,
+                url: image.url.http_url,
+                secure_url: image.url,
                 type: "image/jpeg",
-                width: photo.desktop.dimensions['width'],
-                height: photo.desktop.dimensions['height']
+                width: image.dimensions['width'],
+                height: image.dimensions['height']
             }
         },
         article: {
