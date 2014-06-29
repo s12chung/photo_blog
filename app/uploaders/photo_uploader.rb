@@ -34,16 +34,52 @@ class PhotoUploader < CarrierWave::Uploader::Base
     !!version_name
   end
 
-  def self.platform_sizes
-    version :desktop do
-      process resize_to_limit: [2880, 2880]
+  class << self
+    def platform_sizes
+      version :desktop do
+        process resize_to_limit: [2880, 2880]
+        store_dimensions
+      end
+      version :tablet, from_version: :desktop do
+        process resize_to_limit: [2048, 2048]
+        store_dimensions
+      end
+      version :phone, from_version: :tablet do
+        process resize_to_limit: [1136, 1136]
+        store_dimensions
+      end
     end
-    version :tablet, from_version: :desktop do
-      process resize_to_limit: [2048, 2048]
+
+    def store_dimensions
+      process :store_dimensions
     end
-    version :phone, from_version: :tablet do
-      process resize_to_limit: [1136, 1136]
+  end
+  def store_dimensions
+    hash = { mounted_as => {} }
+    current_hash = hash[mounted_as]
+    self.class.version_names.each { |version_name| current_hash = current_hash[version_name] = {} }
+
+    image = MiniMagick::Image.open(path)
+    current_hash.merge!(
+        width: image['width'],
+        height: image['height']
+    )
+
+    dimensions_attribute.deep_merge!(hash)
+  end
+  def dimensions_attribute
+    model.carrierwave_dimensions
+  end
+  def dimensions
+    unless @dimensions
+      current_hash = dimensions_attribute[mounted_as.to_s]
+      self.class.version_names.each do |version_name|
+        if current_hash.blank?; break end
+        current_hash = current_hash[version_name.to_s]
+      end
+      @dimensions = current_hash || {}
     end
+    @dimensions
   end
 
   platform_sizes

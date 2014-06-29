@@ -26,6 +26,7 @@ class Post
   CROP_ATTRIBUTES.each { |attribute| field attribute, type: BigDecimal }
   RATIO = Rational(14, 3)
   TO_CROP_WIDTH = 345
+  field :carrierwave_dimensions, type: Hash, default: {}
   mount_uploader :photo, PhotoUploader
 
   slug :title do |post|
@@ -35,7 +36,7 @@ class Post
 
   scope :published, -> { where(published: true).asc(:publish_order) }
 
-  after_update do
+  before_update do
     if crop_changed?
       photo.recreate_versions!(:index)
     end
@@ -82,6 +83,10 @@ class Post
 
   def crop_changed?
     !(changed & self.class::CROP_ATTRIBUTES.map(&:to_s)).empty?
+  end
+  def recreate_versions!
+    photo.recreate_versions!
+    save
   end
 
   protected

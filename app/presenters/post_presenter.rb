@@ -13,7 +13,6 @@ module PostPresenter
     coords
   end
   def to_facebook
-    image = MiniMagick::Image.open(photo.url)
     {
         og: {
             type: :article,
@@ -22,8 +21,8 @@ module PostPresenter
                 url: photo.url.http_url,
                 secure_url: photo.url,
                 type: "image/jpeg",
-                width: image['width'],
-                height: image['height']
+                width: photo.desktop.dimensions['width'],
+                height: photo.desktop.dimensions['height']
             }
         },
         article: {
