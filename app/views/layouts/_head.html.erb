@@ -13,6 +13,7 @@
 <% end %>
 
 <script>is_mobile = <%= user_agent.mobile? %>;</script>
+<%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/picturefill/2.0.0/picturefill.min.js", async: true %>
 <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.7/jquery.scrollTo.min.js", async: true %>
 <%= javascript_include_tag "application" %>
 

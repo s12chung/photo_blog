@@ -71,6 +71,9 @@ Jcontroller.create('posts', {
             $li.data('loaded', true);
 
             popup_contents[params.post_index] = params.popup_content;
+            picturefill({
+                elements: $li.find(data_behavior('picturefill'))
+            });
 
             Behavior.pinch_zoom($li.find(data_behavior('pinch_zoom')));
             Behavior.resize_swipe();

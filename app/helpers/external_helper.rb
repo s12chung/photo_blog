@@ -1,13 +1,11 @@
 module ExternalHelper
   def picturefill(uploader, options={})
-    if user_agent.mobile?
-      image_tag nil, options.merge(
-          sizes: "100vw",
-          srcset: %i[phone tablet].map { |device| uploader.send(device).picturefill_src }.join(", ")
-      )
-    else
-      image_tag uploader.desktop, options
-    end
+    versions = user_agent.mobile? ? %i[phone tablet] : %i[desktop retina]
+    image_tag nil, options.merge(
+        sizes: "100vw",
+        srcset: versions.map { |device| uploader.send(device).picturefill_src }.join(", "),
+        data: { behavior: "picturefill" }
+    )
   end
 
   def open_graph_tags
