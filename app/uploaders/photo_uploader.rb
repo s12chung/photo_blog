@@ -37,19 +37,19 @@ class PhotoUploader < CarrierWave::Uploader::Base
   class << self
     def platform_sizes
       version :retina do
-        process resize_to_limit: [2880, 2880]
+        process resize_to_limit: [3200, 3200]
         store_dimensions
       end
-      version :desktop do
-        process resize_to_limit: [1440, 1440]
-        store_dimensions
-      end
-
-      version :tablet, from_version: :desktop do
+      version :tablet, from_version: :retina do
         process resize_to_limit: [2048, 2048]
         store_dimensions
       end
-      version :phone, from_version: :tablet do
+
+      version :desktop, from_version: :tablet do
+        process resize_to_limit: [1600, 1600]
+        store_dimensions
+      end
+      version :phone, from_version: :desktop do
         process resize_to_limit: [1136, 1136]
         store_dimensions
       end
@@ -95,7 +95,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   version :to_crop, from_version: :phone do
     process resize_to_limit: [Post::TO_CROP_WIDTH, 600]
   end
-  version :index, from_version: :desktop do
+  version :index, from_version: :retina do
     process :crop
     version :gray do
       process :convert_to_gray
