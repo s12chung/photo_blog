@@ -12,12 +12,16 @@ module PostPresenter
     end
     coords
   end
+
+  def summary
+    has_content? ? description : markdown
+  end
   def to_facebook
     image = photo.retina
     {
         og: {
             type: :article,
-            description: has_content? ? description : markdown,
+            description: summary,
             image: {
                 url: image.url.http_url,
                 secure_url: image.url,
@@ -34,6 +38,29 @@ module PostPresenter
         }
     }
   end
+  def to_twitter
+    image_url = photo.retina.url.http_url
+    data = if has_content?
+             {
+                 card: :summary_large_image,
+                 creator: "@s12chung",
+                 image: {
+                     src: image_url
+                 }
+             }
+           else
+             {
+                 card: :photo,
+                 image: image_url
+             }
+           end
+    {
+        twitter: data.merge(
+            description: summary
+        )
+    }
+  end
+
   def tags_array
     if tags
       tags.split(",").map {|tag| tag.strip }

@@ -5,6 +5,9 @@ module ApplicationHelper
   def description
     "Capturing travel with a photo and accompanying text at a time."
   end
+  def logo_url
+    asset_url("logo.png").http_url
+  end
 
   def set_title(title=title_default)
     if title
