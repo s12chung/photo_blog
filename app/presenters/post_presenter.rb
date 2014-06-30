@@ -43,7 +43,6 @@ module PostPresenter
     data = if has_content?
              {
                  card: :summary_large_image,
-                 creator: "@s12chung",
                  image: {
                      src: image_url
                  }

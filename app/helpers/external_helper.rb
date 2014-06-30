@@ -43,7 +43,8 @@ module ExternalHelper
     {
         twitter: social_networks_default.merge(
             card: :summary,
-            site: "@TravelCaptions"
+            site: "@TravelCaptions",
+            creator: "@s12chung"
         )
     }
   end
