@@ -46,6 +46,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'quiet_assets'
+gem 'newrelic_rpm'
 
 gem 'mongoid'
 gem 'bson_ext'
