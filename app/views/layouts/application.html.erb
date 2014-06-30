@@ -5,5 +5,7 @@
 </head>
 <body data-controller="<%= jaction.controller_path %>" data-action="<%= jaction.action_name %>">
 <%= yield %>
+
+<%= yield :load_last %>
 </body>
 </html>
