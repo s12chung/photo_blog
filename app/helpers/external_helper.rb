@@ -1,9 +1,8 @@
 module ExternalHelper
   def picturefill(uploader, options={})
-    versions = user_agent.mobile? ? %i[phone tablet] : %i[desktop retina]
     image_tag nil, options.merge(
         sizes: "100vw",
-        srcset: versions.map { |device| uploader.send(device).picturefill_src }.join(", "),
+        srcset: %i[phone tablet desktop retina].map { |device| uploader.send(device).picturefill_src }.join(", "),
         data: { behavior: "picturefill" }
     )
   end

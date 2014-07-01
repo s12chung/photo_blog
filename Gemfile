@@ -73,3 +73,6 @@ gem 'useragent'
 
 gem 'mongoid_geospatial'
 gem 'mongoid_slug'
+
+gem 'memcachier'
+gem 'dalli'

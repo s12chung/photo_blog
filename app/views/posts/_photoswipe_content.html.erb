@@ -1,6 +1,8 @@
-<div data-behavior="pinch_zoom" class="pinch_zoom">
-  <div class="center_container">
-    <%= picturefill @post.photo %>
-  </div>
-</div>
-<%= render "summary_content" %>
+<% cache @post do %>
+    <div data-behavior="pinch_zoom" class="pinch_zoom">
+      <div class="center_container">
+        <%= picturefill @post.photo %>
+      </div>
+    </div>
+    <%= render "summary_content" %>
+<% end %>

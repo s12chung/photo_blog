@@ -1,14 +1,16 @@
-<div class="content">
-  <div class="markdown">
-    <%= @post.markdown_html %>
-  </div>
-
-  <% unless @post.footnotes.empty? %>
-      <div class="footnotes">
-        <ol>
-          <%= @post.footnotes %>
-        </ol>
+<% cache @post do %>
+    <div class="content">
+      <div class="markdown">
+        <%= @post.markdown_html %>
       </div>
-  <% end %>
-</div>
-<%= render "layouts/comments" %>
+
+      <% unless @post.footnotes.empty? %>
+          <div class="footnotes">
+            <ol>
+              <%= @post.footnotes %>
+            </ol>
+          </div>
+      <% end %>
+    </div>
+    <%= render "layouts/comments" %>
+<% end %>

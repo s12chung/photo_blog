@@ -1,18 +1,21 @@
 <h1><%= link_to image_tag("logo.svg"), root_path %></h1>
 
+<% set_title @post.title %>
+<% social_networks @post %>
+
 <% if user_agent.mobile? %>
     <%= render "photoswipe" %>
 <% else %>
-    <%= render "photo_box" %>
-    <div class="container_outer">
-      <section id="main_content" class="main">
-        <% if @post.has_content? %>
-            <%= render "content" %>
-        <% else %>
-            <%= render "layouts/comments" %>
-        <% end %>
-      </section>
-    </div>
+    <% cache ([@post] + @post_hash.values.map(&:id)) do %>
+        <%= render "photo_box" %>
+        <div class="container_outer">
+          <section id="main_content" class="main">
+            <% if @post.has_content? %>
+                <%= render "content" %>
+            <% else %>
+                <%= render "layouts/comments" %>
+            <% end %>
+          </section>
+        </div>
+    <% end %>
 <% end %>
-
-<% social_networks @post %>

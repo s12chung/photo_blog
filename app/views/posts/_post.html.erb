@@ -1,13 +1,15 @@
-<%= link_to post_path(post), data: { read_url: post_path(post), edit_url: edit_post_path(post) } do %>
-    <article class="post">
-      <%= picturefill post.photo.index.gray %>
-      <%= picturefill post.photo.index, class: "color" %>
+<% cache post do %>
+    <%= link_to post_path(post), data: { read_url: post_path(post), edit_url: edit_post_path(post) } do %>
+        <article class="post">
+          <%= picturefill post.photo.index.gray %>
+          <%= picturefill post.photo.index, class: "color" %>
 
-      <header>
-        <div>
-          <div class="date"><%= post.localized_date %></div>
-          <h3><%= post.title %></h3>
-        </div>
-      </header>
-    </article>
+          <header>
+            <div>
+              <div class="date"><%= post.localized_date %></div>
+              <h3><%= post.title %></h3>
+            </div>
+          </header>
+        </article>
+    <% end %>
 <% end %>
