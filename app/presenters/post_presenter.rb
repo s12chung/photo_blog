@@ -121,4 +121,10 @@ module PostPresenter
     link_to image_tag("comment.svg", class: "comment_box"), "#comments",
             data: { behavior: user_agent.mobile? ? "show_comment" : "scroll_to" }
   end
+
+  module ClassMethods
+    def direction(change)
+      change == -1 ? :left : :right
+    end
+  end
 end

@@ -1,7 +1,7 @@
-<% post = @post_hash[direction] %>
+<% post = @post.adjacent change %>
 
 <% if post %>
-    <%= link_to post, class: direction do %>
+    <%= link_to post, class: Post.direction(change) do %>
         <div class="title">
           <%= post.title %>
         </div>

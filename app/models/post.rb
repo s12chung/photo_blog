@@ -69,15 +69,18 @@ class Post
     end
   end
 
-  def adjacent(change=1)
-    if publish_order
-      @published_size ||= Post.published.size
-      adjacent_publish_order = publish_order + change
-      if adjacent_publish_order >= 0 && adjacent_publish_order < @published_size
-        self.class.where(publish_order: adjacent_publish_order).first
-      end
+  def adjacent(change=nil)
+    @adjacent ||= if publish_order
+                    adjacent = {}
+                    [-1, 1].each do |change|
+                      adjacent[change] = self.class.where(publish_order: publish_order + change).first
+                    end
+                    adjacent
+                  end
+    if change.blank?
+      @adjacent.values
     else
-      nil
+      @adjacent[change]
     end
   end
 

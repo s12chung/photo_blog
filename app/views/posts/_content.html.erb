@@ -1,4 +1,4 @@
-<% cache ([@post, user_agent.mobile?] + @post_hash.values) do %>
+<% cache ([@post, user_agent.mobile?] + @post.adjacent) do %>
     <div class="content">
       <div class="markdown">
         <%= @post.markdown_html %>
@@ -14,8 +14,8 @@
     </div>
     <% unless user_agent.mobile? %>
         <div class="next_prev">
-          <%= render "direction_footer", direction: :left %>
-          <%= render "direction_footer", direction: :right %>
+          <%= render "direction_footer", change: -1 %>
+          <%= render "direction_footer", change: 1 %>
         </div>
     <% end %>
     <%= render "layouts/comments" %>

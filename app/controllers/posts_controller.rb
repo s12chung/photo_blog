@@ -10,12 +10,6 @@ class PostsController < ApplicationController
 
     if user_agent.mobile?
       index
-    else
-      @published_posts_size = Post.published.size
-      @post_hash = {
-          left: @post.adjacent(-1),
-          right: @post.adjacent
-      }
     end
   end
   def show_content
