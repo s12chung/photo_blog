@@ -31,5 +31,19 @@ header.main {
   .right {
     margin-top: 0.95em;
     @include horizontal_spacer_container(.6em);
+
+    .social {
+      @include horizontal_spacer_container(.1em);
+      img {
+        opacity: 0.5;
+        width: 1em;
+        height: 1em;
+
+        &:hover {
+          opacity: 1;
+          transition: opacity $transition_speed;
+        }
+      }
+    }
   }
 }
