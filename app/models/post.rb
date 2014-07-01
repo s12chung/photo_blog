@@ -18,7 +18,7 @@ class Post
   field :footnote_text
 
   field :published_at, type: ActiveSupport::TimeWithZone
-  field :published, default: false
+  field :published, type: Boolean, default: false
   field :publish_order, type: Integer
 
   CROP_TYPES = %i[x y w h]
