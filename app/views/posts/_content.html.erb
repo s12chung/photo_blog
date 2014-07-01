@@ -1,4 +1,4 @@
-<% cache @post, user_agent.mobile? do %>
+<% cache ([@post, user_agent.mobile?] + @post_hash.values) do %>
     <div class="content">
       <div class="markdown">
         <%= @post.markdown_html %>

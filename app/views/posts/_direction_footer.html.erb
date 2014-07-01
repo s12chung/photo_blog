@@ -1,9 +1,6 @@
 <% post = @post_hash[direction] %>
 
-<% if @post.publish_order == 0 && direction == :left ||
-        @post.publish_order == @published_posts_size - 1 && direction == :right %>
-    <div>&nbsp;</div>
-<% else %>
+<% if post %>
     <%= link_to post, class: direction do %>
         <div class="title">
           <%= post.title %>
@@ -12,4 +9,6 @@
           <%= post.description %>
         </div>
     <% end %>
+<% else %>
+    <div>&nbsp;</div>
 <% end %>
