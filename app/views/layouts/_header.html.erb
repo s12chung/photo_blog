@@ -1,19 +1,21 @@
-<div class="container_outer">
-  <header class="main">
-    <h1><%= link_to title_default, root_path %></h1>
-    <div class="right">
-      <% if authenticated? && action_name == "index" %>
-          <%= link_to "", "#read_mode", data: { behavior: "read_mode" } %>
-      <% end %>
-      <%= link_to "About", root_markdown_path(:about) %>
+<% cache authenticated? do %>
+    <div class="container_outer">
+      <header class="main">
+        <h1><%= link_to title_default, root_path %></h1>
+        <div class="right">
+          <% if authenticated? && action_name == "index" %>
+              <%= link_to "", "#read_mode", data: { behavior: "read_mode" } %>
+          <% end %>
+          <%= link_to "About", root_markdown_path(:about) %>
 
-      <div class="social">
-        <% %i[facebook twitter].each do |social_network| %>
-            <%= link_to image_tag("social/#{social_network}.svg"),
-                        "http://www.#{social_network}.com/travelcaptions",
-                        target: "_blank" %>
-        <% end %>
-      </div>
+          <div class="social">
+            <% %i[facebook twitter].each do |social_network| %>
+                <%= link_to image_tag("social/#{social_network}.svg"),
+                            "http://www.#{social_network}.com/travelcaptions",
+                            target: "_blank" %>
+            <% end %>
+          </div>
+        </div>
+      </header>
     </div>
-  </header>
-</div>
+<% end %>

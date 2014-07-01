@@ -71,7 +71,8 @@ class Post
 
   def adjacent(change=1)
     if publish_order
-      self.class.where(publish_order: (publish_order + change) % Post.published.size).first
+      @published_size ||= Post.published.size
+      self.class.where(publish_order: (publish_order + change) % @published_size).first
     else
       nil
     end
