@@ -4,7 +4,7 @@ module PostsHelper
     if post
       content_tag :div, class: Post.direction(change) do
         content_tag :div, class: "container" do
-          link_to image_tag("#{Post.direction(change)}.png"), post_path(post)
+          link_to image_tag("arrows/#{Post.direction(change)}.png"), post_path(post)
         end
       end
     end

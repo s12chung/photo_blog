@@ -173,9 +173,18 @@ body[data-controller="posts"] {
           padding-top: 0.3em;
           border-top: 1px solid $ink;
           width: 45%;
-          padding-right: 5%;
-          color: $ink;
 
+          color: $ink;
+          transition: opacity $transition_speed;
+
+          $arrow_width: 0.7em;
+          position: relative;
+          padding-left: $arrow_width;
+          padding-right: 5%;
+
+          .title {
+            line-height: 1.2;
+          }
           .description {
             font-style: italic;
             font-size: 0.7em;
@@ -186,10 +195,26 @@ body[data-controller="posts"] {
             text-decoration: none;
             opacity: 0.5;
           }
+
+          .arrow {
+            position: absolute;
+            top: 50%;
+            height: 0.5em;
+            opacity: 0.5;
+          }
+          &.left {
+            .arrow {
+              left: 0;
+            }
+          }
           &.right {
-            padding-right: 0;
+            padding-right: $arrow_width;
             padding-left: 5%;
             text-align: right;
+
+            .arrow {
+              right: 0;
+            }
           }
         }
       }

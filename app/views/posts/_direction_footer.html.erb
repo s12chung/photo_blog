@@ -8,6 +8,7 @@
         <div class="description">
           <%= post.description %>
         </div>
+        <%= image_tag "arrows/text_#{Post.direction(change)}.svg", class: "arrow" %>
     <% end %>
 <% else %>
     <div>&nbsp;</div>
