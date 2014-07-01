@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     end
   end
   def authenticated?
-    Session.authenticated? cookies[:auth_token]
+    @authenticated ||= Session.authenticated? cookies[:auth_token]
   end
 
   def user_agent; @user_agent ||= UserAgent.parse(request.env["HTTP_USER_AGENT"]) end

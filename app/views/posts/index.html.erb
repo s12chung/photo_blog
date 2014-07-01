@@ -1,5 +1,14 @@
 <% set_title %>
 <%= render "layouts/header" %>
+
 <section class="post" data-behavior="read_mode_container">
-  <%= render @posts %>
+  <% unless authenticated? %>
+      <%= render @posts.last %>
+  <% end %>
+  <% unless @posts[1..-1].empty? %>
+      <% unless authenticated? %>
+          <h2>All Captions</h2>
+      <% end %>
+      <%= render @posts %>
+  <% end %>
 </section>

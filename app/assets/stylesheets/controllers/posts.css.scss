@@ -1,5 +1,11 @@
 body[data-controller="posts"] {
   &[data-action="index"] {
+    h2 {
+      font-size: $read;
+      text-align: center;
+      margin-top: 1.5em;
+      margin-bottom: 0.2em;
+    }
     section.post {
       article.post {
         @include backgrounded;
