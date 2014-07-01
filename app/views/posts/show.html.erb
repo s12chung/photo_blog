@@ -6,7 +6,7 @@
 <% if user_agent.mobile? %>
     <%= render "photoswipe" %>
 <% else %>
-    <% cache ([@post] + @post_hash.values.reject(&:blank?).map(&:id)) do %>
+    <% cache ([@post] + @post_hash.values) do %>
         <%= render "photo_box" %>
         <div class="container_outer">
           <section id="main_content" class="main">

@@ -61,7 +61,7 @@ body[data-controller="posts"] {
         @include outer-container;
         height: 100%;
 
-        $bottom_offset: 15vh;
+        $bottom_offset: 15%;
         .summary_content {
           @include backgrounded;
           line-height: 1;
@@ -200,16 +200,20 @@ body[data-controller="posts"] {
         -webkit-overflow-scrolling: touch;
 
         padding-top: 40px;
-        padding-bottom: 2em;
       }
     }
 
     .content {
+      @include clearfix;
+      .markdown {
+        margin-bottom: 5em;
+      }
+
       .footnotes {
         border-top: 1px solid $ink;
-        margin-top: 4em;
         padding-top: 0.7em;
         padding-left: 1em;
+        margin-bottom: 3em;
 
         @include phone {
           padding-left: 0;

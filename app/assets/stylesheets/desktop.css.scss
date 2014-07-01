@@ -160,13 +160,37 @@ body[data-controller="posts"] {
       padding-top: 1em;
 
       .content {
-        .markdown {
-          margin-bottom: 5em;
-        }
-
         .footnotes {
-          margin-bottom: 3em;
           padding-left: 1em;
+        }
+      }
+
+      .next_prev {
+        @include float_left_right_container;
+        margin-bottom: 2em;
+
+        a {
+          padding-top: 0.3em;
+          border-top: 1px solid $ink;
+          width: 45%;
+          padding-right: 5%;
+          color: $ink;
+
+          .description {
+            font-style: italic;
+            font-size: 0.7em;
+            line-height: 1;
+          }
+
+          &:hover {
+            text-decoration: none;
+            opacity: 0.5;
+          }
+          &.right {
+            padding-right: 0;
+            padding-left: 5%;
+            text-align: right;
+          }
         }
       }
     }
