@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     if @authenticated.nil?
       @authenticated = Session.authenticated? cookies[:auth_token]
     else
-      false
+      !!@authenticated
     end
   end
 

@@ -76,6 +76,8 @@ class Post
                       adjacent[change] = self.class.where(publish_order: publish_order + change).first
                     end
                     adjacent
+                  else
+                    {}
                   end
     if change.blank?
       @adjacent.values
