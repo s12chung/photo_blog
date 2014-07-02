@@ -7,7 +7,7 @@
   <% end %>
   <% unless @posts[1..-1].empty? %>
       <% unless authenticated? %>
-          <h2>All Captions</h2>
+          <h2>All</h2>
       <% end %>
       <%= render @posts %>
   <% end %>
