@@ -84,7 +84,7 @@ module PostPresenter
   def markdown_html
     partition = markdown.partition(/\r\n/)
     first_paragraph = partition.first
-    content = if has_content? && first_paragraph.scan(".?!").count <= 2
+    content = if has_content? && first_paragraph.scan(/[.?!\u2026]/).count < 2
                 content_tag(:p, first_paragraph, class: "huge") + partition.last
               else
                 markdown
