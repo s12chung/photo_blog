@@ -90,6 +90,10 @@ $comment_dimensions: 1.5em;
     position: relative;
     padding: 0 1em;
 
+    @include phone {
+      margin: 2em 0;
+    }
+
     &::before {
       content: "\201C";
       color: $light;
