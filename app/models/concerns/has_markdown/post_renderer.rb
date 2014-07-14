@@ -9,14 +9,17 @@ module HasMarkdown
     end
 
     def paragraph(text)
-      if @first
-        @first = false
-        if text.scan(/[.?!\u2026]/).count < 2
-          tag = "<p class=\"huge\">#{text}</p>"
+      if text.index(/---|\u2014/) == 0
+        "<cite>#{text}</cite>"
+      else
+        if @first
+          @first = false
+          if text.scan(/[.?!\u2026]/).count < 2
+            tag = "<p class=\"huge\">#{text}</p>"
+          end
         end
+        tag || "<p>#{text}</p>"
       end
-
-      tag || "<p>#{text}</p>"
     end
   end
 end

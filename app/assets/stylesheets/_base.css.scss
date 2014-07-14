@@ -88,6 +88,20 @@ $comment_dimensions: 1.5em;
     font-style: italic;
     line-height: 1.2;
   }
+  blockquote {
+    font-style: italic;
+    margin: 0;
+    @include clearfix;
+
+    p:last-of-type {
+      margin-bottom: 0.3em;
+    }
+
+    cite {
+      font-style: normal;
+      float: right;
+    }
+  }
   p {
     margin: $p_margin 0;
 
