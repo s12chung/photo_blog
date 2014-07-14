@@ -46,14 +46,6 @@ class Post
     !!markdown.index(/\r\n/)
   end
 
-  def markdown=(markdown)
-    super clean_text(markdown)
-  end
-
-  def footnote_text=(footnote_text)
-    super clean_text(footnote_text)
-  end
-
   def toggle_publish!
     if published
       update_attributes(published_at: nil,
@@ -96,13 +88,5 @@ class Post
   def recreate_versions!
     photo.recreate_versions!
     save
-  end
-
-  protected
-  def clean_text(text)
-    if text.include? "\""
-      raise("You have quotes!")
-    end
-    text.gsub("...", "\u2026").gsub(" - ", "\u2014")
   end
 end

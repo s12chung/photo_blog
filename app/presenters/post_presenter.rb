@@ -82,24 +82,16 @@ module PostPresenter
     end
   end
   def markdown_html
-    partition = markdown.partition(/\r\n/)
-    first_paragraph = partition.first
-    content = if has_content? && first_paragraph.scan(/[.?!\u2026]/).count < 2
-                content_tag(:p, first_paragraph, class: "huge") + partition.last
-              else
-                markdown
-              end
-
     content_array = []
-    content.split(FOOTNOTE_REGEX).each_with_index do |split, index|
+    markdown.split(FOOTNOTE_REGEX).each_with_index do |split, index|
       if index > 0
         content_array << link_to(content_tag(:sup, index), "#footnote_#{index}", id: "footnote_reference_#{index}",
-                                 title: footnotes[index - 1],
+                                 title: self.class.process_markdown(HasMarkdown::PlainTextRenderer, footnotes[index - 1]),
                                  data: { behavior: "scroll_to tipsy", offset: -5, })
       end
       content_array << split
     end
-    self.class.process_markdown content_array.join("")
+    self.class.process_markdown HasMarkdown::PostRenderer, content_array.join("")
   end
   def footnotes
     @footnotes ||= if footnote_text.empty?
@@ -114,7 +106,8 @@ module PostPresenter
     footnotes.each_with_index.map do |footnote, index|
       index = index + 1
       content_tag :li, id: "footnote_#{index}" do
-        footnote.html_safe + link_to(raw("&#8617;"), "#footnote_reference_#{index}", data: { behavior: "scroll_to", offset: -5 })
+        self.class.process_markdown(HasMarkdown::FootnoteRenderer, footnote) +
+            link_to(raw("&#8617;"), "#footnote_reference_#{index}", data: { behavior: "scroll_to", offset: -5 })
       end
     end.join.html_safe
   end
