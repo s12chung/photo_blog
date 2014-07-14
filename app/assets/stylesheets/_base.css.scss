@@ -83,11 +83,6 @@ $comment_dimensions: 1.5em;
     font-weight: $semibold;
   }
 
-  .huge {
-    font-size: $huge;
-    font-style: italic;
-    line-height: 1.2;
-  }
   blockquote {
     font-style: italic;
     margin: 0;
@@ -104,10 +99,14 @@ $comment_dimensions: 1.5em;
   }
   p {
     margin: $p_margin 0;
+  }
 
-    &.huge {
-      margin: $p_huge_margin 0;
-    }
+  p.huge,
+  .huge p {
+    margin: $p_huge_margin 0;
+    font-size: $huge;
+    font-style: italic;
+    line-height: 1.2;
   }
 }
 
