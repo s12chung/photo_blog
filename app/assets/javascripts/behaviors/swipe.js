@@ -11,16 +11,16 @@ $(function() {
         var programmatic_state_change = false;
 
         swipe = new Swipe($swipe[0], {
-            startSlide: parseInt($swipe.data('index')),
+            startSlide: swipe_states[0],
             callback: function (index, li) {
                 var $li = $(li);
 
                 if (location.pathname != $li.data('path')) {
                     programmatic_state_change = true;
-                    History.pushState(({ change: index - swipe_states.shift() }), $li.data('title'), $li.data('path'));
+                    History.pushState(null, $li.data('title'), $li.data('path'));
                     programmatic_state_change = false;
+                    swipe_states.push(index);
                 }
-                swipe_states.push(index);
                 if ($li.data('loaded') === true) {
                     $li.find(data_behavior('summary_content_container')).css({ opacity: 0, display: 'hidden' });
                     setTimeout(function () {
@@ -45,8 +45,8 @@ $(function() {
 
         History.Adapter.bind(window, 'statechange', function() {
             if (!programmatic_state_change) {
-                programmatic_state_change = false;
-                var change = History.getState().data.change;
+                swipe_states.pop();
+                var change = swipe_states[swipe_states.length - 1] - swipe.getPos();
                 if (change === -1) {
                     swipe.prev();
                 }
