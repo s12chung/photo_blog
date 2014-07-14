@@ -7,15 +7,16 @@ Behavior.resize_swipe = function() {
 $(function() {
     var $swipe = $(data_behavior('swipe'));
     if ($swipe.length > 0) {
-        var swipe_states = [parseInt($swipe.data('index'))];
+        var initial_state = parseInt($swipe.data('index'));
+        var swipe_states = [initial_state];
         var programmatic_state_change = false;
 
         swipe = new Swipe($swipe[0], {
-            startSlide: swipe_states[0],
+            startSlide: initial_state,
             callback: function (index, li) {
                 var $li = $(li);
 
-                if (location.pathname != $li.data('path')) {
+                if (location.pathname != $li.data('path') && !jiggling) {
                     programmatic_state_change = true;
                     History.pushState(null, $li.data('title'), $li.data('path'));
                     programmatic_state_change = false;
@@ -37,7 +38,10 @@ $(function() {
             if (blank(index)) {
                 index = swipe.getPos();
             }
-            return $(data_behavior('swipe')).find('li').eq(index);
+            return swipe.slides().eq(index);
+        };
+        swipe.slides = function() {
+            return $(data_behavior('swipe')).find('li');
         };
 
         Behavior.resize_swipe();
@@ -55,5 +59,33 @@ $(function() {
                 }
             }
         });
+
+        if (initial_state != swipe.slides().length - 1) {
+            var jiggling = false;
+            var COOKIE_KEY = "JIGGLE_INTRO_DONE";
+            var jiggle = $.cookie(COOKIE_KEY) != "true";
+            var JIGGLE_DELAY = 1000;
+            var JIGGLE_SPEED = 1000;
+            var JIGGLE_LENGTH = 200;
+            var start_jiggle = function () {
+                if (jiggle) {
+                    jiggling = true;
+                    swipe.slide(swipe.getPos() + 1, JIGGLE_SPEED);
+                    setTimeout(end_jiggle, JIGGLE_LENGTH)
+                }
+            };
+            var end_jiggle = function () {
+                if (jiggle) {
+                    swipe.slide(swipe.getPos() - 1, JIGGLE_SPEED);
+                    $.cookie(COOKIE_KEY, true);
+                    setTimeout(function () {
+                        jiggling = false;
+                    }, JIGGLE_SPEED + 100)
+                }
+            };
+            window.addEventListener('load', function () {
+                setTimeout(start_jiggle, JIGGLE_DELAY);
+            }, false);
+        }
     }
 });
