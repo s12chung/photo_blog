@@ -1,7 +1,5 @@
 module HasMarkdown
-  class FootnoteRenderer < Redcarpet::Render::HTML
-    include Redcarpet::Render::SmartyPants
-
+  class FootnoteRenderer < Redcarpet::Render::SmartyHTML
     def paragraph(text)
       text
     end

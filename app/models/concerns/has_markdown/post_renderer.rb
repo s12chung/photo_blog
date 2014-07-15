@@ -1,19 +1,21 @@
 module HasMarkdown
-  class PostRenderer < Redcarpet::Render::HTML
-    include Redcarpet::Render::SmartyPants
-
+  class PostRenderer < Redcarpet::Render::SmartyHTML
     def initialize(options={})
       super options
-      @footnote_index = 0
       @first = true
     end
 
     def block_quote(quote)
-      if self.class.short? quote
-        "<blockquote class=\"huge\">#{quote}</blockquote>"
+      quote = Nokogiri::HTML(quote).at_xpath("html/body")
+      paragraphs = quote.xpath("p")
+      paragraph = paragraphs.first
+
+      if paragraphs.size == 1 && self.class.short?(paragraph.inner_html)
+        paragraph[:class] = "huge"
       else
-        "<blockquote>#{quote}</blockquote>"
+        paragraph.remove_attribute "class"
       end
+      "<blockquote>#{quote.inner_html}</blockquote>"
     end
 
     def paragraph(text)

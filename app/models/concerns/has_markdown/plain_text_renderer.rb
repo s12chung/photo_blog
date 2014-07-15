@@ -1,7 +1,5 @@
 module HasMarkdown
-  class PlainTextRenderer < Redcarpet::Render::HTML
-    include Redcarpet::Render::SmartyPants
-
+  class PlainTextRenderer < Redcarpet::Render::SmartyHTML
     # Methods where the first argument is the text content
     [
         # block-level calls
