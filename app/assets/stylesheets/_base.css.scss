@@ -105,8 +105,27 @@ $comment_dimensions: 1.5em;
       left: -0.2em;
     }
 
-    p:last-of-type {
-      margin-bottom: 0.3em;
+    p {
+      &:first-child {
+        margin-top: $p_margin + 1em;
+      }
+      &:last-of-type {
+        margin-bottom: 0.3em;
+      }
+      &:last-child {
+        margin-bottom: $p_margin;
+      }
+
+      &.huge {
+        margin-top: $p_huge_margin + 0.6em;
+
+        &:last-of-type {
+          margin-bottom: 0.1em;
+        }
+        &:last-child {
+          margin-bottom: $p_huge_margin;
+        }
+      }
     }
 
     cite {
