@@ -17,6 +17,7 @@ module HasMarkdown
     end
 
     def paragraph(text)
+      text = text.gsub(/\n/, "<br>")
       if text.index(/---|\u2014/) == 0
         "<cite>#{text}</cite>"
       else
