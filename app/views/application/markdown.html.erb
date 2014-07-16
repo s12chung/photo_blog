@@ -2,7 +2,7 @@
 <% set_title @markdown.key.to_s.humanize %>
 <% flowtype %>
 
-<div class="container_outer">
+<div class="container_outer" data-behavior="flowtype">
   <section class="main">
     <% if authenticated? %>
         <%= link_to "Edit", edit_markdown_path(@markdown) %>
@@ -10,3 +10,5 @@
     <%= @markdown.html %>
   </section>
 </div>
+
+<%= custom_flowtype :read %>

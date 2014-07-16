@@ -4,7 +4,10 @@ module ExternalHelper
       read: { minFont: 20, maxFont: 30}
   }
   def flowtype(type=:layout)
-    content_for :flowtype, content_tag(:script, raw("flowtype(#{FLOWTYPE_TYPES[type].to_json});"))
+    content_for :flowtype, custom_flowtype(type, "'body'")
+  end
+  def custom_flowtype(type=:layout, selector="data_behavior('flowtype')")
+    content_tag(:script, raw("$(#{selector}).flowtype(#{FLOWTYPE_TYPES[type].to_json});"))
   end
 
   def picturefill(uploader, options={})

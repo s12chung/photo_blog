@@ -27,7 +27,4 @@ function blank(variable) {
     return !defined(variable);
 }
 
-function flowtype(options) {
-    $('body').flowtype(options);
-}
 Behavior = {};
