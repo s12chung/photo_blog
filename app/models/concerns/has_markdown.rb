@@ -2,7 +2,7 @@ module HasMarkdown
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def process_markdown(renderer_class, markdown)
+    def process_markdown(markdown, renderer_class=Redcarpet::Render::SmartyHTML)
       if markdown
         markdown_options = %w/autolink no_intra_emphasis/
         renderer_options = %w/hard_wrap/

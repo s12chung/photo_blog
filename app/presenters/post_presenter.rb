@@ -86,12 +86,12 @@ module PostPresenter
     markdown.split(FOOTNOTE_REGEX).each_with_index do |split, index|
       if index > 0
         content_array << link_to(content_tag(:sup, index), "#footnote_#{index}", id: "footnote_reference_#{index}",
-                                 title: self.class.process_markdown(HasMarkdown::PlainTextRenderer, footnotes[index - 1]),
+                                 title: self.class.process_markdown(footnotes[index - 1], HasMarkdown::PlainTextRenderer),
                                  data: { behavior: "scroll_to tipsy", offset: -5, })
       end
       content_array << split
     end
-    self.class.process_markdown HasMarkdown::PostRenderer, content_array.join("")
+    self.class.process_markdown content_array.join(""), HasMarkdown::PostRenderer
   end
   def footnotes
     @footnotes ||= if footnote_text.empty?
@@ -106,7 +106,7 @@ module PostPresenter
     footnotes.each_with_index.map do |footnote, index|
       index = index + 1
       content_tag :li, id: "footnote_#{index}" do
-        self.class.process_markdown(HasMarkdown::FootnoteRenderer, footnote) +
+        self.class.process_markdown(footnote, HasMarkdown::FootnoteRenderer) +
             link_to(raw("&#8617;"), "#footnote_reference_#{index}", data: { behavior: "scroll_to", offset: -5 })
       end
     end.join.html_safe
