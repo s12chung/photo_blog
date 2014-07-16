@@ -1,11 +1,5 @@
 body[data-controller="posts"] {
   &[data-action="index"] {
-    h2 {
-      color: $ink_light;
-      text-align: center;
-      margin-top: 1.5em;
-      margin-bottom: 0.2em;
-    }
     section.post {
       article.post {
         @include backgrounded;

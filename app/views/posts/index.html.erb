@@ -3,13 +3,5 @@
 <%= render "layouts/header" %>
 
 <section class="post" data-behavior="read_mode_container">
-  <% unless authenticated? %>
-      <%= render @posts.last %>
-  <% end %>
-  <% unless @posts[1..-1].empty? %>
-      <% unless authenticated? %>
-          <h2>All</h2>
-      <% end %>
-      <%= render @posts %>
-  <% end %>
+  <%= render @posts %>
 </section>

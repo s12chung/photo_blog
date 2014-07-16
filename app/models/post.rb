@@ -34,7 +34,7 @@ class Post
   end
   TEXT_FIELDS = %i[title description tags place address]
 
-  scope :published, -> { where(published: true).asc(:publish_order) }
+  scope :published, -> { where(published: true).desc(:publish_order) }
 
   before_update do
     if crop_changed?
