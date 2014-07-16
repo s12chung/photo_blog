@@ -1,5 +1,6 @@
 <%= render "layouts/header" %>
 <% set_title @markdown.key.to_s.humanize %>
+<% flow_type %>
 <div class="container_outer">
   <section class="main">
     <% if authenticated? %>

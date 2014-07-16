@@ -17,7 +17,7 @@ $semibold: 600;
 $transition_speed: 400ms ease 0s;
 
 $small: 0.7em;
-$read: 30px;
+$base_font_size: 30px;
 $heading: 2em;
 $huge: 1.8em;
 
@@ -39,7 +39,7 @@ $comment_dimensions: 1.5em;
 }
 
 @mixin base {
-  font-size: $read;
+  font-size: $base_font_size;
   line-height: 1.5;
   font-family: $serif;
   font-weight: $normal;

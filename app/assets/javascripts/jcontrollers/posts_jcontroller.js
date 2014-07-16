@@ -1,10 +1,6 @@
 Jcontroller.create('posts', {
     html: {
-        index: function() {
-            flow_type({ minFont: 12, maxFont: 30});
-        },
         show: function(params) {
-            flow_type({ minFont: 20, maxFont: 30});
             if (is_mobile) {
                 popup_contents = new Array(params.posts_size);
                 popup_contents[params.post_index] = params.popup_content;

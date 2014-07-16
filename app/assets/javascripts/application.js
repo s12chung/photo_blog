@@ -28,8 +28,6 @@ function blank(variable) {
 }
 
 function flow_type(options) {
-    $(function() {
-        $('body').flowtype(options);
-    });
+    $('body').flowtype(options);
 }
 Behavior = {};

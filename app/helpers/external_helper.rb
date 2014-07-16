@@ -1,4 +1,12 @@
 module ExternalHelper
+  FLOW_TYPE_TYPES = {
+      layout: { minFont: 12, maxFont: 30},
+      show: { minFont: 20, maxFont: 30}
+  }
+  def flow_type(type=:layout)
+    content_for :flow_type, content_tag(:script, raw("flow_type(#{FLOW_TYPE_TYPES[type].to_json});"))
+  end
+
   def picturefill(uploader, options={})
     image_tag nil, options.merge(
         sizes: "100vw",
