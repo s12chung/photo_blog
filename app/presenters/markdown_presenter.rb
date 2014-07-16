@@ -7,8 +7,7 @@ module MarkdownPresenter
     {
         og: {
             type: :profile,
-            description: description,
-            image: nil
+            description: description
         },
         profile: {
             first_name: "Steven",
