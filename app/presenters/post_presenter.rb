@@ -13,15 +13,12 @@ module PostPresenter
     coords
   end
 
-  def summary
-    has_content? ? description : markdown
-  end
   def to_facebook
     image = photo.retina
     {
         og: {
             type: :article,
-            description: summary,
+            description: description,
             image: {
                 url: image.url.http_url,
                 secure_url: image.url,
@@ -55,7 +52,7 @@ module PostPresenter
            end
     {
         twitter: data.merge(
-            description: summary
+            description: description
         )
     }
   end
@@ -77,7 +74,7 @@ module PostPresenter
   def snippet
     unless has_content?
       content_tag :div, class: "html" do
-        markdown_html
+        description
       end
     end
   end

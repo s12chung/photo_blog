@@ -43,7 +43,7 @@ class Post
   end
 
   def description
-    @description ||= self.class.process_markdown super, HasMarkdown::PlainTextRenderer
+    @description ||= self.class.process_markdown(has_content? ? super : markdown, HasMarkdown::PlainTextRenderer)
   end
 
   def has_content?
