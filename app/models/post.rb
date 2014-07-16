@@ -42,6 +42,10 @@ class Post
     end
   end
 
+  def description
+    @description ||= self.class.process_markdown super, HasMarkdown::PlainTextRenderer
+  end
+
   def has_content?
     !!markdown.index(/\r\n/)
   end
