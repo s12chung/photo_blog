@@ -9,7 +9,7 @@
 
 <div data-behavior="swipe" data-index="<%= @post.publish_order %>" class="swipe">
   <ul>
-    <% @posts.each do |post| %>
+    <% @posts.reverse.each do |post| %>
         <% loaded = @post.id == post.id %>
         <%= content_tag :li, data: { path: post_path(post), title: post.title, loaded: loaded }  do %>
             <% if loaded %>
