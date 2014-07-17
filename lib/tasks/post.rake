@@ -8,7 +8,7 @@ namespace :post do
 
   task :create_template => :environment do
     file = File.new("new post.md", "w")
-    file.puts(Post.new.post_string)
+    file.puts(Post.new.text)
     file.close
   end
 end
