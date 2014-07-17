@@ -6,9 +6,10 @@ namespace :post do
     end
   end
 
-  task :create_template => :environment do
-    file = File.new("new post.md", "w")
-    file.puts(Post.new.text)
+  task :create_template, %i[title] => :environment do |t, args|
+    post = Post.new(args[:title].blank? ? {} : { title: args[:title] })
+    file = File.new("#{post.title}.md", "w")
+    file.puts(post.text)
     file.close
   end
 end
