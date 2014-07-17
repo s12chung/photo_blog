@@ -86,8 +86,18 @@ class PhotoUploader < CarrierWave::Uploader::Base
     end
     @dimensions
   end
+  def ratio
+    dimensions = version_name ? dimensions : self.dimensions.first.last
+    Rational(dimensions['width'], dimensions['height'])
+  end
+  def vertical?
+    ratio < 1
+  end
   def picturefill_src
     "#{url} #{dimensions['width']}w"
+  end
+  def picturefill_size
+    vertical? ? "calc(100vh * #{ratio.to_f})" : "100vw"
   end
 
   platform_sizes

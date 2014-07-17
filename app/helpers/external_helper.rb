@@ -12,7 +12,7 @@ module ExternalHelper
 
   def picturefill(uploader, options={})
     image_tag nil, options.merge(
-        sizes: "100vw",
+        sizes: uploader.picturefill_size,
         srcset: %i[phone tablet desktop retina].map { |device| uploader.send(device).picturefill_src }.join(", "),
         data: { behavior: "picturefill" }
     )
