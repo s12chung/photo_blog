@@ -32,13 +32,47 @@ class Post
   slug :title do |post|
     post.slug_builder.to_url(replace_whitespace_with: "_")
   end
-  TEXT_FIELDS = %i[title description tags place address]
+  METADATA_FIELDS = %i[title description date tags place address]
 
   scope :published, -> { where(published: true).desc(:publish_order) }
 
   before_update do
     if crop_changed?
       photo.recreate_versions!(:index)
+    end
+  end
+
+  METADATA_BREAK = "=========="
+  FOOTNOTES_BREAK = "=== Footnotes ==="
+  def post_string=(post_string)
+    self.metadata, content = post_string.split(METADATA_BREAK).map(&:strip)
+    self.markdown, self.footnote_text = content.split(FOOTNOTES_BREAK).map(&:strip)
+  end
+  def post_string
+    post_string = []
+    METADATA_FIELDS.each_with_index do |field, index|
+      post_string << "#{field.to_s.titleize}: #{send(field)}\n"
+      if index % 2 == 1 && index != METADATA_FIELDS.size - 1
+        post_string << "\n"
+      end
+    end
+    post_string << "\n#{METADATA_BREAK}\n\n" << markdown << "\n\n\n#{FOOTNOTES_BREAK}\n" << footnote_text
+    post_string.join
+  end
+
+  def metadata=(metadata)
+    metadata.each_line do |line|
+      line = line.strip
+      unless line.empty?
+        key, value = line.split(":").map(&:strip)
+        key.downcase!
+        if METADATA_FIELDS.include? key.to_sym
+          if key == "date"
+            value = Date.new(*value.split("-").map(&:to_i))
+          end
+          send("#{key}=", value)
+        end
+      end
     end
   end
 

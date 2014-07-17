@@ -10,25 +10,8 @@
         <% Post::CROP_ATTRIBUTES.each do |attribute| %>
             <%= f.hidden_field attribute %>
         <% end %>
-        <% Post::TEXT_FIELDS.each do |field| %>
-            <p>
-              <%= f.label field %><br />
-              <%= f.text_field field %>
-            </p>
-        <% end %>
-        <p>
-          <%= f.label :date %>
-          <%= f.date_select :date %>
-        </p>
-
-        <p>
-          <%= f.label :markdown %><br />
-          <%= f.text_area :markdown, class: "markdown" %>
-        </p>
-        <p>
-          <%= f.label :footnote_text %><br />
-          <%= f.text_area :footnote_text, class: "footnote" %>
-        </p>
+        <%= f.label :post_string %><br />
+        <%= f.text_area :post_string %>
         <%= submit_tag "Update" %>
     <% end %>
 

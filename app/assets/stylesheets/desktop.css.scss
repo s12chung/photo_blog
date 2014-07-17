@@ -227,11 +227,8 @@ body[data-controller="posts"] {
       .left {
         @include span-columns(8);
 
-        .markdown {
-          height: 15em;
-        }
-        .footnote {
-          height: 5em;
+        textarea {
+          height: 20em;
         }
       }
       .right {
