@@ -5,4 +5,10 @@ namespace :post do
       Post.create(photo: File.new(file))
     end
   end
+
+  task :create_template => :environment do
+    file = File.new("new post.md", "w")
+    file.puts(Post.new.post_string)
+    file.close
+  end
 end

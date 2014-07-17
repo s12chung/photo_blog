@@ -35,6 +35,6 @@ class PostsController < ApplicationController
 
   protected
   def update_params
-    params.require(:post).permit(*(%i[post_string] + Post::CROP_ATTRIBUTES))
+    params.require(:post).permit(*(%i[text] + Post::CROP_ATTRIBUTES))
   end
 end

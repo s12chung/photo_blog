@@ -44,11 +44,11 @@ class Post
 
   METADATA_BREAK = "=========="
   FOOTNOTES_BREAK = "=== Footnotes ==="
-  def post_string=(post_string)
-    self.metadata, content = post_string.split(METADATA_BREAK).map(&:strip)
+  def text=(text)
+    self.metadata, content = text.split(METADATA_BREAK).map(&:strip)
     self.markdown, self.footnote_text = content.split(FOOTNOTES_BREAK).map(&:strip)
   end
-  def post_string
+  def text
     post_string = []
     METADATA_FIELDS.each_with_index do |field, index|
       post_string << "#{field.to_s.titleize}: #{send(field)}\n"
