@@ -87,7 +87,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
     @dimensions
   end
   def ratio
-    dimensions = version_name ? dimensions : self.dimensions.first.last
+    dimensions = self.dimensions
+    while dimensions && !dimensions.has_key?('width')
+      dimensions = dimensions.first.last
+    end
     Rational(dimensions['width'], dimensions['height'])
   end
   def vertical?
