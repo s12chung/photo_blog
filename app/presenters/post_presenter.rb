@@ -88,7 +88,7 @@ module PostPresenter
       end
       content_array << split
     end
-    self.class.process_markdown content_array.join(""), HasMarkdown::PostRenderer
+    self.class.process_markdown content_array.join, HasMarkdown::PostRenderer
   end
   def footnotes
     @footnotes ||= if footnote_text.empty?
