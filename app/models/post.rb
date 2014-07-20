@@ -51,7 +51,9 @@ class Post
   def text
     post_string = []
     METADATA_FIELDS.each_with_index do |field, index|
-      post_string << "#{field.to_s.titleize}: #{send(field)}\n"
+      post_string << "#{field.to_s.titleize}: #{
+      field == :description ? attributes[field] : send(field)
+      }\n"
       if index % 2 == 1 && index != METADATA_FIELDS.size - 1
         post_string << "\n"
       end
