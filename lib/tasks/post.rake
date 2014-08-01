@@ -6,6 +6,7 @@ namespace :post do
     end
   end
 
+  desc "Create a writing template"
   task :create_template, %i[title] => :environment do |t, args|
     post = Post.new(args[:title].blank? ? {} : { title: args[:title] })
     file = File.new("#{post.title}.md", "w")
