@@ -10,7 +10,8 @@ $ink_red: rgba(161,34,0,0.8);
 $background_ink: white;
 
 $serif: 'arno-pro', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", "Times New Roman", Times, serif;
-$sans-serif: "museo-sans", Futura, "Trebuchet MS", Arial, sans-serif;
+$sans-serif: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+$script: 'caflisch-script-pro', $sans-serif;
 $normal: 400;
 $semibold: 600;
 
@@ -53,6 +54,7 @@ $comment_dimensions: 1.5em;
   }
 
   h1 {
+    opacity: 0.9;
     transition: opacity $transition_speed;
     &:hover {
       opacity: 0.7;
@@ -60,8 +62,9 @@ $comment_dimensions: 1.5em;
   }
 
   h1 {
-    font-size: 1.7em;
-    margin: .4em 0;
+    font-size: $heading;
+    margin-top: 0.4em;
+    margin-bottom: 0.2em;
   }
 
   h2,

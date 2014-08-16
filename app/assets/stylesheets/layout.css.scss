@@ -11,8 +11,7 @@ section.main {
 }
 
 h1 {
-  font-family: $sans-serif;
-  font-weight: 700;
+  font-family: $script;
 
   a {
     color: $ink_light;
@@ -28,7 +27,7 @@ header.main {
   @include float_left_right_container;
 
   .right {
-    margin-top: 0.95em;
+    margin-top: 0.75em;
     @include horizontal_spacer_container(.6em);
 
     .social {
