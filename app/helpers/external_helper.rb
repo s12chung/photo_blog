@@ -19,14 +19,14 @@ module ExternalHelper
   end
 
   def social_networks_tags
-    Rails.cache.fetch :social_networks_tags do
+    Rails.cache.fetch [:social_networks_tags, request.host_with_port] do
       (data_to_tags(facebook_default) + data_to_tags(twitter_default)).join.html_safe
     end
   end
 
   def social_networks(model)
     content_for :identity do
-      Rails.cache.fetch [model, :social_networks] do
+      Rails.cache.fetch [model, :social_networks, request.host_with_port] do
         (data_to_tags(facebook_default.deep_merge(model.to_facebook)) +
             data_to_tags(twitter_default.deep_merge(model.to_twitter))).join.html_safe
       end
