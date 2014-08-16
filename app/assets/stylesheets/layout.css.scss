@@ -31,6 +31,7 @@ header.main {
     @include horizontal_spacer_container(.6em);
 
     .social {
+      margin-top: 0.1em;
       @include horizontal_spacer_container(.1em);
       img {
         opacity: 0.5;
