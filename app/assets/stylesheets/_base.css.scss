@@ -13,7 +13,7 @@ $serif: 'arno-pro', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Anti
 $sans-serif: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 $script: 'caflisch-script-pro', $sans-serif;
 $normal: 400;
-$semibold: 600;
+$bold: 700;
 
 $transition_speed: 400ms ease 0s;
 
@@ -82,8 +82,9 @@ $comment_dimensions: 1.5em;
     }
   }
 
+  b,
   strong {
-    font-weight: $semibold;
+    font-weight: $bold;
   }
 
   blockquote {
