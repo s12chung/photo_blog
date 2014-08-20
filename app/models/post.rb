@@ -122,7 +122,7 @@ class Post
   end
 
   def locale
-    address.match(/japan/i) ? :jp : :kr
+    address && address.match(/japan/i) ? :jp : :kr
   end
 
   def crop_changed?
