@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_filter :authorize, except: %i[index show show_content]
 
   def index
-    @posts = authenticated? ? Post.all : Post.published.to_a
+    @posts = authenticated? ? Post.all.desc(:updated_at) : Post.published.to_a
   end
 
   def show
