@@ -57,6 +57,7 @@ $(function() {
                 else if (change === 1) {
                     swipe.next();
                 }
+                $(data_behavior('popup')).fade_hide();
             }
         });
 
