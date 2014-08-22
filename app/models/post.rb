@@ -78,15 +78,12 @@ class Post
     end
   end
 
-  def description
-    @description ||= self.class.process_markdown(has_content? ? super : markdown, HasMarkdown::PlainTextRenderer)
-  end
   def footnote_text
     super || ""
   end
 
   def has_content?
-    !!markdown.index(/\r\n/)
+    markdown && !!markdown.index(/\r\n/)
   end
 
   def toggle_publish!
