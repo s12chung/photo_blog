@@ -24,4 +24,5 @@ class ApplicationController < ActionController::Base
   end
 
   def user_agent; @user_agent ||= UserAgent.parse(request.env["HTTP_USER_AGENT"]) end
+  def html?; request.format.symbol == :html end
 end

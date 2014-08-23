@@ -10,7 +10,7 @@ PhotoBlog::Application.routes.draw do
   end
 
   get '/:key' => 'application#markdown', as: :root_markdown, constraints: Markdown::PagesConstraint
-  resources :posts, only: %i[index show edit update destroy], path: "" do
+  resources :posts, only: %i[index create show edit update destroy], path: "" do
     member do
       patch :toggle_publish
     end

@@ -4,6 +4,10 @@
         <h1><%= link_to title_default, root_path %></h1>
         <div class="right">
           <% if authenticated? && action_name == "index" %>
+              <%= form_for Post.new, html: { multipart: true } do |f| %>
+                  <%= f.file_field :photo %>
+                  <%= f.submit %>
+              <% end %>
               <%= link_to "", "#read_mode", data: { behavior: "read_mode" } %>
           <% end %>
           <%= link_to "About", root_markdown_path(:about) %>

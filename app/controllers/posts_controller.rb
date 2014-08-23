@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authorize, except: %i[index show show_content]
+  before_filter :authorize, except: %i[index show]
 
   def index
     @posts = authenticated? ? Post.all.desc(:updated_at) : Post.published.to_a
@@ -8,12 +8,18 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
 
-    if user_agent.mobile?
+    if html? && user_agent.mobile?
       index
     end
   end
-  def show_content
-    @post = Post.find(params[:id])
+
+  def create
+    if params[:post]
+      post = Post.create(create_params)
+      redirect_to edit_post_path post
+    else
+      redirect_to posts_path
+    end
   end
 
   def edit
@@ -39,6 +45,10 @@ class PostsController < ApplicationController
   end
 
   protected
+  def create_params
+    params.require(:post).permit(:photo)
+  end
+
   def update_params
     params.require(:post).permit(*(%i[text] + Post::CROP_ATTRIBUTES))
   end

@@ -148,6 +148,10 @@ $comment_dimensions: 1.5em;
     font-style: italic;
     line-height: 1.2;
   }
+
+  input[type="file"] {
+    width: 10em;
+  }
 }
 
 @mixin backgrounded {
