@@ -27,6 +27,11 @@ class PostsController < ApplicationController
     redirect_to edit_post_path post
   end
 
+  def destroy
+    Post.find(params[:id]).destroy
+    redirect_to posts_path
+  end
+
   def toggle_publish
     post = Post.find(params[:id])
     post.toggle_publish!
