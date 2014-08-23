@@ -91,7 +91,7 @@ class Post
       update_attributes(published_at: nil,
                         publish_order: nil,
                         published: false)
-      self.class.published.each_with_index do |post, index|
+      self.class.published.reverse.each_with_index do |post, index|
         post.update_attribute :publish_order, index
       end
     else
