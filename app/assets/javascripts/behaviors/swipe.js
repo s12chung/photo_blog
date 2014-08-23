@@ -78,7 +78,7 @@ $(function() {
             var end_jiggle = function () {
                 if (jiggle) {
                     swipe.slide(swipe.getPos() - 1, JIGGLE_SPEED);
-                    $.cookie(COOKIE_KEY, true);
+                    $.cookie(COOKIE_KEY, true, { expires: 365 });
                     setTimeout(function () {
                         jiggling = false;
                     }, JIGGLE_SPEED + 100)
