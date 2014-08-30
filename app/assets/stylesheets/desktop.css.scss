@@ -2,8 +2,8 @@
 @import 'lib/tipsy';
 
 body {
-  p {
-    margin: $p_margin_desktop 0;
+  p + p {
+    margin-top: $p_margin_desktop;
   }
 }
 
@@ -153,12 +153,6 @@ body[data-controller="posts"] {
 
     section.main {
       padding-top: 0.8em;
-
-      .content {
-        .footnotes {
-          padding-left: 1em;
-        }
-      }
 
       .next_prev {
         @include float_left_right_container;

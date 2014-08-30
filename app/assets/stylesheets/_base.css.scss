@@ -138,7 +138,11 @@ $comment_dimensions: 1.5em;
     }
   }
   p {
-    margin: $p_margin 0;
+    margin: 0;
+
+    & + p {
+      margin-top: $p_margin;
+    }
   }
 
   p.huge,
@@ -147,6 +151,21 @@ $comment_dimensions: 1.5em;
     font-size: $huge;
     font-style: italic;
     line-height: 1.2;
+  }
+
+  ol,
+  ul {
+    margin: 0.5em 0 1.5em 1.2em;
+
+    li {
+      margin: 0.2em 0;
+      padding-left: 0.2em;
+    }
+
+    @include phone {
+      margin-left: 0;
+      padding-left: 1em;
+    }
   }
 
   input[type="file"] {
