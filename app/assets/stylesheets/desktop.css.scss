@@ -5,6 +5,10 @@ body {
   p + p {
     margin-top: $p_margin_desktop;
   }
+  ol,
+  ul {
+    margin-bottom: $p_margin_desktop;
+  }
 }
 
 header.invisible {

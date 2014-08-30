@@ -24,6 +24,8 @@ $huge: 1.8em;
 
 $p_margin: 1.1em;
 $p_huge_margin: 0.3em;
+$point_margin: 0.3em;
+$footnote_point_margin: 0.7em;
 
 $huge_desktop: 2.2em;
 $p_margin_desktop: 1.3em;
@@ -89,14 +91,10 @@ $comment_dimensions: 1.5em;
 
   blockquote {
     font-style: italic;
-    margin: 0;
     @include clearfix;
     position: relative;
     padding: 0 1em;
-
-    @include phone {
-      margin: 2em 0;
-    }
+    margin: 2em 0;
 
     &::before {
       content: "\201C";
@@ -110,14 +108,11 @@ $comment_dimensions: 1.5em;
     }
 
     p {
-      &:first-child {
-        margin-top: $p_margin + 1em;
-      }
       &:last-of-type {
         margin-bottom: 0.3em;
       }
       &:last-child {
-        margin-bottom: $p_margin;
+        margin-bottom: 0;
       }
 
       &.huge {
@@ -155,10 +150,10 @@ $comment_dimensions: 1.5em;
 
   ol,
   ul {
-    margin: 0.5em 0 1.5em 1.2em;
+    margin: $point_margin 0 1.5em $p_margin;
 
     li {
-      margin: 0.2em 0;
+      margin: $point_margin 0;
       padding-left: 0.2em;
     }
 
