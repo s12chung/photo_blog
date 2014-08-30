@@ -60,8 +60,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
     end
   end
   def store_dimensions
-    hash = { mounted_as => {} }
-    current_hash = hash[mounted_as]
+    current_hash = {}
+    hash = { mounted_as => current_hash }
     self.class.version_names.each { |version_name| current_hash = current_hash[version_name] = {} }
 
     image = MiniMagick::Image.open(path)
@@ -70,7 +70,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
         height: image['height']
     )
 
-    dimensions_attribute.deep_merge!(hash)
+    dimensions_attribute.deep_merge!(hash.deep_stringify_keys)
   end
   def dimensions_attribute
     model.carrierwave_dimensions
