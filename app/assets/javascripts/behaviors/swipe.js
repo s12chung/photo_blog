@@ -7,6 +7,7 @@ Behavior.resize_swipe = function() {
 $(function() {
     var $swipe = $(data_behavior('swipe'));
     if ($swipe.length > 0) {
+        var jiggling = false;
         var initial_state = parseInt($swipe.data('index'));
         var swipe_states = [initial_state];
         var programmatic_state_change = false;
@@ -61,28 +62,24 @@ $(function() {
             }
         });
 
-        if (initial_state != swipe.slides().length - 1) {
-            var jiggling = false;
-            var COOKIE_KEY = "JIGGLE_INTRO_DONE";
-            var jiggle = $.cookie(COOKIE_KEY) != "true";
+        var COOKIE_KEY = "JIGGLE_INTRO_DONE";
+        if ($.cookie(COOKIE_KEY) != "true") {
             var JIGGLE_DELAY = 1000;
             var JIGGLE_SPEED = 1000;
             var JIGGLE_LENGTH = 200;
+
+            var position_change = initial_state == swipe.slides().length - 1 ? -1 : 1;
             var start_jiggle = function () {
-                if (jiggle) {
-                    jiggling = true;
-                    swipe.slide(swipe.getPos() + 1, JIGGLE_SPEED);
-                    setTimeout(end_jiggle, JIGGLE_LENGTH)
-                }
+                jiggling = true;
+                swipe.slide(swipe.getPos() + position_change, JIGGLE_SPEED);
+                setTimeout(end_jiggle, JIGGLE_LENGTH)
             };
             var end_jiggle = function () {
-                if (jiggle) {
-                    swipe.slide(swipe.getPos() - 1, JIGGLE_SPEED);
-                    $.cookie(COOKIE_KEY, true, { expires: 365 });
-                    setTimeout(function () {
-                        jiggling = false;
-                    }, JIGGLE_SPEED + 100)
-                }
+                swipe.slide(swipe.getPos() - position_change, JIGGLE_SPEED);
+                $.cookie(COOKIE_KEY, true, { expires: 365 });
+                setTimeout(function () {
+                    jiggling = false;
+                }, JIGGLE_SPEED + 100)
             };
             window.addEventListener('load', function () {
                 setTimeout(start_jiggle, JIGGLE_DELAY);
