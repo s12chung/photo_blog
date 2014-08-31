@@ -167,8 +167,8 @@ body[data-controller="posts"] {
 
         text-align: center;
 
-        $close_link_padding: 10px;
-        $close_x_size: 20px;
+        $close_link_padding: 0.5em;
+        $close_x_size: 1em;
         $space_size: $close_link_padding * 2 + $close_x_size;
 
         .space {
@@ -177,7 +177,7 @@ body[data-controller="posts"] {
         }
 
         .title {
-          $adjustment: 2px;
+          $adjustment: 0.2em;
           margin-top: $adjustment;
           height: $space_size - $adjustment;
           @include center_container;
@@ -199,7 +199,7 @@ body[data-controller="posts"] {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
 
-        padding-top: 40px;
+        padding-top: 2em;
       }
     }
 
