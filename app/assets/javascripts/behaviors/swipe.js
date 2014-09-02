@@ -9,7 +9,6 @@ $(function() {
     if ($swipe.length > 0) {
         var jiggling = false;
         var initial_state = parseInt($swipe.data('index'));
-        var swipe_states = [initial_state];
         var programmatic_state_change = false;
 
         swipe = new Swipe($swipe[0], {
@@ -19,9 +18,8 @@ $(function() {
 
                 if (location.pathname != $li.data('path') && !jiggling) {
                     programmatic_state_change = true;
-                    History.pushState(null, $li.data('title'), $li.data('path'));
+                    History.pushState({ index: index }, $li.data('title'), $li.data('path'));
                     programmatic_state_change = false;
-                    swipe_states.push(index);
                 }
                 if ($li.data('loaded') === true) {
                     $li.find(data_behavior('summary_content_container')).css({ opacity: 0, display: 'hidden' });
@@ -50,14 +48,18 @@ $(function() {
 
         History.Adapter.bind(window, 'statechange', function() {
             if (!programmatic_state_change) {
-                swipe_states.pop();
-                var change = swipe_states[swipe_states.length - 1] - swipe.getPos();
+                var index = History.getState().data.index;
+                if (blank(index)) index = initial_state;
+
+                var change = index - swipe.getPos();
                 if (change === -1) {
                     swipe.prev();
                 }
                 else if (change === 1) {
                     swipe.next();
                 }
+
+                $('title').html(swipe.li().data('title'));
                 $(data_behavior('popup')).fade_hide();
             }
         });
