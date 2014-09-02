@@ -115,7 +115,6 @@ body[data-controller="posts"] {
     .swipe {
       height: 100%;
       ul {
-        @include clean_list;
         background-color: black;
         height: 100%;
 
