@@ -153,7 +153,7 @@ $comment_dimensions: 1.5em;
 
   ol,
   ul {
-    margin: ($point_margin + 0.3em) 0 1.5em $p_margin;
+    margin: $point_margin 0 1.5em $p_margin;
 
     li {
       margin: $point_margin 0;
