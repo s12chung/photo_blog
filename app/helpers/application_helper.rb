@@ -1,6 +1,9 @@
 module ApplicationHelper
+  def site_name
+    "Travel Captions"
+  end
   def title_default
-    "Travel Captions - #{description}"
+    "#{site_name} - #{description}"
   end
   def description
     "Capturing travel with individual photos and their story."

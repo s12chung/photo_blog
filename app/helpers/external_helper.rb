@@ -36,7 +36,7 @@ module ExternalHelper
   private
   def social_networks_default
     {
-        title: title,
+        title: title == title_default ? site_name : title,
         description: description,
         url: request.original_url,
         image: logo_url
@@ -49,7 +49,7 @@ module ExternalHelper
             admins: ENV['FACEBOOK_ADMINS'],
         },
         og: social_networks_default.merge(
-            site_name: title_default
+            site_name: site_name
         )
     }
   end
