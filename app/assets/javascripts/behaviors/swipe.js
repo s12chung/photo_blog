@@ -18,7 +18,9 @@ $(function() {
 
                 if (location.pathname != $li.data('path') && !jiggling) {
                     programmatic_state_change = true;
-                    History.pushState({ index: index }, $li.data('title'), $li.data('path'));
+                    var path = $li.data('path');
+                    History.pushState({ index: index }, $li.data('title'), path);
+                    page_view(path);
                     programmatic_state_change = false;
                 }
                 if ($li.data('loaded') === true) {
@@ -60,6 +62,7 @@ $(function() {
                 }
 
                 $('title').html(swipe.li().data('title'));
+                page_view(swipe.li().data('path'));
                 $(data_behavior('popup')).fade_hide();
             }
         });
