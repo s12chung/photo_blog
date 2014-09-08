@@ -3,7 +3,7 @@ module ApplicationHelper
     "Travel Captions"
   end
   def description
-    "Capturing travel of individual photos and their story."
+    "Capturing travel with individual photos and their story."
   end
   def logo_url
     asset_url("logo.png").http_url
