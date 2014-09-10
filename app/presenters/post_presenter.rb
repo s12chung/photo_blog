@@ -72,9 +72,9 @@ module PostPresenter
     end
   end
   def snippet
-    if !has_content? && markdown
+    if !has_content?
       content_tag :div, class: "html" do
-        self.class.process_markdown markdown, HasMarkdown::PlainTextRenderer
+        self.class.process_markdown(markdown, HasMarkdown::PlainTextRenderer) || description
       end
     end
   end
