@@ -67,7 +67,7 @@ module PostPresenter
     if has_content?
       content_tag :div do
         link_to "Read Story", "#main_content",
-                data: { behavior: user_agent.mobile? ? "show_popup" : "scroll_to" }, class: "read_story"
+                data: { behavior: user_agent.mobile? ? "show_popup" : "scroll_to", offset: 1 }, class: "read_story"
       end
     end
   end
