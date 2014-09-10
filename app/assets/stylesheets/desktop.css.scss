@@ -176,9 +176,10 @@ body[data-controller="posts"] {
           padding-right: 5%;
 
           .title {
-            line-height: 1.2;
+            line-height: 1;
           }
           .description {
+            margin-top: 0.3em;
             font-style: italic;
             font-size: 0.7em;
             line-height: 1;
