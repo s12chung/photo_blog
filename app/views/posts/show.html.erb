@@ -1,8 +1,8 @@
-<h1><%= link_to image_tag("logo.svg"), root_path %></h1>
-
 <% set_title @post.title %>
 <% flowtype :read %>
 <% social_networks @post %>
+
+<%= render "layouts/logo_header" %>
 
 <% if user_agent.mobile? %>
     <%= render "photoswipe" %>

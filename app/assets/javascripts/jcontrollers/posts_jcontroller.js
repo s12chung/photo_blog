@@ -42,7 +42,6 @@ Jcontroller.create('posts', {
                 $(window).resize(resize_preview);
 
                 var jcrop;
-                var crop_image_width = $crop_image.width();
                 $crop_image.Jcrop({
                     aspectRatio: ratio,
                     setSelect: [cached_coords.x, cached_coords.y,

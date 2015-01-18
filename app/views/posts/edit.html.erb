@@ -1,5 +1,7 @@
 <% set_title "Edit #{@post.title}" %>
 
+<%= render "layouts/logo_header" %>
+
 <div class="preview">
   <%= image_tag @post.photo.desktop, data: { behavior: "crop_preview" } %>
 </div>
@@ -22,7 +24,7 @@
       <div>
         <%= link_to @post.published ? "Unpublish" : "Publish", toggle_publish_post_path(@post), method: :patch %>
       </div>
-      <%= link_to "Destroy", post_path(@post), method: :delete, confirm: "Destroy '#{@post.title}'?" %>
+      <%= link_to "Destroy", post_path(@post), method: :delete, data: { confirm: "Destroy '#{@post.title}'?" } %>
     </div>
   </section>
 </div>

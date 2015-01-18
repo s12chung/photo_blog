@@ -1,7 +1,7 @@
 // https://github.com/bseth99/css-spinner/blob/master/sass/_spinner-balls.scss
 
 @import "compass/css3";
-@import "animation";
+@import "compass/css3/animation";
 
 @mixin spinner-balls($name: null, $size: 100px, $count: 5, $color: white) {
 

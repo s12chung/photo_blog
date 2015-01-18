@@ -1,0 +1,1 @@
+Object.send(:remove_const, :Markdown)

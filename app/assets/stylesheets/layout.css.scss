@@ -19,6 +19,23 @@ h1 {
       text-decoration: none;
     }
   }
+
+  &.logo {
+    position: absolute;
+    top: 0.1em;
+    left: 0.5em;
+    z-index: 9;
+
+    img {
+      height: 1em;
+      width: 1em;
+    }
+
+    opacity: 0.2;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 header.main {
   font-family: $sans-serif;

@@ -1,78 +1,51 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.2.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails'
 
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-gem 'sass', '~> 3.2.13'
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-group :production do
-  gem 'rails_12factor'
-end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
-gem 'quiet_assets'
-gem 'newrelic_rpm'
-
+# Database
 gem 'mongoid'
 gem 'bson_ext'
-gem 'bcrypt-ruby'
-gem 'mongoid-sadstory', github: 'y0ssa/mongoid-sadstory', ref: '8f7367081772f38c10e8b9e4beec85af8936c2ec'
+gem 'mongoid_geospatial'
+gem 'mongoid-slug'
 
-# Database uploads
 gem 'carrierwave'
 gem 'fog'
 gem 'carrierwave-mongoid'
-gem 'mini_magick'
+gem 'mini_magick', '~> 3.7'
+
+# Libraries
+gem 'bcrypt'
+gem 'redcarpet'
+gem 'useragent'
+
+gem 'memcachier'
+gem 'dalli'
+
+gem 'quiet_assets'
+
+# Assets
+gem 'uglifier'
+gem 'sass-rails'
+gem 'sass'
 
 gem 'bourbon'
 gem 'neat'
 gem 'patterns'
 gem 'compass-rails'
-gem 'animation'
 
-gem 'easy_presenter'
+gem 'jquery-rails'
 gem 'jcontroller'
 
-gem 'redcarpet'
-gem 'useragent'
+# View
+gem 'easy_presenter'
+gem 'jbuilder'
 
-gem 'mongoid_geospatial'
-gem 'mongoid_slug'
-
-gem 'memcachier'
-gem 'dalli'
+group :doc do
+  gem 'sdoc', require: false
+end
+group :production do
+  gem 'rails_12factor'
+  gem 'newrelic_rpm'
+end
