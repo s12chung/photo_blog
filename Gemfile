@@ -13,7 +13,7 @@ gem 'mongoid-slug'
 gem 'carrierwave'
 gem 'fog'
 gem 'carrierwave-mongoid'
-gem 'mini_magick', '~> 3.7'
+gem 'mini_magick', '~> 3.7.0'
 
 # Libraries
 gem 'bcrypt'
