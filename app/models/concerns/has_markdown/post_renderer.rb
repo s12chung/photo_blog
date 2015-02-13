@@ -20,7 +20,7 @@ module HasMarkdown
 
     def paragraph(text)
       text = text.gsub(/\n/, "<br>")
-      if text.index(/---|\u2014/) == 0
+      if text.index(Post::CITE_REGEX) == 0
         "<cite>#{text}</cite>"
       else
         if @first

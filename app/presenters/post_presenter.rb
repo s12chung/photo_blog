@@ -2,6 +2,9 @@ module PostPresenter
   FOOTNOTE_REGEX = /\[\|\]/
   BULLET_REGEX = /[-*]\s{0,3}/
 
+  def location
+    "#{place} - #{address}"
+  end
   def localized_date
     l date, locale: locale
   end
@@ -63,6 +66,11 @@ module PostPresenter
     end
   end
 
+  def facebook_summary
+    header = "Full Experience: #{post_url(self)}"
+    "#{header}\n\n#{title}\n#{localized_date}\n#{location}\n\n#{body_plaintext}".html_safe
+  end
+
   def read_story
     if has_content?
       content_tag :div do
@@ -74,9 +82,17 @@ module PostPresenter
   def snippet
     if !has_content?
       content_tag :div, class: "html" do
-        self.class.process_markdown(markdown, HasMarkdown::PlainTextRenderer) || description
+        body_plaintext
       end
     end
+  end
+  def body_plaintext
+    markdown_plaintext || description
+  end
+  def markdown_plaintext
+    s = self.class.process_markdown(markdown, HasMarkdown::PlainTextRenderer)
+    s.gsub!(FOOTNOTE_REGEX, "") if s
+    s
   end
   def markdown_html
     content_array = []

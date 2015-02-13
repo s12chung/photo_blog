@@ -44,6 +44,7 @@ class Post
 
   METADATA_BREAK = "=========="
   FOOTNOTES_BREAK = "=== Footnotes ==="
+  CITE_REGEX = /---|\u2014/
   def text=(text)
     self.metadata, content = text.split(METADATA_BREAK).map(&:strip)
     self.markdown, self.footnote_text = content.split(FOOTNOTES_BREAK).map(&:strip)
