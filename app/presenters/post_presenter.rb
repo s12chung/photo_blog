@@ -67,7 +67,7 @@ module PostPresenter
   end
 
   def facebook_summary
-    header = "Full Experience: #{post_url(self)}"
+    header = "Full Experience: http://www.travelcaptions.com#{post_path(self)}"
     "#{header}\n\n#{title}\n#{localized_date}\n#{location}\n\n#{body_plaintext}".html_safe
   end
 
