@@ -34,8 +34,8 @@ module HasMarkdown
     end
 
     def block_quote(text)
-      partition = text.partition(Post::CITE_REGEX)
-      "\"#{partition[0].strip}\"#{partition[1].blank? ? partition[1] : "\n#{partition[1]}"}#{partition[2]}\n\n"
+      quote, dash, source = text.partition(Post::CITE_REGEX)
+      "\"#{quote.strip}\"#{dash.blank? ? "" : "\n#{dash + source}"}\n\n"
     end
 
     def paragraph(text)
