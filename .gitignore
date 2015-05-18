@@ -18,5 +18,6 @@
 .idea/
 db/photos
 export/*
+public/assets/*
 config/s3.yml
 config/omniauth.yml
