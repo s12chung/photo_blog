@@ -5,10 +5,9 @@ ruby '2.2.2'
 gem 'rails'
 
 # Database
-gem 'mongoid'
+gem 'mongoid', '~> 5.0.0'
 gem 'bson_ext'
-gem 'mongoid_geospatial'
-gem 'mongoid-slug'
+gem 'mongoid-slug', '~> 5.0.0'
 
 gem 'carrierwave'
 gem 'fog'

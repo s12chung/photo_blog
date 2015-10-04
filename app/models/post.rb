@@ -1,7 +1,6 @@
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Geospatial
   include Mongoid::Slug
 
   include HasMarkdown
@@ -12,7 +11,6 @@ class Post
   field :date, type: Date, default: -> { Date.today }
   field :place
   field :address
-  field :position, type: Point, default: -> { Mongoid::Geospatial::Point.new(0,0) }
 
   field :markdown, default: "A post is just the beginning."
   field :footnote_text
